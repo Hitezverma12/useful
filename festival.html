@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Festival Pulse | India</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #050816;
+      --card: rgba(255,255,255,0.07);
+      --card-border: rgba(255,255,255,0.14);
+      --text: #f4f8ff;
+      --accent: #ffb200;
+      --accent-soft: rgba(255,178,0,0.18);
+      --muted: #a7b3d2;
+      --shadow: rgba(0,0,0,0.35);
+      --radius: 26px;
+      --ease: cubic-bezier(0.25, 0.8, 0.35, 1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, rgba(255,178,0,0.18), transparent 24%),
+                  linear-gradient(180deg, #08111f 0%, #050816 100%);
+    }
+    body.loaded { opacity: 1; }
+    body:not(.loaded) { opacity: 0; transition: opacity 0.7s ease; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(18px);
+      background: rgba(5,8,22,0.76);
+      z-index: 10;
+    }
+    header .brand {
+      display: inline-flex;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+    header .brand i { font-size: 1.2rem; }
+    header a {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.85rem 1.2rem;
+      border-radius: 14px;
+      transition: transform 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
+    }
+    header a:hover { transform: translateY(-2px); background: rgba(255,255,255,0.08); color: var(--accent); }
+    .hero {
+      max-width: 1180px;
+      margin: 2rem auto 1rem;
+      padding: 2.5rem 2rem;
+      border-radius: 36px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.24);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      top: -90px;
+      right: -90px;
+      background: radial-gradient(circle, rgba(255,178,0,0.32), transparent 55%);
+      pointer-events: none;
+    }
+    .hero h1 {
+      margin: 0 0 0.8rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4vw, 4.5rem);
+      line-height: 1.02;
+      color: #ffdf8c;
+      letter-spacing: -0.04em;
+    }
+    .hero p {
+      margin: 0 0 1.6rem;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .hero .intro-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.95rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,178,0,0.18);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .badge i { color: var(--accent); }
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 2.2rem;
+    }
+    .card {
+      padding: 1.5rem;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.18);
+      transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,178,0,0.25);
+    }
+    .card h2 {
+      margin: 0 0 0.9rem;
+      font-size: 1.45rem;
+      color: #ffd97d;
+    }
+    .card p { margin: 0; color: var(--muted); line-height: 1.75; }
+    .highlight {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .highlight-block {
+      flex: 1 1 320px;
+      padding: 1.6rem;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+    }
+    .highlight-block h3 {
+      margin: 0 0 0.8rem;
+      color: #ffde9e;
+    }
+    .highlight-block ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .highlight-block li { margin-bottom: 0.7rem; }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #ffb200, #ff7a00);
+      color: #050816;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 14px 28px rgba(255,126,0,0.24);
+      transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+    }
+    .button-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(255,126,0,0.3); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 2.4rem; }
+    .stat { padding: 1.35rem; border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+    .stat strong { display: block; font-size: 2rem; color: #fff; }
+    .stat span { color: var(--muted); font-size: 0.95rem; }
+    .footer {
+      margin: 3rem auto 2rem;
+      max-width: 1180px;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .footer small { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="helpful.html"><i class="fa-solid fa-arrow-left"></i> Back to India Overview</a>
+    <a class="button-primary" href="helpful.html">Home</a>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Festival Pulse</h1>
+      <p>Step into India’s brightest celebrations: the colors, lights, and rituals that light up the year. From joyous street processions to temple lanterns, this page brings major festivals to life.</p>
+      <div class="hero-cta">
+        <a class="button-primary" href="#top-festivals">See the Highlights</a>
+        <a class="button-primary" href="helpful.html">Explore More</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>8+</strong><span>Festivals featured</span></div>
+        <div class="stat"><strong>15+</strong><span>Cultural stories</span></div>
+        <div class="stat"><strong>100%</strong><span>Immersive visuals</span></div>
+      </div>
+    </section>
+    <section class="grid" id="top-festivals">
+      <div class="card">
+        <h2>Diwali</h2>
+        <p>The Festival of Lights symbolizes victory of light over darkness. Homes glow with lamps, fireworks paint the sky, and families share sweets and blessings.</p>
+      </div>
+      <div class="card">
+        <h2>Holi</h2>
+        <p>Holi is the celebration of color and joy. Streets become a rainbow as friends and strangers throw vibrant powders, dance to music, and welcome the arrival of spring.</p>
+      </div>
+      <div class="card">
+        <h2>Navratri</h2>
+        <p>Nine nights of devotion, music, and dance honor the feminine divine. Garba and Dandiya Raas come alive with glittering costumes and powerful rhythms.</p>
+      </div>
+    </section>
+    <div class="highlight">
+      <div class="highlight-block">
+        <h3>Festival Fast Facts</h3>
+        <ul>
+          <li>India celebrates more than 2,000 festivals every year.</li>
+          <li>Festivals blend ritual, mythology, art, food, and community.</li>
+          <li>Seasons, harvest cycles, and civic history all shape festival traditions.</li>
+        </ul>
+      </div>
+      <div class="highlight-block">
+        <h3>How to Experience It</h3>
+        <ul>
+          <li>Visit regional markets for festive sweets and handmade decorations.</li>
+          <li>Attend public ceremonies, open-air concerts, and temple processions.</li>
+          <li>Watch traditional dances and lantern displays after sunset.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <small>Festival Pulse is designed as a stylish companion page for India’s major celebrations.</small>
+    <small>Return to the main page anytime to explore geography, history, and more.</small>
+  </footer>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => document.body.classList.add('loaded'));
+  </script>
+</body>
+</html>

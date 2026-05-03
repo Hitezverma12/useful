@@ -1,0 +1,1853 @@
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD10PMZJQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RD10PMZJQN');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>India Overview</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* Global Styles & Variables */
+    :root {
+      --primary-blue: #0b5cff;
+      --dark-blue: #0d47a1;
+      --text-color-dark: #112b46;
+      --text-color-light: #e9edf8;
+      --background-dark: #070b18;
+      --background-gradient-start: rgba(8, 16, 41, 0.98);
+      --background-gradient-mid: rgba(12, 24, 48, 0.96);
+      --background-gradient-end: rgba(18, 38, 70, 0.98);
+      --white-transparent-low: rgba(255, 255, 255, 0.05);
+      --white-transparent-mid: rgba(255, 255, 255, 0.14);
+      --white-transparent-high: rgba(255, 255, 255, 0.96);
+      --shadow-blue-light: rgba(11, 92, 255, 0.08);
+      --shadow-blue-medium: rgba(11, 92, 255, 0.16);
+      --shadow-blue-heavy: rgba(11, 92, 255, 0.35);
+      --shadow-black-light: rgba(0, 0, 0, 0.1);
+      --shadow-black-medium: rgba(0, 0, 0, 0.12);
+      --shadow-black-heavy: rgba(0, 0, 0, 0.16);
+      --animation-speed-fast: 0.25s;
+      --animation-speed-medium: 0.35s;
+      --animation-speed-slow: 0.6s;
+      --transition-bezier: cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    /* Font and Base Styles */
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: var(--text-color-light);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100%;
+      background: var(--background-dark);
+      background-image:
+        radial-gradient(circle at 25% 15%, var(--white-transparent-low), transparent 18%),
+        radial-gradient(circle at 80% 25%, var(--white-transparent-low), transparent 15%);
+      background-size: 300% 300%;
+      animation: colorPulse 18s ease-in-out infinite;
+      transition: background var(--animation-speed-slow) ease;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body:hover {
+      animation-duration: 9s; /* Faster pulse on hover */
+    }
+
+    /* Page Load Animation */
+    body.loaded {
+      opacity: 1;
+    }
+    body:not(.loaded) {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      color: var(--primary-blue);
+      letter-spacing: 0.01em;
+      font-family: 'Playfair Display', serif;
+    }
+    h1, h2, h3, .meaning {
+      font-weight: 700;
+      font-style: italic;
+    }
+    h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+    .lead {
+      font-size: 1.05rem;
+      color: #222; /* Specific color for lead text */
+      font-weight: 300;
+    }
+    .muted {
+      color: #555;
+      font-weight: 400;
+    }
+    .meaning {
+      color: #666;
+      font-size: 0.95rem;
+      margin-left: 1rem;
+      white-space: nowrap;
+      font-family: 'Montserrat', sans-serif;
+    }
+    p, li {
+      animation: textGlow 14s ease-in-out infinite;
+      transition: text-shadow var(--animation-speed-medium) ease;
+    }
+    ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    /* Links */
+    a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      transition: color var(--animation-speed-medium) ease;
+    }
+    a:hover {
+      color: #09284b; /* Darker blue on hover */
+    }
+    .anchor {
+      color: var(--primary-blue);
+      text-decoration: none;
+    }
+
+    /* Buttons */
+    button {
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+      transition: all var(--animation-speed-medium) ease;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0b5cff, #5a74ff);
+      color: #fff;
+      border-radius: 14px;
+      padding: 0.95rem 1.5rem;
+      box-shadow: 0 10px 22px rgba(11, 92, 255, 0.18);
+    }
+    button::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.45), transparent 25%);
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: scale(0.8);
+      pointer-events: none;
+    }
+    button:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 14px 26px rgba(11, 92, 255, 0.25), 0 6px 16px rgba(0,0,0,0.12);
+    }
+    button:hover::after {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+    button:active {
+      transform: translateY(0) scale(0.99);
+    }
+
+    /* Header & Navigation */
+    header {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      color: #fff;
+      padding: 1.25rem 1rem;
+      box-shadow: 0 10px 30px var(--shadow-black-medium);
+    }
+    nav a {
+      display: inline-block;
+      padding: 12px 20px;
+      margin-bottom: 8px;
+      border-radius: 10px;
+      background: var(--white-transparent-high);
+      border: 1px solid rgba(11, 92, 255, 0.18);
+      box-shadow: 0 12px 28px var(--shadow-blue-light);
+      font-size: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(11, 92, 255, 0.18);
+      transform: translate(-50%, -50%);
+      transition: width var(--animation-speed-slow), height var(--animation-speed-slow);
+    }
+    nav a:hover {
+      background: var(--white-transparent-high); /* Ensure it stays white */
+      box-shadow: 0 16px 32px var(--shadow-blue-medium);
+      transform: translateY(-3px);
+      color: #09284b;
+    }
+    nav a:hover::before {
+      width: 350px;
+      height: 350px;
+    }
+    nav a:active {
+      transform: translateY(-1px);
+    }
+
+    /* Container & Sections */
+    .container {
+      max-width: 900px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+      background: var(--white-transparent-high);
+      border-radius: 24px;
+      box-shadow: 0 24px 80px rgba(15, 66, 155, 0.08);
+      backdrop-filter: blur(10px);
+      transition: transform var(--animation-speed-medium) ease, box-shadow var(--animation-speed-medium) ease;
+    }
+    body:hover .container {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 90px rgba(15, 66, 155, 0.12);
+    }
+    section {
+      margin: 1.25rem 0;
+      padding: 1.35rem 1.3rem 1.6rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.98); /* Slightly more opaque */
+      box-shadow: 0 20px 55px var(--shadow-blue-light);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--animation-speed-slow) ease, box-shadow var(--animation-speed-slow) ease, background var(--animation-speed-slow) ease, opacity 0.8s ease;
+      opacity: 1;
+      transform: none;
+    }
+    body.animations-enabled section {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    body.animations-enabled section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 90px rgba(11, 90, 255, 0.14);
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: -18%;
+      right: -16%;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(11, 92, 255, 0.16), transparent 56%);
+      pointer-events: none;
+      opacity: 0.74;
+      transform: scale(0.84);
+      animation: sectionGlow 12s ease-in-out infinite alternate;
+    }
+    section h1::after, section h2::after, section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 72px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(11, 92, 255, 0.88), rgba(45, 122, 255, 0.18));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--animation-speed-medium) ease;
+    }
+    section:hover h1::after, section:hover h2::after, section:hover h3::after {
+      transform: scaleX(1);
+    }
+
+    /* Landmarks Grid */
+    .landmarks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .landmark-card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .landmark-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .landmark-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .landmark-card h3 {
+      margin: 1rem;
+      font-size: 1.2rem;
+      color: var(--primary-blue);
+    }
+    .landmark-card p {
+      margin: 0 1rem 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .feature-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,248,255,0.96));
+      border: 1px solid rgba(11, 92, 255, 0.12);
+      border-radius: 20px;
+      padding: 1.35rem;
+      box-shadow: 0 18px 45px rgba(11, 92, 255, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 50px rgba(11, 92, 255, 0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(235,242,255,1));
+    }
+    .feature-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.15rem;
+      color: var(--dark-blue);
+    }
+    .feature-card p {
+      margin: 0 0 1.1rem;
+      color: #4c5f7a;
+      line-height: 1.55;
+    }
+    .feature-card a button {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1556ff, #3c88ff);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(11,92,255,0.22);
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.3rem;
+      margin-top: 1rem;
+    }
+    .insight-card {
+      padding: 1.5rem;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 167, 38, 0.16);
+      box-shadow: 0 20px 50px rgba(255, 149, 0, 0.12);
+      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    }
+    .insight-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255, 167, 38, 0.28);
+    }
+    .insight-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 2rem;
+      color: #ffb74d;
+    }
+    .insight-card p {
+      margin: 0;
+      line-height: 1.7;
+      color: #f0e4c0;
+    }
+    .insight-panel {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1.2fr 0.8fr;
+      margin-top: 1.75rem;
+    }
+    @media (max-width: 920px) {
+      .insight-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+    .spark-card {
+      padding: 1.7rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 167, 38, 0.18);
+      box-shadow: 0 24px 62px rgba(255, 149, 0, 0.13);
+      backdrop-filter: blur(14px);
+    }
+    .spark-card h3 {
+      margin: 0 0 0.8rem;
+      color: #ffe0a1;
+      font-size: 1.7rem;
+    }
+    .spark-card p {
+      margin: 0 0 1.4rem;
+      color: #d9c59f;
+      line-height: 1.8;
+    }
+    .stat-pill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.95rem 1rem;
+      margin-bottom: 0.85rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 193, 7, 0.16);
+    }
+    .stat-pill span {
+      color: #f6e0ae;
+      font-size: 0.95rem;
+    }
+    .stat-pill strong {
+      font-size: 1.45rem;
+      color: #fff;
+    }
+
+    /* Section Image */
+    .section-image {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .section-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr 320px; /* Main content and aside */
+      }
+    }
+
+    /* Aside / TOC */
+    aside {
+      margin-top: 1rem; /* Ensure spacing above aside */
+    }
+    .toc {
+      font-size: .95rem;
+      padding: .5rem;
+      border-radius: 6px;
+      background: #fff;
+      border: 1px solid #eef;
+      margin-bottom: 1rem; /* Space between TOC and Quick Facts */
+    }
+    .toc strong {
+      display: block; /* Ensure strong takes full width */
+      margin-bottom: 0.5rem;
+    }
+    .toc ol {
+      padding-left: 1.5rem; /* Adjust padding for ordered list */
+      margin: 0;
+    }
+    .toc li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Quick Facts Box */
+    .quick-facts { /* Renamed from generic div for clarity */
+      margin-top: 1rem;
+      padding: .75rem;
+      border-radius: 6px;
+      background: #9f2a2a; /* Red background */
+      border: 1px solid #eef;
+      color: #fff;
+    }
+    .quick-facts strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .quick-facts ul {
+      padding-left: 1.5rem; /* Consistent padding */
+      margin: 0;
+    }
+    .quick-facts li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Footer */
+    footer {
+      font-size: .9rem;
+      color: #444;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem; /* Space above footer */
+    }
+    footer b {
+      display: block; /* Ensure copyright is on a new line */
+      margin-top: 0.5rem;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      background: #f8f9fb;
+      padding: 0.6rem;
+      text-align: center;
+      border-bottom: 1px solid #e6e9ef;
+      position: sticky; /* Make it sticky */
+      top: 0;
+      z-index: 1000; /* Ensure it's above other content */
+    }
+    #language-switcher button {
+      margin: 0 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      border: 2px solid #cfd8e3;
+      background: #fff;
+      color: var(--primary-blue);
+      font-size: 14px;
+      transition: all var(--animation-speed-medium) ease;
+      position: relative;
+      overflow: hidden;
+    }
+    #language-switcher button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left var(--animation-speed-slow);
+    }
+    #language-switcher button:hover {
+      transform: scale(1.08);
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 15px rgba(11, 92, 255, 0.3), inset 0 0 10px rgba(11, 92, 255, 0.1);
+    }
+    #language-switcher button:hover::after {
+      left: 100%;
+    }
+    #language-switcher button.active {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      color: #fff;
+      border-color: var(--primary-blue);
+      box-shadow: 0 6px 20px rgba(11, 92, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+    /* Utility to hide non-active language spans by default */
+    [data-lang] {
+      display: none;
+    }
+    /* Default display for inline elements */
+    [data-lang="en"], [data-lang="bn"], [data-lang="hi"] {
+      display: inline;
+    }
+    /* Ensure block-level elements with data-lang behave correctly */
+    p [data-lang], li [data-lang], h1 [data-lang], h2 [data-lang], h3 [data-lang], .meaning [data-lang] {
+      display: inline;
+    }
+    /* For list items where entire li is language-specific, allow block display */
+    li > [data-lang] {
+      display: inline; /* This seems to be the intended behavior for spans within list items */
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      color: white;
+    }
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
+    }
+    .hero-title {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease-out;
+      text-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      animation: fadeInUp 1s ease-out 1s both;
+    }
+    .stat {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+    .stat:hover {
+      transform: translateY(-10px);
+    }
+    .stat i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .floating-icon {
+      position: absolute;
+      font-size: 3rem;
+      color: rgba(255,255,255,0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+    .icon1 { top: 20%; left: 10%; animation-delay: 0s; }
+    .icon2 { top: 30%; right: 15%; animation-delay: 2s; }
+    .icon3 { bottom: 25%; left: 20%; animation-delay: 4s; }
+    .icon4 { bottom: 20%; right: 10%; animation-delay: 1s; }
+    .page-background {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+      overflow: hidden;
+      background: radial-gradient(circle at 20% 15%, rgba(255,255,255,0.04), transparent 18%),
+                  radial-gradient(circle at 82% 14%, rgba(255,255,255,0.05), transparent 16%),
+                  linear-gradient(180deg, rgba(8,16,41,0.98), rgba(12,24,48,0.96) 45%, rgba(18,38,70,0.98) 80%);
+    }
+    .page-background span {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      opacity: .82;
+      transform-origin: center;
+      filter: blur(1px);
+      pointer-events: auto; /* Changed from none to auto for potential interaction */
+      transition: transform var(--animation-speed-medium) ease, opacity var(--animation-speed-medium) ease, box-shadow var(--animation-speed-medium) ease, filter var(--animation-speed-medium) ease;
+    }
+    .bg-ring {
+      border: 1px solid rgba(255,255,255,0.16);
+      background: var(--white-transparent-low);
+      animation: floatRing 32s ease-in-out infinite;
+    }
+    .bg-ring:hover {
+      transform: scale(1.03) rotate(4deg);
+      box-shadow: 0 0 70px rgba(255,255,255,0.14);
+      opacity: 1;
+    }
+    .bg-ring1 { top: 4%; left: -8%; width: 430px; height: 430px; animation-duration: 28s; }
+    .bg-ring2 { top: 18%; right: -18%; width: 520px; height: 520px; border-color: rgba(255,255,255,0.12); animation-duration: 34s; animation-delay: -8s; }
+    .bg-ring3 { bottom: 8%; left: 10%; width: 380px; height: 380px; border-color: rgba(255,255,255,0.1); animation-duration: 30s; animation-delay: -4s; }
+
+    .bg-star {
+      width: 14px; height: 14px;
+      background: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0.18) 55%);
+      box-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 45px rgba(255,255,255,0.14);
+      animation: floatStar 15s ease-in-out infinite alternate;
+    }
+    .bg-star1 { top: 24%; left: 48%; animation-delay: 0s; }
+    .bg-star2 { top: 68%; left: 76%; animation-delay: 2s; transform: scale(.8); }
+    .bg-star3 { top: 55%; left: 18%; animation-delay: 5s; transform: scale(.9); }
+
+    .bg-wave {
+      width: 720px; height: 720px;
+      background: radial-gradient(circle at 38% 38%, var(--white-transparent-low), transparent 30%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      opacity: .76;
+      animation: wavePulse 22s ease-in-out infinite alternate;
+    }
+    .bg-wave:hover {
+      transform: scale(1.03) translate(-8px, 8px);
+      box-shadow: inset 0 0 45px rgba(255,255,255,0.08);
+      opacity: .92;
+    }
+    .bg-wave1 { top: 45%; right: -18%; }
+    .bg-wave2 { bottom: 0; right: 18%; width: 520px; height: 520px; background: radial-gradient(circle at 62% 38%, rgba(255,255,255,0.05), transparent 24%); animation-duration: 20s; }
+
+    .bg-card {
+      position: absolute;
+      width: 120px; height: 120px;
+      border-radius: 24px;
+      border: 1px solid var(--white-transparent-mid);
+      background: var(--white-transparent-low);
+      box-shadow: 0 0 40px var(--white-transparent-low);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      cursor: pointer;
+      animation: floatCard 18s ease-in-out infinite alternate;
+    }
+    .bg-card::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.03);
+      transition: transform var(--animation-speed-medium) ease, opacity var(--animation-speed-medium) ease;
+    }
+    .bg-card::after {
+      content: '';
+      position: absolute;
+      left: 16px; top: 20px;
+      width: 26px; height: 26px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 0 18px rgba(255,255,255,0.12);
+    }
+    .bg-card .grid-lines {
+      position: absolute;
+      inset: 40px 18px 18px 18px;
+      background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      opacity: 0.55;
+      transition: transform var(--animation-speed-medium) ease, opacity var(--animation-speed-medium) ease;
+    }
+    .bg-card:hover {
+      transform: scale(1.18) rotate(1deg);
+      box-shadow: 0 0 70px rgba(255,255,255,0.16);
+      opacity: 1;
+    }
+    .bg-card:hover::before {
+      transform: scale(1.05);
+      opacity: 0.95;
+    }
+    .bg-card:hover .grid-lines {
+      opacity: 0.95;
+      transform: translateY(-6px);
+    }
+    .bg-card1 { top: 26%; left: 18%; animation-delay: 0s; }
+    .bg-card2 { top: 10%; right: 16%; animation-delay: 4s; }
+    .bg-card3 { bottom: 18%; right: 22%; animation-delay: 2s; }
+
+    .bg-pill {
+      position: absolute;
+      width: 100px; height: 24px;
+      border-radius: 999px;
+      background: var(--white-transparent-low);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 30px var(--white-transparent-low);
+      animation: floatPill 12s ease-in-out infinite alternate;
+      cursor: pointer;
+    }
+    .bg-pill:hover {
+      transform: scale(1.15);
+      opacity: 1;
+      box-shadow: 0 0 45px rgba(255,255,255,0.1);
+    }
+    .bg-pill1 { top: 14%; left: 34%; }
+    .bg-pill2 { bottom: 22%; left: 24%; animation-delay: 5s; }
+    .bg-pill3 { top: 38%; right: 32%; width: 140px; height: 28px; animation-delay: 2s; }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-size: 120px 120px;
+      background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      opacity: .16;
+      transform: translateZ(0);
+      animation: gridDrift 18s linear infinite;
+      pointer-events: none;
+    }
+
+    /* Body Pseudo-elements for Background Effects */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 25%, rgba(255, 255, 255, 0.38), transparent 18%),
+        radial-gradient(circle at 82% 12%, rgba(255, 233, 142, 0.22), transparent 16%),
+        radial-gradient(circle at 52% 72%, rgba(115, 204, 255, 0.18), transparent 22%),
+        linear-gradient(135deg, rgba(255,255,255,0.08), transparent 20%, rgba(255,255,255,0.05) 50%, transparent 70%);
+      pointer-events: none;
+      animation: glowFlow 20s ease-in-out infinite alternate;
+      z-index: -2;
+      filter: blur(1px);
+      transition: opacity var(--animation-speed-medium) ease, transform var(--animation-speed-medium) ease;
+    }
+    body:hover::before {
+      opacity: 1;
+      transform: scale(1.04) translate(12px, -12px);
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 82%, rgba(255,255,255,0.14), transparent 16%),
+        radial-gradient(circle at 84% 52%, rgba(141, 255, 204, 0.14), transparent 14%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 1px, transparent 1px, transparent 26px);
+      opacity: 0.82;
+      pointer-events: none;
+      z-index: -1;
+      animation: drift 22s ease-in-out infinite alternate;
+      transition: opacity var(--animation-speed-medium) ease, transform var(--animation-speed-medium) ease;
+    }
+    body:hover::after {
+      opacity: 0.9;
+      transform: translate(-16px, 14px);
+    }
+
+    /* Animations */
+    @keyframes colorPulse {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 30% 40%; }
+      50% { background-position: 50% 50%; }
+      75% { background-position: 70% 60%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes glowFlow {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(14px, -10px) scale(1.02); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+    @keyframes sectionGlow {
+      0% { transform: scale(0.84) rotate(0deg); opacity: 0.78; }
+      100% { transform: scale(1.04) rotate(16deg); opacity: 0.34; }
+    }
+    @keyframes titlePulse {
+      0%, 100% { text-shadow: none; }
+      50% { text-shadow: 0 0 18px rgba(11, 92, 255, 0.16), 0 0 32px rgba(255, 255, 255, 0.08); }
+    }
+    @keyframes textGlow {
+      0%, 100% { text-shadow: none; }
+      50% { text-shadow: 0 0 12px rgba(11, 92, 255, 0.08), 0 0 22px rgba(255, 255, 255, 0.04); }
+    }
+    @keyframes drift { /* Used by body::after */
+      0% { transform: translate(0, 0); opacity: 0.9; }
+      50% { transform: translate(12px, 10px); opacity: 0.95; }
+      100% { transform: translate(-16px, -12px); opacity: 0.88; }
+    }
+    @keyframes slowGlow { /* Not currently used */
+      0% { transform: scale(1) translate(0, 0); opacity: 0.92; }
+      50% { transform: scale(1.03) translate(-14px, 10px); opacity: 1; }
+      100% { transform: scale(1.05) translate(12px, -14px); opacity: 0.94; }
+    }
+    @keyframes floatRing { /* Not currently used */
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+    @keyframes wavePulse { /* Not currently used */
+      0% { transform: scale(1); opacity: 0.76; }
+      50% { transform: scale(1.05); opacity: 0.92; }
+      100% { transform: scale(1); opacity: 0.76; }
+    }
+    @keyframes floatCard { /* Not currently used */
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(-5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    @keyframes floatPill { /* Not currently used */
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    @keyframes gridDrift { /* Not currently used */
+      0% { background-position: 0 0; }
+      100% { background-position: 120px 120px; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Specific Element Styles */
+    .nav-buttons button, .nav-buttons a { /* Consolidated styling for nav buttons */
+      padding: 14px 24px;
+      margin: 6px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      background: linear-gradient(135deg, #0b5cff 0%, #0d47a1 100%);
+      color: white;
+      box-shadow: 0 6px 20px rgba(11, 92, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all var(--animation-speed-slow);
+      position: relative;
+      overflow: hidden;
+      display: inline-block; /* Ensure buttons behave as expected */
+    }
+    .nav-buttons button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width var(--animation-speed-slow), height var(--animation-speed-slow);
+    }
+    .nav-buttons button:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    .nav-buttons button:hover, .nav-buttons a:hover { /* Combined hover for buttons and links */
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(11, 92, 255, 0.5), 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .nav-buttons button:active {
+      transform: translateY(-2px);
+    }
+
+    .text-toggle-panel {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      display: flex;
+      gap: 10px;
+      z-index: 10000;
+      pointer-events: auto;
+    }
+    .text-toggle-panel button {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--white-transparent-mid);
+      color: #eef3ff;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.16);
+      transition: transform var(--animation-speed-fast) ease, background var(--animation-speed-fast) ease, opacity var(--animation-speed-fast) ease;
+    }
+    .text-toggle-panel button:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.22);
+    }
+
+    .page-ui {
+      transition: opacity var(--animation-speed-slow) ease, transform var(--animation-speed-slow) ease;
+    }
+    .hide-text .page-ui {
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+    }
+    .page-ui, .page-ui * {
+      color: var(--text-color-dark) !important;
+    }
+    .container, section, footer, .toc {
+      color: var(--text-color-dark);
+    }
+    .container { background: var(--white-transparent-high); }
+    section { background: rgba(255, 255, 255, 0.92); } /* Slightly more opaque */
+    .toc { background: var(--white-transparent-high); }
+
+    /* Cursor Trail Flame Effect */
+    .cursor-trail {
+      position: fixed;
+      z-index: 99999;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle at 32% 30%, rgba(255, 216, 132, 0.96), rgba(255, 147, 33, 0.85) 40%, rgba(255, 84, 0, 0.55) 65%, transparent 95%);
+      box-shadow: 0 0 18px rgba(255, 153, 0, 0.35), 0 0 38px rgba(255, 183, 70, 0.22);
+      transform: translate(-50%, -50%) scale(var(--scale, 1));
+      animation: trailFlame 0.9s ease-out forwards;
+      mix-blend-mode: screen;
+      will-change: transform, opacity;
+    }
+
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-to-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    /* Keyframes */
+    @keyframes trailFlame {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(var(--scale, 1));
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% + var(--ty, 0px))) scale(0.35);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-background" aria-hidden="true">
+    <span class="bg-ring bg-ring1"></span>
+    <span class="bg-ring bg-ring2"></span>
+    <span class="bg-ring bg-ring3"></span>
+    <span class="bg-wave bg-wave1"></span>
+    <span class="bg-wave bg-wave2"></span>
+    <span class="bg-card bg-card1"><div class="grid-lines"></div></span>
+    <span class="bg-card bg-card2"><div class="grid-lines"></div></span>
+    <span class="bg-card bg-card3"><div class="grid-lines"></div></span>
+    <span class="bg-pill bg-pill1"></span>
+    <span class="bg-pill bg-pill2"></span>
+    <span class="bg-pill bg-pill3"></span>
+    <div class="bg-grid"></div>
+  </div>
+
+  <!-- Language Switcher at the very top -->
+  <div id="language-switcher" role="navigation" aria-label="Language switcher">
+    <button id="btn-en" class="active" onclick="setLanguage('en')">English</button>
+    <button id="btn-bn" onclick="setLanguage('bn')">বাংলা (Bengali)</button>
+    <button id="btn-hi" onclick="setLanguage('hi')">हिन्दी (Hindi)</button>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title"><i class="fas fa-map-marked-alt"></i> Discover India</h1>
+      <p class="hero-subtitle">A Land of Diversity, Culture, and Innovation</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <i class="fas fa-users"></i>
+          <span class="stat-number">1.4B+</span>
+          <span class="stat-label">Population</span>
+        </div>
+        <div class="stat">
+          <i class="fas fa-globe-asia"></i>
+          <span class="stat-number">3.3M</span>
+          <span class="stat-label">km² Area</span>
+        </div>
+        <div class="stat">
+          <i class="fas fa-language"></i>
+          <span class="stat-number">22+</span>
+          <span class="stat-label">Official Languages</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-background">
+      <div class="floating-elements">
+        <div class="floating-icon icon1"><i class="fas fa-taj-mahal"></i></div>
+        <div class="floating-icon icon2"><i class="fas fa-mountain"></i></div>
+        <div class="floating-icon icon3"><i class="fas fa-utensils"></i></div>
+        <div class="floating-icon icon4"><i class="fas fa-music"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <header>
+    <div class="container">
+      <!-- NEW TOP BUTTONS -->
+      <div class="nav-buttons" style="margin-bottom:10px;">
+        <a href="food.html"><button>🍛 Food of India</button></a>
+        <a href="wildlife.html"><button>🐅 Wildlife</button></a>
+        <a href="famous.html"><button>⭐ Famous People</button></a>
+        <a href="#landmarks"><button>🏛️ Landmarks</button></a>
+        <a href="innovation.html"><button>💡 Innovation</button></a>
+      </div>
+      <nav aria-label="Main">
+        <a href="#overview"><span data-lang="en">Overview</span><span data-lang="bn">ওভারভিউ</span><span data-lang="hi">ओवरव्यू</span></a>
+        <a href="#history"><span data-lang="en">History</span><span data-lang="bn">ইতিহাস</span><span data-lang="hi">इतिहास</span></a>
+        <a href="#geography"><span data-lang="en">Geography</span><span data-lang="bn">ভূগোল</span><span data-lang="hi">भूगोल</span></a>
+        <a href="#demographics"><span data-lang="en">Demographics</span><span data-lang="bn">জনসংখ্যাতাত্ত্বিক</span><span data-lang="hi">जनसांख्यिकी</span></a>
+        <a href="#culture"><span data-lang="en">Culture</span><span data-lang="bn">সংস্কৃতি</span><span data-lang="hi">संस्कृति</span></a>
+        <a href="#economy"><span data-lang="en">Economy</span><span data-lang="bn">অর্থনীতি</span><span data-lang="hi">अर्थव्यवस्था</span></a>
+        <a href="#government"><span data-lang="en">Government</span><span data-lang="bn">সরকার</span><span data-lang="hi">सरकार</span></a>
+        <a href="#tourism"><span data-lang="en">Tourism</span><span data-lang="bn">পর্যটন</span><span data-lang="hi">पर्यटन</span></a>
+        <a href="#science"><span data-lang="en">Science & Tech</span><span data-lang="bn">বিজ্ঞান ও প্রযুক্তি</span><span data-lang="hi">विज्ञान और तकनीक</span></a>
+        <a href="#references"><span data-lang="en">References</span><span data-lang="bn">তথ্যসূত্র</span><span data-lang="hi">संदर्भ</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="grid">
+      <div>
+        <!-- Overview -->
+        <section id="overview">
+          <div class="heading-row">
+            <h1>
+              <span data-lang="en"><i><b>India</b></i></span>
+              <span data-lang="bn"><i><b>ভারত</b></i></span>
+              <span data-lang="hi"><i><b>भारत</b></i></span>
+            </h1>
+            <span class="meaning">
+              <span data-lang="en">A country in South Asia — brief summary below</span>
+              <span data-lang="bn">দক্ষিণ এশিয়ার একটি দেশ — সংক্ষিপ্ত সারসংক্ষেপ নিচে</span>
+              <span data-lang="hi">दक्षिण एशिया का एक देश — संक्षिप्त सारांश नीचे</span>
+            </span>
+          </div>
+          <div class="section-content">
+            <div class="text-content">
+              <p class="lead">
+                <span data-lang="en">India, officially the Republic of India, is a country in South Asia. It is the world's most populous democracy and the second-most populous country after China. India is known for its diverse cultures, languages, religions, landscapes, and long history.</span>
+                <span data-lang="bn">ভারত, আনুষ্ঠানিকভাবে ভারতের প্রজাতন্ত্র, দক্ষিণ এশিয়ার একটি দেশ। এটি বিশ্বের সবচেয়ে জনবহুল গণতন্ত্র এবং চীনের পরে দ্বিতীয় সর্বাধিক জনবহুল দেশ। ভারত তার বৈচিত্র্যময় সংস্কৃতি, ভাষা, ধর্ম, ভূদৃশ্য এবং দীর্ঘ ইতিহাসের জন্য পরিচিত।</span>
+                <span data-lang="hi">भारत, आधिकारिक रूप से भारत गणराज्य, दक्षिण एशिया का एक देश है। यह दुनिया का सबसे अधिक जनसंख्या वाला लोकतंत्र है और चीन के बाद दूसरा सबसे अधिक जनसंख्या वाला देश है। भारत अपनी विविध संस्कृतियों, भाषाओं, धर्मों, परिदृश्यों और लंबे इतिहास के लिए जाना जाता है।</span>
+              </p>
+              <p class="muted">
+                <span data-lang="en">Quick facts: Capital — New Delhi; Largest city — Mumbai; Official languages — Hindi and English (associate official); Currency — Indian Rupee (INR); Area — ~3.287 million km²; Population — ~1.4 billion (2025 est.).</span>
+                <span data-lang="bn">দ্রুত তথ্য: রাজধানী — নয়াদিল্লি; বৃহত্তম শহর — মুম্বাই; সরকারি ভাষা — হিন্দি এবং ইংরেজি (সহযোগী সরকারি); মুদ্রা — ভারতীয় রুপি (INR); এলাকা — ~৩.২৮৭ মিলিয়ন কিমি²; জনসংখ্যা — ~১.৪ বিলিয়ন (২০২৫ অনুমান)।</span>
+                <span data-lang="hi">त्वरित तथ्य: राजधानी — नई दिल्ली; सबसे बड़ा शहर — मुंबई; आधिकारिक भाषाएँ — हिंदी और अंग्रेज़ी (सहायक आधिकारिक); मुद्रा — भारतीय रुपया (INR); क्षेत्रफल — ~3.287 मिलियन किमी²; जनसंख्या — ~1.4 अरब (2025 अनुमान)।</span>
+              </p>
+            </div>
+            <div class="image-content">
+              <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="India Landscape" class="section-image">
+            </div>
+          </div>
+        </section>
+
+        <!-- History -->
+        <section id="history">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>History</b></i></span>
+              <span data-lang="bn"><i><b>ইতিহাস</b></i></span>
+              <span data-lang="hi"><i><b>इतिहास</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Events and eras that shaped the nation</span>
+              <span data-lang="bn">ঘটনা ও যুগ যা জাতিকে গঠন করেছে</span>
+              <span data-lang="hi">घटनाएँ और युग जिन्होंने राष्ट्र को आकार दिया</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">India's history stretches back millennia. The Indus Valley Civilization (c. 2600–1900 BCE) was one of the world's earliest urban cultures. Over centuries, the subcontinent saw the rise and fall of many empires and kingdoms, including the Maurya and Gupta Empires, the Delhi Sultanate, and the Mughal Empire. From the 18th century, large parts of India came under British colonial rule, culminating in the British Raj. India gained independence in 1947 and became a democratic republic in 1950.</span>
+            <span data-lang="bn">ভারতের ইতিহাস হাজার বছরেরও বেশি পুরোনো। সিন্ধু সভ্যতা (প্রায় ২৬০০–১৯০০ খ্রিস্টপূর্ব) বিশ্বের প্রথম শহুরে সংস্কৃতিগুলোর মধ্যে একটি ছিল। শতাব্দীর পর শতাব্দী ধরে উপমহাদেশে বহু সাম্রাজ্য ও রাজ্যের উত্থান-পতন ঘটেছে, যার মধ্যে মৌর্য ও গুপ্ত সাম্রাজ্য, দিল্লি সুলতানাত, এবং মুঘল সাম্রাজ্য উল্লেখযোগ্য। ১৮শ শতাব্দী থেকে ভারতের বড় অংশ ব্রিটিশ উপনিবেশিক শাসনের অধীনে চলে আসে, যা ব্রিটিশ রাজে পরিণত হয়। ভারত ১৯৪৭ সালে স্বাধীনতা লাভ করে এবং ১৯৫০ সালে একটি গণতান্ত্রিক প্রজাতন্ত্র হয়।</span>
+            <span data-lang="hi">भारत का इतिहास सहस्राब्दियों पुराना है। सिंधु घाटी सभ्यता (लगभग 2600–1900 ईसा पूर्व) दुनिया की प्रारंभिक शहरी संस्कृतियों में से एक थी। सदियों के दौरान, उपमहाद्वीप में कई साम्राज्यों और राजवंशों का उदय और पतन हुआ, जिनमें मौर्य और गुप्त साम्राज्य, दिल्ली सल्तनत और मुगल साम्राज्य शामिल हैं। 18वीं सदी से भारत के बड़े हिस्से ब्रिटिश उपनिवेश शासन के अधीन आ गए, जो बाद में ब्रिटिश राज में परिणत हुआ। भारत ने 1947 में स्वतंत्रता प्राप्त की और 1950 में एक लोकतांत्रिक गणराज्य बना।</span>
+          </p>
+
+          <div class="heading-row">
+            <h3>
+              <span data-lang="en"><i><b>Major periods</b></i></span>
+              <span data-lang="bn"><i><b>প্রধান সময়কাল</b></i></span>
+              <span data-lang="hi"><i><b>प्रमुख काल</b></i></span>
+            </h3>
+            <span class="meaning">
+              <span data-lang="en">Key historical eras listed</span>
+              <span data-lang="bn">কী ঐতিহাসিক যুগগুলো তালিকাভুক্ত</span>
+              <span data-lang="hi">मुख्य ऐतिहासिक युग सूचीबद्ध</span>
+            </span>
+          </div>
+          <ul>
+            <li><span data-lang="en">Ancient (Indus Valley, Vedic period, Mahajanapadas)</span><span data-lang="bn">প্রাচীন (সিন্ধু সভ্যতা, বৈদিক যুগ, মহাজনপদ)</span><span data-lang="hi">प्राचीन (सिंधु घाटी, वैदिक काल, महाजनपद)</span></li>
+            <li><span data-lang="en">Classical (Maurya, Gupta)</span><span data-lang="bn">শ্রেষ্ঠ (মৌর্য, গুপ্ত)</span><span data-lang="hi">शास्त्रीय (मौर्य, गुप्त)</span></li>
+            <li><span data-lang="en">Medieval (Regional kingdoms, Delhi Sultanate, Vijayanagara, Mughal)</span><span data-lang="bn">মধ্যযুগীয় (আঞ্চলিক রাজ্য, দিল্লি সুলতানাত, বিজয়নগর, মুঘল)</span><span data-lang="hi">मध्यकालीन (क्षेत्रीय राज्य, दिल्ली सल्तनत, विजयनगर, मुगल)</span></li>
+            <li><span data-lang="en">Colonial (European trade, British East India Company, British Raj)</span><span data-lang="bn">উপনিবেশিক (ইউরোপীয় বাণিজ্য, ব্রিটিশ ইস্ট ইন্ডিয়া কোম্পানি, ব্রিটিশ রাজ)</span><span data-lang="hi">औपनिवेशिक (यूरोपीय व्यापार, ब्रिटिश ईस्ट इंडिया कंपनी, ब्रिटिश राज)</span></li>
+            <li><span data-lang="en">Modern (Independence movement, partition 1947, post-independence development)</span><span data-lang="bn">আধুনিক (স্বাধীনতা আন্দোলন, ১৯৪৭ সালের বিভাজন, স্বাধীনতার পর উন্নয়ন)</span><span data-lang="hi">आधुनिक (स्वतंत्रता आंदोलन, 1947 का विभाजन, स्वतंत्रता के बाद का विकास)</span></li>
+          </ul>
+          <div class="image-content">
+            <img src="https://images.unsplash.com/photo-1587135941948-670b381f08ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Taj Mahal" class="section-image">
+          </div>
+        </section>
+
+        <!-- Geography -->
+        <section id="geography">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Geography</b></i></span>
+              <span data-lang="bn"><i><b>ভূগোল</b></i></span>
+              <span data-lang="hi"><i><b>भूगोल</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Physical features, borders and regions</span>
+              <span data-lang="bn">ভৌত বৈশিষ্ট্য, সীমান্ত এবং অঞ্চল</span>
+              <span data-lang="hi">भौतिक विशेषताएँ, सीमाएँ और क्षेत्र</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">India occupies most of the Indian subcontinent. It shares land borders with Pakistan, China, Nepal, Bhutan, Bangladesh, and Myanmar, and maritime borders with Sri Lanka and the Maldives. The geography is varied: the Himalayan mountain range in the north, fertile plains of the Ganges and Indus, the Thar Desert in the west, and tropical regions in the south.</span>
+            <span data-lang="bn">ভারত ভারতীয় উপমহাদেশের বেশিরভাগ অংশ দখল করে। এটি পাকিস্তান, চীন, নেপাল, ভুটান, বাংলাদেশ এবং মিয়ানমারের সাথে স্থলসীমা ভাগ করে এবং শ্রীলঙ্কা ও মালদ্বীপের সাথে সামুদ্রিক সীমা রয়েছে। ভূগোল বৈচিত্র্যময়: উত্তরে হিমালয় পর্বতমালা, গঙ্গা ও সিন্ধুর উর্বর সমভূমি, পশ্চিমে থার মরুভূমি, এবং দক্ষিণে উষ্ণমণ্ডলীয় অঞ্চল।</span>
+            <span data-lang="hi">भारत भारतीय उपमहाद्वीप के अधिकांश हिस्से पर विस्तृत है। इसकी भूमि सीमाएँ पाकिस्तान, चीन, नेपाल, भूटान, बांग्लादेश और म्यांमार से मिलती हैं, और समुद्री सीमाएँ श्रीलंका और मालदीव के साथ हैं। भूगोल विविध है: उत्तर में हिमालय पर्वत श्रृंखला, गंगा और सिन्धु की उपजाऊ मैदानें, पश्चिम में थार रेगिस्तान, और दक्षिण में उष्णकटिबंधीय क्षेत्र।</span>
+          </p>
+
+          <div class="heading-row">
+            <h3>
+              <span data-lang="en"><i><b>Climate</b></i></span>
+              <span data-lang="bn"><i><b>আবহাওয়া</b></i></span>
+              <span data-lang="hi"><i><b>जलवायु</b></i></span>
+            </h3>
+            <span class="meaning">
+              <span data-lang="en">Weather patterns and the monsoon</span>
+              <span data-lang="bn">আবহাওয়ার ধরণ এবং বর্ষা</span>
+              <span data-lang="hi">मौसम के पैटर्न और मानसून</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">India has multiple climate zones — from alpine in the Himalayas to tropical in the south. The monsoon (June–September) is a defining seasonal phenomenon, bringing most of the country's annual rainfall and shaping agriculture and livelihoods.</span>
+            <span data-lang="bn">ভারতে একাধিক জলবায়ু অঞ্চল রয়েছে — হিমালয়ের আলপাইন থেকে দক্ষিণের উষ্ণমণ্ডলীয় পর্যন্ত। বর্ষা (জুন–সেপ্টেম্বর) একটি নির্ধারণকারী মৌসুমী ঘটনা, যা দেশের বার্ষিক বৃষ্টিপাতের বড় অংশ নিয়ে আসে এবং কৃষি ও জীবিকা গঠনে গুরুত্বপূর্ণ ভূমিকা রাখে।</span>
+            <span data-lang="hi">भारत में कई जलवायु क्षेत्र हैं — हिमालय में अल्पाइन से लेकर दक्षिण में उष्णकटिबंधीय तक। मानसून (जून–सितंबर) एक निर्णायक मौसमी घटना है, जो देश की वार्षिक वर्षा का अधिकांश भाग लाती है और कृषि व आजीविका को आकार देती है।</span>
+          </p>
+        </section>
+
+        <!-- Demographics -->
+        <section id="demographics">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Demographics</b></i></span>
+              <span data-lang="bn"><i><b>জনসংখ্যাতাত্ত্বিক</b></i></span>
+              <span data-lang="hi"><i><b>जनसांख्यिकी</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Population, languages and religions</span>
+              <span data-lang="bn">জনসংখ্যা, ভাষা এবং ধর্ম</span>
+              <span data-lang="hi">जनसंख्या, भाषाएँ और धर्म</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">India is extremely diverse ethnically, linguistically, and religiously. Major religions include Hinduism (majority), Islam, Christianity, Sikhism, Buddhism, Jainism, and many tribal beliefs. India has hundreds of languages; the Constitution recognizes several scheduled languages, and Hindi and English are used for official purposes.</span>
+            <span data-lang="bn">ভারত জাতিগত, ভাষাগত এবং ধর্মীয়ভাবে অত্যন্ত বৈচিত্র্যময়। প্রধান ধর্মগুলোর মধ্যে রয়েছে হিন্দুধর্ম (বৃহত্তর অংশ), ইসলাম, খ্রিস্টধর্ম, শিখধর্ম, বৌদ্ধধর্ম, জৈনধর্ম এবং বহু উপজাতীয় বিশ্বাস। ভারতের শত শত ভাষা রয়েছে; সংবিধান কয়েকটি নির্ধারিত ভাষাকে স্বীকৃতি দেয়, এবং হিন্দি ও ইংরেজি সরকারি কাজে ব্যবহৃত হয়।</span>
+            <span data-lang="hi">भारत जातीय, भाषाई और धार्मिक रूप से अत्यंत विविध है। प्रमुख धर्मों में हिंदू धर्म (बहुमत), इस्लाम, ईसाई धर्म, सिख धर्म, बौद्ध धर्म, जैन धर्म और कई जनजातीय विश्वास शामिल हैं। भारत में सैकड़ों भाषाएँ हैं; संविधान कई अनुसूचित भाषाओं को मान्यता देता है, और हिंदी व अंग्रेज़ी आधिकारिक प्रयोजनों के लिए उपयोग की जाती हैं।</span>
+          </p>
+
+          <div class="heading-row">
+            <h3>
+              <span data-lang="en"><i><b>Population trends</b></i></span>
+              <span data-lang="bn"><i><b>জনসংখ্যা প্রবণতা</b></i></span>
+              <span data-lang="hi"><i><b>जनसंख्या प्रवृत्तियाँ</b></i></span>
+            </h3>
+            <span class="meaning">
+              <span data-lang="en">Growth, age structure and urbanisation</span>
+              <span data-lang="bn">বৃদ্ধি, বয়স কাঠামো এবং নগরায়ন</span>
+              <span data-lang="hi">विकास, आयु संरचना और शहरीकरण</span>
+            </span>
+          </div>
+          <ul>
+            <li><span data-lang="en">Rapid population growth in the 20th century, slowing in the 21st.</span><span data-lang="bn">২০শ শতকে দ্রুত জনসংখ্যা বৃদ্ধি, ২১শ শতকে ধীরগতি।</span><span data-lang="hi">20वीं सदी में तेज़ जनसंख्या वृद्धि, 21वीं सदी में धीमी हुई।</span></li>
+            <li><span data-lang="en">Large youth population; median age rising slowly as fertility declines.</span><span data-lang="bn">বড় যুব জনসংখ্যা; উর্বরতা কমার সঙ্গে সঙ্গে মধ্যবয়স ধীরে ধীরে বাড়ছে।</span><span data-lang="hi">बड़ी युवा आबादी; प्रजनन दर घटने के साथ मध्य आयु धीरे-धीरे बढ़ रही है।</span></li>
+            <li><span data-lang="en">High urbanization with continuing significant rural population.</span><span data-lang="bn">উচ্চ নগরায়ন থাকলেও উল্লেখযোগ্য গ্রামীণ জনসংখ্যা অব্যাহত রয়েছে।</span><span data-lang="hi">उच्च शहरीकरण के साथ महत्वपूर्ण ग्रामीण आबादी बनी हुई है।</span></li>
+          </ul>
+        </section>
+
+        <!-- Neon Insights -->
+        <section id="insights">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Neon Insights</b></i></span>
+              <span data-lang="bn"><i><b>নিয়ন ইনসাইট</b></i></span>
+              <span data-lang="hi"><i><b>नियॉन इनसाइट्स</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Supercharged stats and sparkly facts</span>
+              <span data-lang="bn">সুপারচার্জড স্ট্যাট এবং ঝকঝকে তথ্য</span>
+              <span data-lang="hi">सुपरचार्ज्ड आँकड़े और चमकीली बातें</span>
+            </span>
+          </div>
+          <div class="insights-grid">
+            <div class="insight-card">
+              <h3>1.4B+</h3>
+              <p><strong>The energy of over 1.4 billion people pulses through festivals, cities, and startups every day.</strong></p>
+            </div>
+            <div class="insight-card">
+              <h3>22</h3>
+              <p><strong>Officially recognized languages create one of the world's richest multilingual branches of culture.</strong></p>
+            </div>
+            <div class="insight-card">
+              <h3>36</h3>
+              <p>States and union territories form a varied network of landscapes, cuisines, and local legends.</p>
+            </div>
+            <div class="insight-card">
+              <h3>10+</h3>
+              <p>Major tech hubs are driving rapid growth in innovation, startups, and space ambitions.</p>
+            </div>
+          </div>
+          <div class="insight-panel">
+            <div class="spark-card">
+              <h3><span data-lang="en">Today's Cool Snapshot</span><span data-lang="bn">আজকের কুল স্ন্যাপশট</span><span data-lang="hi">आज की कूल स्नैपशॉट</span></h3>
+              <p><span data-lang="en">Live-style counters bring the main facts to life and keep the page feeling futuristic.</span><span data-lang="bn">লাইভ-স্টাইল কাউন্টার মূল তথ্যগুলোকে জীবন্ত করে তোলে এবং পৃষ্ঠাটি ভবিষ্যতধর্মী অনুভব করে।</span><span data-lang="hi">लाइव-स्टाइल काउंटर मुख्य तथ्यों को जीवंत बनाते हैं और पेज को भविष्यसूचक बनाते हैं।</span></p>
+              <div class="stat-pill"><span><span data-lang="en">Languages recognized</span><span data-lang="bn">ভাষা স্বীকৃত</span><span data-lang="hi">पहचानी भाषाएँ</span></span><strong data-target="22">0</strong></div>
+              <div class="stat-pill"><span><span data-lang="en">States + UTs</span><span data-lang="bn">রাজ্য + কেন্দ্রশাসিত অঞ্চল</span><span data-lang="hi">राज्य + केन्द्रीय क्षेत्र</span></span><strong data-target="36">0</strong></div>
+              <div class="stat-pill"><span><span data-lang="en">Top innovation hubs</span><span data-lang="bn">শীর্ষ উদ্ভাবন হাব</span><span data-lang="hi">शीर्ष नवप्रवर्तन हब</span></span><strong data-target="12">0</strong></div>
+            </div>
+            <div class="spark-card">
+              <h3><span data-lang="en">Extra Cool Feature</span><span data-lang="bn">অতিরিক্ত কুল ফিচার</span><span data-lang="hi">अतिरिक्त कूल फीचर</span></h3>
+              <p><span data-lang="en">Hover over buttons to see glowing highlights and keep the entire page feeling alive.</span><span data-lang="bn">বটনে হোভার করলে ঝকঝকে হাইলাইটস দেখুন এবং পুরো পৃষ্ঠাটি জীবন্ত রাখুন।</span><span data-lang="hi">बटनों पर होवर करें और ग्लोइंग हाइलाइट देखें ताकि पूरा पेज जीवंत महसूस हो।</span></p>
+              <p style="margin-top:1.1rem; color:#fff7dc; font-weight:700;">Tap the buttons above or scroll to unlock more surprise animations.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Culture -->
+        <section id="culture">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Culture</b></i></span>
+              <span data-lang="bn"><i><b>সংস্কৃতি</b></i></span>
+              <span data-lang="hi"><i><b>संस्कृति</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Traditions, arts, cuisine and festivals</span>
+              <span data-lang="bn">প্রথা, শিল্প, খাদ্য ও উৎসব</span>
+              <span data-lang="hi">परंपराएँ, कला, व्यंजन और त्योहार</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">Indian culture is a mosaic of traditions, languages, religions, cuisines, arts, music, dance forms, and festivals. Classical music (Hindustani and Carnatic), various dance styles (Bharatanatyam, Kathak, Odissi), and film industries (especially Bollywood) are globally influential.</span>
+            <span data-lang="bn">ভারতীয় সংস্কৃতি হল প্রথা, ভাষা, ধর্ম, খাদ্য, শিল্প, সঙ্গীত, নৃত্যশৈলী এবং উৎসবের এক মিশ্রণ। শাস্ত্রীয় সঙ্গীত (হিন্দুস্তানি ও কর্ণাটক), বিভিন্ন নৃত্যশৈলী (ভারতনাট্যম, কাথক, ওডিসি), এবং চলচ্চিত্র শিল্প (বিশেষত বলিউড) বিশ্বব্যাপী প্রভাবশালী।</span>
+            <span data-lang="hi">भारतीय संस्कृति परंपराओं, भाषाओं, धर्मों, व्यंजनों, कलाओं, संगीत, नृत्य रूपों और त्योहारों का एक मोज़ेक है। शास्त्रीय संगीत (हिंदुस्तानी और कर्नाटिक), विभिन्न नृत्य शैलियाँ (भरतनाट्यम, कथक, ओडिसी), और फिल्म उद्योग (विशेषकर बॉलीवुड) वैश्विक रूप से प्रभावशाली हैं।</span>
+          </p>
+
+          <div class="heading-row">
+            <h3>
+              <span data-lang="en"><i><b>Festivals</b></i></span>
+              <span data-lang="bn"><i><b>উৎসব</b></i></span>
+              <span data-lang="hi"><i><b>त्योहार</b></i></span>
+            </h3>
+            <span class="meaning">
+              <span data-lang="en">Major religious and regional celebrations</span>
+              <span data-lang="bn">প্রধান ধর্মীয় ও আঞ্চলিক উদযাপন</span>
+              <span data-lang="hi">प्रमुख धार्मिक और क्षेत्रीय उत्सव</span>
+            </span>
+          </div>
+          <ul>
+            <li><span data-lang="en">Diwali, Holi, Eid, Christmas, Navaratri, Pongal, Onam, Gurpurab, and many regional festivals.</span><span data-lang="bn">দীপাবলি, হোলি, ঈদ, বড়দিন, নবরাত্রি, পঙ্গল, ওনম, গুরুপরব, এবং বহু আঞ্চলিক উৎসব।</span><span data-lang="hi">दिवाली, होली, ईद, क्रिसमस, नवरात्रि, पोंगल, ओणम, गुरपुरब, और कई क्षेत्रीय त्योहार।</span></li>
+          </ul>
+        </section>
+
+        <!-- Economy -->
+        <section id="economy">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Economy</b></i></span>
+              <span data-lang="bn"><i><b>অর্থনীতি</b></i></span>
+              <span data-lang="hi"><i><b>अर्थव्यवस्था</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Economic sectors and growth drivers</span>
+              <span data-lang="bn">অর্থনৈতিক খাত এবং বৃদ্ধির চালক</span>
+              <span data-lang="hi">आर्थिक क्षेत्र और विकास चालक</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">India has a mixed economy with agriculture, manufacturing, and services. In recent decades, the services sector (IT, finance, business process outsourcing) has driven much of the growth. India is one of the world's largest economies by nominal GDP and PPP. Key challenges include income inequality, infrastructure needs, and job creation for a large workforce.</span>
+            <span data-lang="bn">ভারতের একটি মিশ্র অর্থনীতি রয়েছে যার মধ্যে কৃষি, উৎপাদন এবং সেবা খাত রয়েছে। সাম্প্রতিক দশকগুলোতে সেবা খাত (আইটি, অর্থ, ব্যবসা প্রক্রিয়া আউটসোর্সিং) অনেক বৃদ্ধি চালিত করেছে। নামমাত্র জিডিপি এবং ক্রয়ক্ষমতা সমতা (PPP) অনুযায়ী ভারত বিশ্বের অন্যতম বৃহত্তম অর্থনীতি। প্রধান চ্যালেঞ্জগুলোর মধ্যে আয় বৈষম্য, অবকাঠামো প্রয়োজন এবং বৃহৎ কর্মশক্তির জন্য কর্মসংস্থান সৃষ্টি অন্তর্ভুক্ত।</span>
+            <span data-lang="hi">भारत की अर्थव्यवस्था मिश्रित है जिसमें कृषि, विनिर्माण और सेवाएँ शामिल हैं। हाल के दशकों में, सेवा क्षेत्र (आईटी, वित्त, बिजनेस प्रोसेस आउटसोर्सिंग) ने अधिकांश विकास को प्रेरित किया है। नाममात्र GDP और PPP के हिसाब से भारत दुनिया की सबसे बड़ी अर्थव्यवस्थाओं में से एक है। प्रमुख चुनौतियों में आय असमानता, अवसंरचना की आवश्यकता और बड़ी कार्यबल के लिए रोजगार सृजन शामिल हैं।</span>
+          </p>
+
+          <div class="heading-row">
+            <h3>
+              <span data-lang="en"><i><b>Key sectors</b></i></span>
+              <span data-lang="bn"><i><b>প্রধান খাত</b></i></span>
+              <span data-lang="hi"><i><b>प्रमुख क्षेत्र</b></i></span>
+            </h3>
+            <span class="meaning">
+              <span data-lang="en">Industries important to the economy</span>
+              <span data-lang="bn">অর্থনীতির জন্য গুরুত্বপূর্ণ শিল্প</span>
+              <span data-lang="hi">अर्थव्यवस्था के लिए महत्वपूर्ण उद्योग</span>
+            </span>
+          </div>
+          <ul>
+            <li><span data-lang="en">Information technology and software services</span><span data-lang="bn">তথ্যপ্রযুক্তি এবং সফটওয়্যার সেবা</span><span data-lang="hi">सूचना प्रौद्योगिकी और सॉफ़्टवेयर सेवाएँ</span></li>
+            <li><span data-lang="en">Pharmaceuticals and biotechnology</span><span data-lang="bn">ফার্মাসিউটিক্যাল এবং বায়োটেকনোলজি</span><span data-lang="hi">फार्मास्यूटिकल्स और बायोटेक्नोलॉजी</span></li>
+            <li><span data-lang="en">Agriculture and agribusiness</span><span data-lang="bn">কৃষি এবং কৃষি ব্যবসা</span><span data-lang="hi">कृषि और कृषि व्यवसाय</span></li>
+            <li><span data-lang="en">Manufacturing (automotive, textiles, steel)</span><span data-lang="bn">উৎপাদন (অটোমোটিভ, বস্ত্র, ইস্পাত)</span><span data-lang="hi">उत्पादन (ऑटोमोटिव, वस्त्र, स्टील)</span></li>
+            <li><span data-lang="en">Energy and renewables</span><span data-lang="bn">শক্তি এবং নবায়নযোগ্য উৎস</span><span data-lang="hi">ऊर्जा और नवीकरणीय</span></li>
+          </ul>
+        </section>
+
+        <!-- Government -->
+        <section id="government">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Government and politics</b></i></span>
+              <span data-lang="bn"><i><b>সরকার ও রাজনীতি</b></i></span>
+              <span data-lang="hi"><i><b>सरकार और राजनीति</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">How the country is governed</span>
+              <span data-lang="bn">কিভাবে দেশ শাসিত হয়</span>
+              <span data-lang="hi">देश का शासन कैसे होता है</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">India is a federal parliamentary democratic republic. The President is the head of state and the Prime Minister is the head of government. India has a multi-party system, with the Parliament consisting of two houses: the Lok Sabha (House of the People) and the Rajya Sabha (Council of States).</span>
+            <span data-lang="bn">ভারত একটি ফেডারেল সংসদীয় গণতান্ত্রিক প্রজাতন্ত্র। রাষ্ট্রপতি রাষ্ট্রপ্রধান এবং প্রধানমন্ত্রী সরকারপ্রধান। ভারতের বহু-পার্টি ব্যবস্থা রয়েছে, এবং সংসদ দুই কক্ষ নিয়ে গঠিত: লোকসভা (জনগণের সংসদ) এবং রাজ্যসভা (রাষ্ট্রপতি কাউন্সিল)।</span>
+            <span data-lang="hi">भारत एक संघीय संसदीय लोकतांत्रिक गणराज्य है। राष्ट्रपति राज्य के प्रमुख हैं और प्रधानमंत्री सरकार के प्रमुख हैं। भारत में बहु-पार्टी प्रणाली है, और संसद दो सदनों से मिलकर बनी है: लोक सभा (हाउस ऑफ द पीपल) और राज्य सभा (काउंसिल ऑफ स्टेट्स)।</span>
+          </p>
+
+          <div class="heading-row">
+            <h3>
+              <span data-lang="en"><i><b>Constitution</b></i></span>
+              <span data-lang="bn"><i><b>সংবিধান</b></i></span>
+              <span data-lang="hi"><i><b>संविधान</b></i></span>
+            </h3>
+            <span class="meaning">
+              <span data-lang="en">Founding legal document and principles</span>
+              <span data-lang="bn">প্রতিষ্ঠার আইনি দলিল এবং নীতিমালা</span>
+              <span data-lang="hi">स्थापना कानूनी दस्तावेज़ और सिद्धांत</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">The Constitution of India (1950) establishes the framework for political principles, fundamental rights, directive principles, and federal structure. It is one of the longest constitutions in the world.</span>
+            <span data-lang="bn">ভারতের সংবিধান (১৯৫০) রাজনৈতিক নীতিমালা, মৌলিক অধিকার, নির্দেশমূলক নীতিমালা এবং ফেডারেল কাঠামো নির্ধারণ করে। এটি বিশ্বের অন্যতম দীর্ঘতম সংবিধান।</span>
+            <span data-lang="hi">भारत का संविधान (1950) राजनीतिक सिद्धांतों, मौलिक अधिकारों, निर्देशात्मक सिद्धांतों और संघीय संरचना के लिए रूपरेखा स्थापित करता है। यह दुनिया के सबसे लंबे संविधानों में से एक है।</span>
+          </p>
+        </section>
+
+        <!-- Tourism -->
+        <section id="tourism">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Tourism</b></i></span>
+              <span data-lang="bn"><i><b>পর্যটন</b></i></span>
+              <span data-lang="hi"><i><b>पर्यटन</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Places and travel highlights</span>
+              <span data-lang="bn">স্থান এবং ভ্রমণের প্রধান আকর্ষণ</span>
+              <span data-lang="hi">स्थल और यात्रा मुख्य आकर्षण</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">India attracts tourists to its historical monuments, cultural experiences, wildlife, hill stations, beaches, and spiritual sites. Popular destinations include the Taj Mahal (Agra), Jaipur and other cities of Rajasthan, Kerala backwaters, Goa beaches, Ladakh, and Varanasi.</span>
+            <span data-lang="bn">ভারত তার ঐতিহাসিক স্মৃতিস্তম্ভ, সাংস্কৃতিক অভিজ্ঞতা, বন্যপ্রাণী, হিল স্টেশন, সৈকত এবং আধ্যাত্মিক স্থানগুলোর জন্য পর্যটকদের আকর্ষণ করে। জনপ্রিয় গন্তব্যগুলোর মধ্যে রয়েছে তাজমহল (আগ্রা), জয়পুর ও রাজস্থানের অন্যান্য শহর, কেরালার ব্যাকওয়াটার, গোয়া সৈকত, লাদাখ এবং বারাণসী।</span>
+            <span data-lang="hi">भारत अपने ऐतिहासिक स्मारकों, सांस्कृतिक अनुभवों, वन्यजीव, हिल स्टेशन, समुद्र तटों और आध्यात्मिक स्थलों के लिए पर्यटकों को आकर्षित करता है। लोकप्रिय गंतव्य हैं ताज महल (आगरा), जयपुर और राजस्थान के अन्य शहर, केरल बैकवाटर्स, गोवा के समुद्र तट, लद्दाख और वाराणसी।</span>
+          </p>
+
+          <div class="heading-row">
+            <h3>
+              <span data-lang="en"><i><b>Travel tips</b></i></span>
+              <span data-lang="bn"><i><b>ভ্রমণ পরামর্শ</b></i></span>
+              <span data-lang="hi"><i><b>यात्रा सुझाव</b></i></span>
+            </h3>
+            <span class="meaning">
+              <span data-lang="en">Practical advice for visitors</span>
+              <span data-lang="bn">ভ্রমণকারীদের জন্য ব্যবহারিক পরামর্শ</span>
+              <span data-lang="hi">आगंतुकों के लिए व्यावहारिक सलाह</span>
+            </span>
+          </div>
+          <ul>
+            <li><span data-lang="en">Plan around the monsoon if traveling to regions affected by heavy rains.</span><span data-lang="bn">যদি ভারী বৃষ্টিপাত প্রভাবিত অঞ্চলে ভ্রমণ করেন তবে বর্ষার সময় পরিকল্পনা করুন।</span><span data-lang="hi">यदि भारी वर्षा प्रभावित क्षेत्रों में यात्रा कर रहे हैं तो मानसून के अनुसार योजना बनाएं।</span></li>
+            <li><span data-lang="en">Use registered guides for heritage sites and national parks.</span><span data-lang="bn">ঐতিহ্যবাহী স্থান এবং জাতীয় উদ্যানের জন্য নিবন্ধিত গাইড ব্যবহার করুন।</span><span data-lang="hi">हेरिटेज साइट्स और राष्ट्रीय उद्यानों के लिए पंजीकृत गाइड का उपयोग करें।</span></li>
+            <li><span data-lang="en">Respect local customs and dress codes at religious places.</span><span data-lang="bn">ধর্মীয় স্থানে স্থানীয় রীতিনীতি এবং পোশাক কোড সম্মান করুন।</span><span data-lang="hi">धार्मिक स्थानों पर स्थानीय रीति-रिवाज और ड्रेस कोड का सम्मान करें।</span></li>
+          </ul>
+        </section>
+
+        <!-- Science -->
+        <section id="science">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Science, technology & education</b></i></span>
+              <span data-lang="bn"><i><b>বিজ্ঞান, প্রযুক্তি ও শিক্ষা</b></i></span>
+              <span data-lang="hi"><i><b>विज्ञान, प्रौद्योगिकी और शिक्षा</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Research, space, IT and learning</span>
+              <span data-lang="bn">গবেষণা, মহাকাশ, আইটি এবং শিক্ষা</span>
+              <span data-lang="hi">अनुसंधान, अंतरिक्ष, आईटी और शिक्षा</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">India has a strong presence in science and technology, notable for its space program (ISRO), information technology exports, and an expanding research ecosystem in universities and institutes. Education is a priority, though access and quality vary across regions.</span>
+            <span data-lang="bn">বিজ্ঞান ও প্রযুক্তিতে ভারতের শক্তিশালী উপস্থিতি রয়েছে, বিশেষত এর মহাকাশ কর্মসূচি (ISRO), তথ্যপ্রযুক্তি রপ্তানি, এবং বিশ্ববিদ্যালয় ও প্রতিষ্ঠানে বিস্তৃত গবেষণা পরিবেশের জন্য। শিক্ষা একটি অগ্রাধিকার, যদিও অঞ্চলভেদে প্রবেশাধিকার এবং গুণমান ভিন্ন।</span>
+            <span data-lang="hi">विज्ञान और प्रौद्योगिकी में भारत की मजबूत उपस्थिति है, विशेष रूप से इसका अंतरिक्ष कार्यक्रम (ISRO), सूचना प्रौद्योगिकी निर्यात, और विश्वविद्यालयों व संस्थानों में बढ़ता हुआ अनुसंधान पारिस्थितिकी तंत्र। शिक्षा एक प्राथमिकता है, हालांकि पहुँच और गुणवत्ता क्षेत्रों के अनुसार भिन्न है।</span>
+          </p>
+        </section>
+
+        <!-- References -->
+        <section id="references">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>References & further reading</b></i></span>
+              <span data-lang="bn"><i><b>তথ্যসূত্র ও আরও পড়ার জন্য</b></i></span>
+              <span data-lang="hi"><i><b>संदर्भ और आगे पढ़ने के लिए</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Sources and places to learn more</span>
+              <span data-lang="bn">তথ্যসূত্র এবং আরও জানার স্থান</span>
+              <span data-lang="hi">स्रोत और अधिक जानने के स्थान</span>
+            </span>
+          </div>
+          <p>
+            <span data-lang="en">This page is a summary. For more detailed and up-to-date information consult authoritative sources: Government of India websites, UNESCO, World Bank, academic texts, and reliable encyclopedias.</span>
+            <span data-lang="bn">এই পৃষ্ঠা একটি সারসংক্ষেপ। আরও বিস্তারিত এবং আপ-টু-ডেট তথ্যের জন্য কর্তৃপক্ষভিত্তিক সূত্র দেখুন: ভারতের সরকারি ওয়েবসাইট, ইউনেস্কো, ওয়ার্ল্ড ব্যাংক, একাডেমিক গ্রন্থ এবং নির্ভরযোগ্য বিশ্বকোষ।</span>
+            <span data-lang="hi">यह पृष्ठ एक सारांश है। अधिक विस्तृत और अद्यतन जानकारी के लिए प्राधिकृत स्रोतों से परामर्श करें: भारत सरकार की वेबसाइटें, UNESCO, वर्ल्ड बैंक, शैक्षणिक ग्रंथ और विश्वसनीय विश्वकोश।</span>
+          </p>
+        </section>
+
+        <!-- Famous Landmarks -->
+        <section id="landmarks">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Famous Landmarks</b></i></span>
+              <span data-lang="bn"><i><b>বিখ্যাত স্থান</b></i></span>
+              <span data-lang="hi"><i><b>प्रसिद्ध स्थल</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Iconic places that define India's heritage</span>
+              <span data-lang="bn">ভারতের ঐতিহ্যকে সংজ্ঞায়িত করে এমন আইকনিক স্থান</span>
+              <span data-lang="hi">भारत की विरासत को परिभाषित करने वाले प्रतिष्ठित स्थान</span>
+            </span>
+          </div>
+          <div class="landmarks-grid">
+            <div class="landmark-card">
+              <img src="https://images.unsplash.com/photo-1587135941948-670b381f08ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Taj Mahal">
+              <h3>Taj Mahal</h3>
+              <p>Agra, Uttar Pradesh - A symbol of love and Mughal architecture.</p>
+            </div>
+            <div class="landmark-card">
+              <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="India Gate">
+              <h3>India Gate</h3>
+              <p>New Delhi - War memorial and national monument.</p>
+            </div>
+            <div class="landmark-card">
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Golden Temple">
+              <h3>Golden Temple</h3>
+              <p>Amritsar, Punjab - Sacred Sikh shrine.</p>
+            </div>
+            <div class="landmark-card">
+              <img src="https://images.unsplash.com/photo-1587135941948-670b381f08ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Red Fort">
+              <h3>Red Fort</h3>
+              <p>Delhi - Historic Mughal fort and UNESCO site.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Extra Quick Explore Section -->
+        <section id="extras">
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en"><i><b>Quick Explore</b></i></span>
+              <span data-lang="bn"><i><b>দ্রুত অন্বেষণ</b></i></span>
+              <span data-lang="hi"><i><b>त्वरित खोज</b></i></span>
+            </h2>
+            <span class="meaning">
+              <span data-lang="en">Jump straight to the best cultural, tech, and travel stories.</span>
+              <span data-lang="bn">সরাসরি সেরা সাংস্কৃতিক, প্রযুক্তি ও ভ্রমণ গল্পে যান।</span>
+              <span data-lang="hi">सीधे सर्वश्रेष्ठ सांस्कृतिक, तकनीकी और यात्रा कहानियों पर जाएँ।</span>
+            </span>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Festival Pulse</h3>
+              <p>Discover the biggest celebrations across India.</p>
+              <a href="festival.html"><button>See Festivals</button></a>
+            </div>
+            <div class="feature-card">
+              <h3>Heritage Route</h3>
+              <p>Explore historic sites, monuments, and legendary places.</p>
+              <a href="#landmarks"><button>View Landmarks</button></a>
+            </div>
+            <div class="feature-card">
+              <h3>Innovation Hub</h3>
+              <p>Learn about space, startups, and India’s growth story.</p>
+              <a href="innovation.html"><button>Explore Tech</button></a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Explore More Section -->
+        <section>
+          <div class="heading-row">
+            <h2>
+              <span data-lang="en">Explore More</span>
+              <span data-lang="bn">আরও জানুন</span>
+              <span data-lang="hi">और जानें</span>
+            </h2>
+          </div>
+          <div style="margin-top:10px;">
+            <a href="wildlife.html"><button>🐅 Wildlife</button></a>
+            <a href="famous.html"><button>🌟 Famous People</button></a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Aside / Table of contents and quick facts -->
+      <aside>
+        <div class="toc" aria-label="Table of contents">
+          <strong>
+            <span data-lang="en">Contents</span>
+            <span data-lang="bn">বিষয়বস্তু</span>
+            <span data-lang="hi">सामग्री</span>
+          </strong>
+          <ol>
+            <li><a class="anchor" href="#overview"><span data-lang="en">Overview</span><span data-lang="bn">ওভারভিউ</span><span data-lang="hi">ओवरवVIEW</span></a></li>
+            <li><a class="anchor" href="#history"><span data-lang="en">History</span><span data-lang="bn">ইতিহাস</span><span data-lang="hi">इतिहास</span></a></li>
+            <li><a class="anchor" href="#geography"><span data-lang="en">Geography</span><span data-lang="bn">ভূগোল</span><span data-lang="hi">भूगोल</span></a></li>
+            <li><a class="anchor" href="#demographics"><span data-lang="en">Demographics</span><span data-lang="bn">জনসংখ্যাতাত্ত্বিক</span><span data-lang="hi">जनसांख्यिकी</span></a></li>
+            <li><a class="anchor" href="#insights"><span data-lang="en">Neon Insights</span><span data-lang="bn">নিয়ন ইনসাইট</span><span data-lang="hi">नियॉन इनसाइट्स</span></a></li>
+            <li><a class="anchor" href="#culture"><span data-lang="en">Culture</span><span data-lang="bn">সংস্কৃতি</span><span data-lang="hi">संस्कृति</span></a></li>
+            <li><a class="anchor" href="#economy"><span data-lang="en">Economy</span><span data-lang="bn">অর্থনীতি</span><span data-lang="hi">अर्थव्यवस्था</span></a></li>
+            <li><a class="anchor" href="#government"><span data-lang="en">Government</span><span data-lang="bn">সরকার</span><span data-lang="hi">सरकार</span></a></li>
+            <li><a class="anchor" href="#tourism"><span data-lang="en">Tourism</span><span data-lang="bn">পর্যটন</span><span data-lang="hi">पर्यटन</span></a></li>
+            <li><a class="anchor" href="#science"><span data-lang="en">Science & Tech</span><span data-lang="bn">বিজ্ঞান ও প্রযুক্তি</span><span data-lang="hi">विज्ञान और तकनीक</span></a></li>
+            <li><a class="anchor" href="#references"><span data-lang="en">References</span><span data-lang="bn">তথ্যসূত্র</span><span data-lang="hi">संदर्भ</span></a></li>
+          </ol>
+        </div>
+
+        <div class="quick-facts" aria-label="Quick facts about India">
+          <strong>
+            <span data-lang="en">Quick facts</span>
+            <span data-lang="bn">দ্রুত তথ্য</span>
+            <span data-lang="hi">त्वरित तथ्य</span>
+          </strong>
+          <ul>
+            <li><span data-lang="en">Capital: New Delhi</span><span data-lang="bn">রাজধানী: নয়াদিল্লি</span><span data-lang="hi">राजधानी: नई दिल्ली</span></li>
+            <li><span data-lang="en">Official languages: Hindi, English (associate)</span><span data-lang="bn">সরকারি ভাষা: হিন্দি, ইংরেজি (সহযোগী)</span><span data-lang="hi">आधिकारिक भाषाएँ: हिंदी, अंग्रेज़ी (सहायक)</span></li>
+            <li><span data-lang="en">Currency: Indian Rupee (INR)</span><span data-lang="bn">মুদ্রা: ভারতীয় রুপি (INR)</span><span data-lang="hi">मुद्रा: भारतीय रुपया (INR)</span></li>
+            <li><span data-lang="en">Time zone: IST (UTC+5:30)</span><span data-lang="bn">টাইম জোন: IST (UTC+5:30)</span><span data-lang="hi">समय क्षेत्र: IST (UTC+5:30)</span></li>
+            <li><span data-lang="en">Internet TLD: .in</span><span data-lang="bn">ইন্টারনেট TLD: .in</span><span data-lang="hi">इंटरनेट TLD: .in</span></li>
+          </ul>
+        </div>
+      </aside>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        <span data-lang="en">Created on Oct 10, 2025. This is a general overview of India made by Hitez Verma</span>
+        <span data-lang="bn">তৈরি করা হয়েছে ১০ অক্টোবর, ২০২৫। এটি হিতেজ বর্মা দ্বারা তৈরি ভারতের একটি সাধারণ ওভারভিউ</span>
+        <span data-lang="hi">निर्मित: 10 अक्टूबर, 2025। यह हितेज वर्मा द्वारा बनाया गया भारत का सामान्य अवलोकन है</span>
+      </p>
+      <b>
+        <span data-lang="en">2025 @ all rights reserved</span>
+        <span data-lang="bn">2025 @ সর্বস্বত্ব সংরক্ষিত</span>
+        <span data-lang="hi">2025 @ सर्वाधिकार सुरक्षित</span>
+      </b>
+    </div>
+  </footer>
+
+  <script>
+    // Language Switcher Logic
+    (function() {
+      window.currentLang = 'en'; // Default language
+    })();
+
+    function setLanguage(lang) {
+      window.currentLang = lang || 'en';
+
+      document.querySelectorAll('[data-lang]').forEach(function(el) {
+        el.style.display = (el.getAttribute('data-lang') === window.currentLang) ? 'inline' : 'none';
+      });
+
+      document.getElementById('btn-en').classList.toggle('active', window.currentLang === 'en');
+      document.getElementById('btn-bn').classList.toggle('active', window.currentLang === 'bn');
+      document.getElementById('btn-hi').classList.toggle('active', window.currentLang === 'hi');
+
+      document.documentElement.lang = window.currentLang === 'bn' ? 'bn' : (window.currentLang === 'hi' ? 'hi' : 'en');
+    }
+
+    document.getElementById('language-switcher').addEventListener('click', function(e) {
+      const btn = e.target;
+      if (btn && btn.tagName === 'BUTTON') {
+        try {
+          sessionStorage.setItem('preferredLang', btn.id === 'btn-en' ? 'en' : (btn.id === 'btn-bn' ? 'bn' : 'hi'));
+        } catch (e) {}
+      }
+    });
+
+    (function() {
+      try {
+        const pref = sessionStorage.getItem('preferredLang');
+        setLanguage(pref || 'en'); // Set preferred or default to English
+      } catch (e) {}
+    })();
+
+    // Section Reveal Animation
+    function revealSections() {
+      document.body.classList.add('animations-enabled');
+      const sections = document.querySelectorAll('main section');
+      if (!sections.length) return;
+
+      const observer = new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      sections.forEach(function(section) {
+        observer.observe(section);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+      revealSections();
+      animateInsightCounters();
+    });
+
+    function animateInsightCounters() {
+      const counters = document.querySelectorAll('.stat-pill strong');
+      const reveal = (entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('strong').forEach((counter) => {
+          const target = +counter.getAttribute('data-target');
+          let current = 0;
+          const step = Math.max(1, Math.floor(target / 40));
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              counter.textContent = target.toString();
+              clearInterval(timer);
+            } else {
+              counter.textContent = current.toString();
+            }
+          }, 18);
+        });
+      };
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            reveal(entry);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      const insights = document.querySelectorAll('#insights .spark-card');
+      insights.forEach((block) => observer.observe(block));
+    }
+  </script>
+
+  <script>
+    // Cursor Trail Animation
+    document.addEventListener('mousemove', (e) => {
+      createTrail(e.pageX, e.pageY);
+    });
+
+    function createTrail(x, y) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = x + 'px';
+      trail.style.top = y + 'px';
+      const size = 12 + Math.random() * 18;
+      trail.style.width = `${size}px`;
+      trail.style.height = `${size}px`;
+      trail.style.setProperty('--scale', (0.7 + Math.random() * 0.6).toString());
+      trail.style.setProperty('--tx', `${(Math.random() - 0.5) * 36}px`);
+      trail.style.setProperty('--ty', `${(Math.random() - 0.5) * 36}px`);
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 900);
+    }
+  </script>
+
+  <script>
+    // Button hover cursor glow
+    document.querySelectorAll('button').forEach((button) => {
+      button.addEventListener('mousemove', (event) => {
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        button.style.setProperty('--x', `${x}px`);
+        button.style.setProperty('--y', `${y}px`);
+      });
+    });
+  </script>
+
+  <script>
+    // Parallax Effect
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.5;
+      document.querySelector('.page-background').style.transform = `translateY(${rate}px)`;
+    });
+  </script>
+
+  <script>
+    // Scroll to Top Button Visibility
+    window.addEventListener('scroll', () => {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (!scrollToTopBtn) return;
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+  </script>
+
+  <button id="scrollToTop" class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+</body>
+</html>

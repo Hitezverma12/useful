@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Famous People | India</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #100d24;
+      --panel: rgba(255,255,255,0.06);
+      --accent: #d27bff;
+      --text: #f3efff;
+      --muted: #b9acc5;
+      --shadow: rgba(0,0,0,0.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #120a2c 0%, #09040f 100%);
+    }
+    body.loaded { opacity: 1; }
+    body:not(.loaded) { opacity: 0; transition: opacity 0.8s ease; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      background: rgba(14,8,26,0.88);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header .brand {
+      display: inline-flex;
+      gap: 0.75rem;
+      align-items: center;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    header a {
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.85rem 1.2rem;
+      border-radius: 14px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    header a:hover { transform: translateY(-2px); background: rgba(210,123,255,0.18); }
+    .hero {
+      max-width: 1180px;
+      margin: 2rem auto 1rem;
+      padding: 2.4rem 2rem;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(210,123,255,0.14);
+      box-shadow: 0 26px 64px rgba(0,0,0,0.2);
+    }
+    .hero h1 {
+      margin: 0 0 0.9rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4vw, 4.2rem);
+      color: #eac5ff;
+    }
+    .hero p { margin: 0 0 1.5rem; color: var(--muted); max-width: 760px; line-height: 1.75; }
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #d27bff, #a34dff);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 12px 26px rgba(129,57,223,0.28);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .button-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(129,57,223,0.3); }
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 2rem;
+    }
+    .card {
+      padding: 1.5rem;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.18);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.08); }
+    .card h2 { margin: 0 0 0.75rem; color: #f4d3ff; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.7; }
+    .footer { max-width: 1180px; margin: 3rem auto 2rem; padding: 1rem 2rem; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="helpful.html"><i class="fa-solid fa-arrow-left"></i> Famous People</a>
+    <a class="button-primary" href="helpful.html">Back to Overview</a>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Famous People</h1>
+      <p>Meet a few of India’s most celebrated figures: from freedom fighters and scientists to artists and entrepreneurs who shaped modern India.</p>
+      <a class="button-primary" href="#legends">Meet the Icons</a>
+      <div class="grid">
+        <div class="card"><h2>Mahatma Gandhi</h2><p>The leader of India’s independence movement, famous for nonviolent resistance and a global symbol of peace.</p></div>
+        <div class="card"><h2>Kalpana Chawla</h2><p>The first Indian-born woman in space, whose legacy inspires a generation of scientists and explorers.</p></div>
+        <div class="card"><h2>Ratan Tata</h2><p>A business leader and philanthropist who helped build Tata Group into a global icon and invests in ambitious social innovation.</p></div>
+      </div>
+    </section>
+    <section class="grid" id="legends">
+      <div class="card"><h2>Mother Teresa</h2><p>Honored worldwide for her humanitarian work in Kolkata, she dedicated her life to serving the poor and sick.</p></div>
+      <div class="card"><h2>APJ Abdul Kalam</h2><p>The "People's President" and rocket scientist, known for pioneering India’s missile program and inspiring youth.</p></div>
+      <div class="card"><h2>MS Dhoni</h2><p>One of India’s most successful cricket captains, celebrated for calm leadership and clutch performances.</p></div>
+    </section>
+  </main>
+  <footer class="footer">
+    <small>Famous People highlights leaders and visionaries from India’s modern story.</small>
+    <small>Return to the main page to explore culture, geography, and history too.</small>
+  </footer>
+  <script>window.addEventListener('DOMContentLoaded', () => document.body.classList.add('loaded'));</script>
+</body>
+</html>
