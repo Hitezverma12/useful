@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD10PMZJQN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -9,13 +8,12 @@
     gtag('js', new Date());
     gtag('config', 'G-RD10PMZJQN');
   </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>India — Complete Overview</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
@@ -35,9 +33,9 @@
       --med: 0.35s;
       --slow: 0.6s;
       --bezier: cubic-bezier(0.23,1,0.32,1);
+      --card-radius: 20px;
     }
 
-    /* ─── RESET & BASE ─── */
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -63,7 +61,7 @@
       width: 0%; height: 4px; z-index: 99999;
       background: linear-gradient(90deg, #0b5cff, #ff6b2b, #ffb300);
       transition: width 0.1s linear;
-      box-shadow: 0 0 10px rgba(11,92,255,0.6);
+      box-shadow: 0 0 12px rgba(11,92,255,0.7);
     }
 
     /* ─── LANGUAGE SWITCHER ─── */
@@ -100,7 +98,6 @@
       transform: scale(1.05);
     }
 
-    /* ─── [data-lang] VISIBILITY ─── */
     [data-lang] { display: none; }
     [data-lang="en"] { display: inline; }
 
@@ -120,7 +117,7 @@
       position: relative; z-index: 2;
       text-align: center;
       padding: 2rem 1rem;
-      max-width: 900px;
+      max-width: 960px;
     }
     .hero-flag {
       font-size: 5rem;
@@ -180,8 +177,9 @@
       backdrop-filter: blur(10px);
       min-width: 130px;
       transition: transform var(--med), box-shadow var(--med);
+      cursor: default;
     }
-    .hero-stat:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(11,92,255,0.25); }
+    .hero-stat:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(11,92,255,0.3); }
     .hero-stat i { font-size: 1.6rem; color: var(--accent2); display: block; margin-bottom: 0.4rem; }
     .hero-stat .num { font-size: 1.7rem; font-weight: 700; color: #fff; display: block; }
     .hero-stat .lbl { font-size: 0.78rem; color: rgba(200,220,255,0.7); text-transform: uppercase; letter-spacing: 0.05em; }
@@ -275,8 +273,8 @@
 
     /* ─── SECTIONS ─── */
     section {
-      background: rgba(255,255,255,0.96);
-      border-radius: 20px;
+      background: rgba(255,255,255,0.97);
+      border-radius: var(--card-radius);
       padding: 1.8rem;
       margin-bottom: 1.5rem;
       box-shadow: 0 12px 40px rgba(11,92,255,0.08);
@@ -294,7 +292,7 @@
       content: '';
       position: absolute; top: -60px; right: -60px;
       width: 200px; height: 200px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(11,92,255,0.12), transparent 60%);
+      background: radial-gradient(circle, rgba(11,92,255,0.1), transparent 60%);
       pointer-events: none;
     }
     .section-tag {
@@ -427,30 +425,270 @@
     .landmark-card-body h4 { margin: 0 0 0.3rem; color: var(--primary); font-size: 1rem; font-style: normal; }
     .landmark-card-body p { margin: 0; font-size: 0.82rem; color: #5a6a80; }
 
-    /* ─── FAMOUS PEOPLE GRID ─── */
+    /* ══════════════════════════════════════
+       FAMOUS PEOPLE — REDESIGNED
+    ══════════════════════════════════════ */
+
+    /* Filter bar */
+    .people-filter-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin: 1.2rem 0 1.6rem;
+      align-items: center;
+    }
+    .people-filter-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #6b7a99;
+      margin-right: 0.2rem;
+    }
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      border: 2px solid rgba(11,92,255,0.2);
+      background: rgba(11,92,255,0.05);
+      color: #3a5a80;
+      font-size: 0.8rem; font-weight: 600;
+      cursor: pointer;
+      transition: all 0.22s;
+      white-space: nowrap;
+    }
+    .filter-btn:hover {
+      border-color: var(--primary);
+      background: rgba(11,92,255,0.1);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--primary), #3c88ff);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(11,92,255,0.3);
+    }
+
+    /* Search bar */
+    .people-search-wrap {
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    .people-search-wrap i {
+      position: absolute; left: 1rem; top: 50%;
+      transform: translateY(-50%);
+      color: #9ab; font-size: 0.9rem;
+    }
+    #people-search {
+      width: 100%; padding: 0.65rem 1rem 0.65rem 2.5rem;
+      border-radius: 12px;
+      border: 1.5px solid rgba(11,92,255,0.18);
+      background: rgba(11,92,255,0.03);
+      font-size: 0.88rem; color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.22s, box-shadow 0.22s;
+      font-family: 'Roboto', sans-serif;
+    }
+    #people-search:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(11,92,255,0.12);
+    }
+    #people-search::placeholder { color: #9ab; }
+
+    /* Grid */
     .people-grid {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
-      gap: 1rem; margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+      gap: 1.2rem;
+      margin-top: 0.5rem;
     }
+
+    /* Card */
     .person-card {
-      background: #fff; border-radius: 16px; overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      text-align: center; padding-bottom: 1rem;
-      transition: transform var(--med), box-shadow var(--med);
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+      transition: transform 0.35s var(--bezier), box-shadow 0.35s var(--bezier);
+      position: relative;
+      display: flex; flex-direction: column;
+      cursor: pointer;
     }
-    .person-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 16px 32px rgba(11,92,255,0.15); }
-    .person-card .avatar {
-      width: 100%; height: 120px; object-fit: cover; object-position: top;
+    .person-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(11,92,255,0.18);
+    }
+    .person-card[style*="display: none"] { display: none !important; }
+
+    /* Photo area — fixed-ratio square container */
+    .person-photo-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #c9d8f0, #e6eeff);
+      flex-shrink: 0;
+    }
+    .person-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.5s var(--bezier);
+    }
+    .person-card:hover .person-photo-wrap img {
+      transform: scale(1.07);
+    }
+
+    /* Gradient overlay on photo */
+    .person-photo-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba(11,20,50,0.55) 100%);
+      pointer-events: none;
+    }
+
+    /* Category chip over photo */
+    .person-cat-chip {
+      position: absolute; top: 0.6rem; left: 0.6rem; z-index: 2;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+    .cat-leader   { background: rgba(229,57,53,0.82); color: #fff; }
+    .cat-scientist{ background: rgba(0,150,136,0.82); color: #fff; }
+    .cat-tech     { background: rgba(11,92,255,0.82); color: #fff; }
+    .cat-arts     { background: rgba(124,77,255,0.82); color: #fff; }
+    .cat-sports   { background: rgba(255,107,43,0.82); color: #fff; }
+    .cat-business { background: rgba(0,150,0,0.82); color: #fff; }
+
+    /* Card body */
+    .person-body {
+      padding: 1rem 1rem 1.1rem;
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .person-name {
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--text-dark);
+      margin: 0 0 0.3rem;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.3;
+    }
+    .person-role {
+      font-size: 0.75rem; color: #6b7a99;
+      margin: 0 0 0.7rem;
+      line-height: 1.4;
+    }
+    .person-achievement {
+      margin-top: auto;
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+    }
+    .ach-chip {
+      font-size: 0.65rem; font-weight: 600;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(11,92,255,0.08);
+      border: 1px solid rgba(11,92,255,0.15);
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+    .ach-chip.gold { background: rgba(255,179,0,0.12); border-color: rgba(255,179,0,0.3); color: #8a5c00; }
+    .ach-chip.green { background: rgba(0,200,83,0.1); border-color: rgba(0,200,83,0.25); color: #005a20; }
+
+    /* Learn-more button inside card */
+    .person-learn-btn {
+      display: flex; align-items: center; gap: 0.4rem;
+      margin-top: 0.8rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1.5px solid rgba(11,92,255,0.25);
+      background: transparent;
+      color: var(--primary);
+      font-size: 0.75rem; font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s;
+      align-self: flex-start;
+    }
+    .person-learn-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      transform: translateX(3px);
+    }
+    .person-learn-btn i { font-size: 0.7rem; }
+
+    /* No results */
+    .no-people-msg {
+      grid-column: 1 / -1;
+      text-align: center; padding: 2rem;
+      color: #9ab; font-size: 0.95rem;
+      display: none;
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(5,10,30,0.82);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal-box {
+      background: #fff;
+      border-radius: 24px;
+      max-width: 520px; width: 100%;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+      transform: translateY(30px) scale(0.96);
+      transition: transform 0.35s var(--bezier);
+      position: relative;
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+    .modal-photo-band {
+      width: 100%; height: 220px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #c9d8f0, #e6eeff);
+    }
+    .modal-photo-band img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
       display: block;
     }
-    .person-card .avatar-placeholder {
-      width: 100%; height: 120px;
-      background: linear-gradient(135deg, var(--primary), #3c88ff);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; color: rgba(255,255,255,0.7);
+    .modal-photo-band::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(11,20,50,0.6) 100%);
     }
-    .person-card h4 { margin: 0.7rem 0.5rem 0.2rem; font-size: 0.88rem; color: var(--text-dark); font-style: normal; }
-    .person-card p { margin: 0 0.5rem; font-size: 0.75rem; color: #6b7a99; }
+    .modal-close {
+      position: absolute; top: 0.9rem; right: 0.9rem; z-index: 10;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--text-dark);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.22s;
+    }
+    .modal-close:hover { background: var(--primary); color: #fff; }
+    .modal-body { padding: 1.4rem 1.6rem 1.8rem; }
+    .modal-cat { display: inline-block; margin-bottom: 0.6rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.7rem; border-radius: 999px; }
+    .modal-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--text-dark); margin: 0 0 0.25rem; font-style: italic; }
+    .modal-role { font-size: 0.88rem; color: #6b7a99; margin: 0 0 1rem; }
+    .modal-desc { font-size: 0.9rem; color: #2c3e5a; line-height: 1.8; margin: 0 0 1rem; }
+    .modal-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .modal-wiki-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem; border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), #3c88ff);
+      color: #fff; font-weight: 700; font-size: 0.88rem;
+      border: none; cursor: pointer;
+      box-shadow: 0 6px 18px rgba(11,92,255,0.35);
+      transition: all 0.22s;
+      text-decoration: none;
+    }
+    .modal-wiki-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(11,92,255,0.45); color: #fff; }
 
     /* ─── QUOTE CARD ─── */
     .quote-card {
@@ -536,7 +774,7 @@
     }
     .tag:hover { background: rgba(11,92,255,0.18); }
 
-    /* ─── EXPLORE MORE SECTION ─── */
+    /* ─── EXPLORE MORE ─── */
     .explore-btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.75rem 1.4rem; margin: 0.35rem;
@@ -544,12 +782,12 @@
       font-size: 0.9rem; font-weight: 700;
       cursor: pointer; transition: all var(--med);
     }
-    .explore-btn.blue { background: linear-gradient(135deg,#0b5cff,#0d47a1); color:#fff; box-shadow:0 6px 18px rgba(11,92,255,0.3); }
-    .explore-btn.orange { background: linear-gradient(135deg,#ff6b2b,#ff9800); color:#fff; box-shadow:0 6px 18px rgba(255,107,43,0.3); }
+    .explore-btn.blue  { background: linear-gradient(135deg,#0b5cff,#0d47a1); color:#fff; box-shadow:0 6px 18px rgba(11,92,255,0.3); }
+    .explore-btn.orange{ background: linear-gradient(135deg,#ff6b2b,#ff9800); color:#fff; box-shadow:0 6px 18px rgba(255,107,43,0.3); }
     .explore-btn.green { background: linear-gradient(135deg,#00c853,#00897b); color:#fff; box-shadow:0 6px 18px rgba(0,200,83,0.3); }
-    .explore-btn.purple { background: linear-gradient(135deg,#7c4dff,#512da8); color:#fff; box-shadow:0 6px 18px rgba(124,77,255,0.3); }
-    .explore-btn.red { background: linear-gradient(135deg,#e53935,#c62828); color:#fff; box-shadow:0 6px 18px rgba(229,57,53,0.3); }
-    .explore-btn.teal { background: linear-gradient(135deg,#00bcd4,#006064); color:#fff; box-shadow:0 6px 18px rgba(0,188,212,0.3); }
+    .explore-btn.purple{ background: linear-gradient(135deg,#7c4dff,#512da8); color:#fff; box-shadow:0 6px 18px rgba(124,77,255,0.3); }
+    .explore-btn.red   { background: linear-gradient(135deg,#e53935,#c62828); color:#fff; box-shadow:0 6px 18px rgba(229,57,53,0.3); }
+    .explore-btn.teal  { background: linear-gradient(135deg,#00bcd4,#006064); color:#fff; box-shadow:0 6px 18px rgba(0,188,212,0.3); }
     .explore-btn:hover { transform: translateY(-4px) scale(1.04); filter: brightness(1.1); }
 
     /* ─── HIGHLIGHT BOX ─── */
@@ -558,14 +796,8 @@
       border: 1px solid rgba(11,92,255,0.18);
       border-radius: 14px; padding: 1.1rem 1.3rem; margin: 1rem 0;
     }
-    .highlight-box.amber {
-      background: linear-gradient(135deg, rgba(255,179,0,0.08), rgba(255,107,43,0.05));
-      border-color: rgba(255,179,0,0.25);
-    }
-    .highlight-box.green {
-      background: linear-gradient(135deg, rgba(0,200,83,0.08), rgba(0,137,123,0.05));
-      border-color: rgba(0,200,83,0.22);
-    }
+    .highlight-box.amber { background: linear-gradient(135deg, rgba(255,179,0,0.08), rgba(255,107,43,0.05)); border-color: rgba(255,179,0,0.25); }
+    .highlight-box.green { background: linear-gradient(135deg, rgba(0,200,83,0.08), rgba(0,137,123,0.05)); border-color: rgba(0,200,83,0.22); }
     .highlight-box h4 { margin: 0 0 0.5rem; font-style: normal; font-size: 0.95rem; color: var(--text-dark); }
     .highlight-box p, .highlight-box li { font-size: 0.88rem; color: #3a5a72; }
 
@@ -627,9 +859,8 @@
     #scrollToTop.show { opacity: 1; visibility: visible; }
     #scrollToTop:hover { transform: translateY(-3px); }
 
-    /* ─── ANIMATION UTILS ─── */
+    /* ─── UTILS ─── */
     @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.6;} }
-    @keyframes spin { to{transform:rotate(360deg);} }
     .badge {
       display: inline-flex; align-items: center; gap: 0.35rem;
       background: rgba(11,92,255,0.1); border: 1px solid rgba(11,92,255,0.2);
@@ -637,37 +868,26 @@
       padding: 0.22rem 0.7rem; font-size: 0.75rem; font-weight: 600;
     }
     .badge.amber { background:rgba(255,179,0,0.12); border-color:rgba(255,179,0,0.3); color:#b37400; }
-    .badge.green { background:rgba(0,200,83,0.1); border-color:rgba(0,200,83,0.25); color:#006b30; }
-    .badge.red { background:rgba(229,57,53,0.1); border-color:rgba(229,57,53,0.25); color:#b71c1c; }
-
-    /* India flag colors strip */
+    .badge.green  { background:rgba(0,200,83,0.1);  border-color:rgba(0,200,83,0.25);  color:#006b30; }
+    .badge.red    { background:rgba(229,57,53,0.1);  border-color:rgba(229,57,53,0.25); color:#b71c1c; }
     .tricolor-strip {
       height: 5px; border-radius: 999px;
       background: linear-gradient(90deg, #ff9933 33%, #fff 33% 66%, #138808 66%);
       margin: 0.5rem 0 1.2rem;
     }
-
-    /* ─── ANIMATED NUMBERS ─── */
     .animated-num { font-weight: 700; color: var(--primary); }
-
-    /* ─── RELIGION / LANGUAGE PILLS ─── */
     .pill-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
-    .pill {
-      padding: 0.35rem 0.9rem; border-radius: 999px;
-      font-size: 0.8rem; font-weight: 600;
-      transition: transform var(--fast);
-    }
+    .pill { padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; transition: transform var(--fast); }
     .pill:hover { transform: scale(1.06); }
-    .pill-blue { background: rgba(11,92,255,0.12); color: #0b3d91; border: 1px solid rgba(11,92,255,0.2); }
+    .pill-blue   { background: rgba(11,92,255,0.12);  color: #0b3d91; border: 1px solid rgba(11,92,255,0.2); }
     .pill-orange { background: rgba(255,107,43,0.12); color: #c04000; border: 1px solid rgba(255,107,43,0.2); }
-    .pill-green { background: rgba(0,200,83,0.1); color: #005a20; border: 1px solid rgba(0,200,83,0.2); }
-    .pill-purple { background: rgba(124,77,255,0.1); color: #3d0090; border: 1px solid rgba(124,77,255,0.2); }
-    .pill-teal { background: rgba(0,188,212,0.1); color: #006070; border: 1px solid rgba(0,188,212,0.2); }
-    .pill-amber { background: rgba(255,179,0,0.12); color: #7a4a00; border: 1px solid rgba(255,179,0,0.25); }
+    .pill-green  { background: rgba(0,200,83,0.1);    color: #005a20; border: 1px solid rgba(0,200,83,0.2); }
+    .pill-purple { background: rgba(124,77,255,0.1);  color: #3d0090; border: 1px solid rgba(124,77,255,0.2); }
+    .pill-teal   { background: rgba(0,188,212,0.1);   color: #006070; border: 1px solid rgba(0,188,212,0.2); }
+    .pill-amber  { background: rgba(255,179,0,0.12);  color: #7a4a00; border: 1px solid rgba(255,179,0,0.25); }
   </style>
 </head>
 <body>
-  <!-- Scroll progress bar -->
   <div id="scroll-progress"></div>
 
   <!-- Language Switcher -->
@@ -677,9 +897,7 @@
     <button id="btn-hi" onclick="setLanguage('hi')">🇮🇳 हिन्दी</button>
   </div>
 
-  <!-- ══════════════════════════════════════════
-       HERO
-  ══════════════════════════════════════════ -->
+  <!-- HERO -->
   <section id="hero" style="border-radius:0;margin:0;box-shadow:none;background:transparent;padding:0;opacity:1;transform:none;">
     <div class="hero">
       <canvas id="particles-canvas"></canvas>
@@ -729,9 +947,7 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       HEADER / NAVIGATION
-  ══════════════════════════════════════════ -->
+  <!-- HEADER / NAVIGATION -->
   <header>
     <div class="header-inner">
       <div class="nav-buttons">
@@ -756,20 +972,16 @@
         <a href="#tourism"><span data-lang="en">Tourism</span><span data-lang="bn">পর্যটন</span><span data-lang="hi">पर्यटन</span></a>
         <a href="#sports"><span data-lang="en">Sports</span><span data-lang="bn">খেলা</span><span data-lang="hi">खेल</span></a>
         <a href="#cinema"><span data-lang="en">Cinema</span><span data-lang="bn">সিনেমা</span><span data-lang="hi">सिनेमा</span></a>
+        <a href="#famous"><span data-lang="en">Icons</span><span data-lang="bn">আইকন</span><span data-lang="hi">प्रतीक</span></a>
       </nav>
     </div>
   </header>
 
-  <!-- ══════════════════════════════════════════
-       MAIN CONTENT
-  ══════════════════════════════════════════ -->
   <div class="page-wrapper">
     <div class="content-grid">
-
-      <!-- ─── LEFT: MAIN CONTENT ─── -->
       <main>
 
-        <!-- ░░░ OVERVIEW ░░░ -->
+        <!-- OVERVIEW -->
         <section id="overview">
           <span class="section-tag">Introduction</span>
           <div class="heading-row">
@@ -778,22 +990,20 @@
           <div class="tricolor-strip"></div>
           <p>
             <span data-lang="en">India, officially the <strong>Republic of India</strong>, is a vast and breathtakingly diverse country occupying the greater part of the South Asian subcontinent. Stretching from the snow-capped peaks of the Himalayas in the north to the tropical beaches of Kerala in the south, and from the scorched Thar Desert in the west to the lush rainforests of Meghalaya in the east, India encompasses an extraordinary range of landscapes, ecosystems, and climates within its 3.29 million km² of territory.</span>
-            <span data-lang="bn">ভারত, আনুষ্ঠানিকভাবে <strong>ভারতের প্রজাতন্ত্র</strong>, দক্ষিণ এশীয় উপমহাদেশের বৃহত্তর অংশ জুড়ে বিস্তৃত একটি বিশাল ও বিস্ময়করভাবে বৈচিত্র্যময় দেশ। উত্তরের হিমালয়ের তুষারাবৃত চূড়া থেকে দক্ষিণের কেরালার গ্রীষ্মমণ্ডলীয় সৈকত পর্যন্ত, এবং পশ্চিমের তপ্ত থার মরুভূমি থেকে পূর্বের মেঘালয়ের ঘন অরণ্য পর্যন্ত, ভারত তার ৩.২৯ মিলিয়ন বর্গকিলোমিটার ভূখণ্ডে অসাধারণ বৈচিত্র্যময় ভূদৃশ্য, বাস্তুতন্ত্র এবং জলবায়ু ধারণ করে।</span>
-            <span data-lang="hi">भारत, आधिकारिक रूप से <strong>भारत गणराज्य</strong>, दक्षिण एशियाई उपमहाद्वीप के बड़े हिस्से पर फैला एक विशाल और असाधारण रूप से विविध देश है। उत्तर में हिमालय की बर्फ से ढकी चोटियों से लेकर दक्षिण में केरल के उष्णकटिबंधीय समुद्र तटों तक, और पश्चिम में झुलसे थार रेगिस्तान से पूर्व में मेघालय के घने वर्षावनों तक, भारत अपने 3.29 मिलियन वर्ग किमी क्षेत्र में असाधारण भूदृश्यों, पारिस्थितिक तंत्रों और जलवायु की एक विस्तृत विविधता को समेटे हुए है।</span>
+            <span data-lang="bn">ভারত, আনুষ্ঠানিকভাবে <strong>ভারতের প্রজাতন্ত্র</strong>, দক্ষিণ এশীয় উপমহাদেশের বৃহত্তর অংশ জুড়ে বিস্তৃত একটি বিশাল ও বিস্ময়করভাবে বৈচিত্র্যময় দেশ।</span>
+            <span data-lang="hi">भारत, आधिकारिक रूप से <strong>भारत गणराज्य</strong>, दक्षिण एशियाई उपमहाद्वीप के बड़े हिस्से पर फैला एक विशाल और असाधारण रूप से विविध देश है।</span>
           </p>
           <p>
-            <span data-lang="en">Home to over <strong>1.44 billion people</strong>, India is the world's most populous country and the world's largest democracy. It is the birthplace of four major world religions — Hinduism, Buddhism, Jainism, and Sikhism — and one of the oldest continuous civilizations on Earth, with a history stretching back more than 5,000 years to the Indus Valley Civilization. Today, India stands as the <strong>world's fifth-largest economy</strong> by nominal GDP and is rapidly ascending the global ranks in technology, space exploration, manufacturing, and soft power.</span>
-            <span data-lang="bn"><strong>১.৪৪ বিলিয়নেরও বেশি মানুষের</strong> আবাসভূমি, ভারত বিশ্বের সবচেয়ে জনবহুল দেশ এবং বিশ্বের বৃহত্তম গণতন্ত্র। এটি চারটি প্রধান বিশ্ব ধর্মের জন্মভূমি — হিন্দুধর্ম, বৌদ্ধধর্ম, জৈনধর্ম এবং শিখধর্ম — এবং পৃথিবীর অন্যতম প্রাচীন ও অবিচ্ছিন্ন সভ্যতা, যার ইতিহাস সিন্ধু সভ্যতার সময় থেকে ৫,০০০ বছরেরও বেশি পুরোনো। আজ, ভারত নামমাত্র জিডিপিতে <strong>বিশ্বের পঞ্চম বৃহত্তম অর্থনীতি</strong> হিসেবে দাঁড়িয়ে আছে এবং প্রযুক্তি, মহাকাশ অন্বেষণ, উৎপাদন এবং সফট পাওয়ারে দ্রুত বৈশ্বিক শ্রেণীতে আরোহণ করছে।</span>
-            <span data-lang="hi"><strong>1.44 अरब से अधिक लोगों</strong> का घर, भारत दुनिया का सबसे अधिक जनसंख्या वाला देश और दुनिया का सबसे बड़ा लोकतंत्र है। यह चार प्रमुख विश्व धर्मों — हिंदू धर्म, बौद्ध धर्म, जैन धर्म और सिख धर्म — का जन्मस्थान है और पृथ्वी पर सबसे पुरानी सतत सभ्यताओं में से एक है, जिसका इतिहास सिंधु घाटी सभ्यता से 5,000 से अधिक वर्षों तक फैला हुआ है। आज, भारत नाममात्र जीडीपी से <strong>दुनिया की पाँचवीं सबसे बड़ी अर्थव्यवस्था</strong> के रूप में खड़ा है और प्रौद्योगिकी, अंतरिक्ष अन्वेषण, विनिर्माण और सॉफ्ट पावर में तेजी से वैश्विक रैंकिंग में ऊपर चढ़ रहा है।</span>
+            <span data-lang="en">Home to over <strong>1.44 billion people</strong>, India is the world's most populous country and the world's largest democracy. It is the birthplace of four major world religions — Hinduism, Buddhism, Jainism, and Sikhism — and one of the oldest continuous civilizations on Earth, with a history stretching back more than 5,000 years. Today, India stands as the <strong>world's fifth-largest economy</strong> by nominal GDP.</span>
+            <span data-lang="bn"><strong>১.৪৪ বিলিয়নেরও বেশি মানুষের</strong> আবাসভূমি, ভারত বিশ্বের সবচেয়ে জনবহুল দেশ এবং বিশ্বের বৃহত্তম গণতন্ত্র।</span>
+            <span data-lang="hi"><strong>1.44 अरब से अधिक लोगों</strong> का घर, भारत दुनिया का सबसे अधिक जनसंख्या वाला देश और दुनिया का सबसे बड़ा लोकतंत्र है।</span>
           </p>
-
           <div class="stats-strip">
             <div class="stat-card"><div class="stat-icon">🏛️</div><span class="stat-num" data-target="75">0</span><span class="stat-lbl">Years of Republic</span></div>
-            <div class="stat-card"><div class="stat-icon">🗣️</div><span class="stat-num" data-target="1600">0</span><span class="stat-lbl">Dialects spoken</span></div>
+            <div class="stat-card"><div class="stat-icon">🗣️</div><span class="stat-num" data-target="1600">0</span><span class="stat-lbl">Dialects Spoken</span></div>
             <div class="stat-card"><div class="stat-icon">🌆</div><span class="stat-num" data-target="640">0</span><span class="stat-lbl">Districts</span></div>
             <div class="stat-card"><div class="stat-icon">🎓</div><span class="stat-num" data-target="1000">0</span><span class="stat-lbl">Universities</span></div>
           </div>
-
           <div class="quote-card">
             <blockquote>
               <span data-lang="en">"India is not a country, it is a universe."</span>
@@ -804,380 +1014,232 @@
           </div>
         </section>
 
-        <!-- ░░░ HISTORY ░░░ -->
+        <!-- HISTORY -->
         <section id="history">
-          <span class="section-tag">
-            <span data-lang="en">Heritage</span><span data-lang="bn">ঐতিহ্য</span><span data-lang="hi">विरासत</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Heritage</span><span data-lang="bn">ঐতিহ্য</span><span data-lang="hi">विरासत</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>History of India</i></span><span data-lang="bn"><i>ভারতের ইতিহাস</i></span><span data-lang="hi"><i>भारत का इतिहास</i></span></h2>
             <span class="meaning"><span data-lang="en">5,000 years of civilisation</span><span data-lang="bn">৫,০০০ বছরের সভ্যতা</span><span data-lang="hi">5,000 वर्षों की सभ्यता</span></span>
           </div>
           <div class="divider"></div>
           <p>
-            <span data-lang="en">India's history is among the richest and most complex in the world. The <strong>Indus Valley Civilisation</strong> (3300–1300 BCE) flourished in what is now northwest India and Pakistan, developing sophisticated urban centres at Mohenjo-daro and Harappa with advanced drainage systems, standardised weights, and a writing system that remains partially undeciphered. This was followed by the <strong>Vedic Period</strong> (1500–500 BCE), during which the foundational texts of Hinduism — the Vedas, Upanishads, and epics like the Mahabharata and Ramayana — were composed.</span>
-            <span data-lang="bn">ভারতের ইতিহাস বিশ্বের সবচেয়ে সমৃদ্ধ ও জটিল ইতিহাসের মধ্যে একটি। <strong>সিন্ধু সভ্যতা</strong> (৩৩০০–১৩০০ খ্রিস্টপূর্ব) বর্তমান উত্তর-পশ্চিম ভারত ও পাকিস্তানে বিকশিত হয়েছিল, মোহেনজো-দারো ও হরপ্পায় উন্নত নগর কেন্দ্র গড়ে তুলেছিল যেখানে উন্নত নিকাশী ব্যবস্থা, মানক ওজন এবং একটি লিখন পদ্ধতি ছিল যা এখনও আংশিকভাবে পাঠোদ্ধার করা হয়নি। এর পরে আসে <strong>বৈদিক যুগ</strong> (১৫০০–৫০০ খ্রিস্টপূর্ব), যে সময়কালে হিন্দু ধর্মের মূল গ্রন্থগুলি — বেদ, উপনিষদ এবং মহাভারত ও রামায়ণের মতো মহাকাব্য — রচিত হয়েছিল।</span>
-            <span data-lang="hi">भारत का इतिहास दुनिया के सबसे समृद्ध और जटिल इतिहासों में से एक है। <strong>सिंधु घाटी सभ्यता</strong> (3300–1300 ईसा पूर्व) वर्तमान उत्तर-पश्चिम भारत और पाकिस्तान में फली-फूली, मोहनजो-दड़ो और हड़प्पा में उन्नत नगर केंद्र विकसित किए जिनमें उन्नत जल निकासी प्रणाली, मानकीकृत बाट और एक लिपि थी जो अभी भी आंशिक रूप से अपठित है। इसके बाद <strong>वैदिक काल</strong> (1500–500 ईसा पूर्व) आया, जिस दौरान हिंदू धर्म के मूल ग्रंथ — वेद, उपनिषद और महाभारत तथा रामायण जैसे महाकाव्य — रचे गए।</span>
+            <span data-lang="en">India's history is among the richest in the world. The <strong>Indus Valley Civilisation</strong> (3300–1300 BCE) developed sophisticated urban centres at Mohenjo-daro and Harappa. This was followed by the <strong>Vedic Period</strong> (1500–500 BCE), during which the Vedas, Upanishads, Mahabharata, and Ramayana were composed. The Maurya Empire, Gupta Golden Age, Mughal Empire, and British Raj all shaped modern India before independence in <strong>1947</strong>.</span>
+            <span data-lang="bn">ভারতের ইতিহাস বিশ্বের সমৃদ্ধতম ইতিহাসের মধ্যে একটি। <strong>সিন্ধু সভ্যতা</strong> (৩৩০০–১৩০০ BCE) মহেঞ্জোদারো এবং হরপ্পায় পরিশীলিত নগর কেন্দ্র গড়ে তুলেছিল।</span>
+            <span data-lang="hi">भारत का इतिहास दुनिया के सबसे समृद्ध इतिहासों में से एक है। <strong>सिंधु घाटी सभ्यता</strong> (3300–1300 BCE) ने मोहनजोदड़ो और हड़प्पा में परिष्कृत शहरी केंद्र विकसित किए।</span>
           </p>
-          <p>
-            <span data-lang="en">The <strong>Maurya Empire</strong> (322–185 BCE) under Emperor Ashoka became one of the largest empires in the ancient world, spanning most of the subcontinent. Ashoka's conversion to Buddhism after the bloody Kalinga War led to an era of religious tolerance and the spread of Buddhist philosophy across Asia. The subsequent <strong>Gupta Empire</strong> (320–550 CE) is regarded as India's "Golden Age" — a period of extraordinary achievements in mathematics, astronomy, literature, and the arts. Indian scholars during this era invented the decimal number system and the concept of zero, contributions that transformed global mathematics forever.</span>
-            <span data-lang="bn"><strong>মৌর্য সাম্রাজ্য</strong> (৩২২–১৮৫ খ্রিস্টপূর্ব) সম্রাট অশোকের অধীনে প্রাচীন বিশ্বের বৃহত্তম সাম্রাজ্যগুলির মধ্যে একটিতে পরিণত হয়েছিল, যা উপমহাদেশের বেশিরভাগ অংশ জুড়ে বিস্তৃত ছিল। রক্তক্ষয়ী কলিঙ্গ যুদ্ধের পর অশোকের বৌদ্ধধর্মে ধর্মান্তর ধর্মীয় সহিষ্ণুতার একটি যুগ এবং এশিয়া জুড়ে বৌদ্ধ দর্শনের প্রসার ঘটায়। পরবর্তী <strong>গুপ্ত সাম্রাজ্য</strong> (৩২০–৫৫০ খ্রিস্টাব্দ) ভারতের "স্বর্ণযুগ" হিসেবে বিবেচিত — গণিত, জ্যোতির্বিদ্যা, সাহিত্য এবং শিল্পকলায় অসাধারণ অর্জনের একটি সময়কাল।</span>
-            <span data-lang="hi"><strong>मौर्य साम्राज्य</strong> (322–185 ईसा पूर्व) सम्राट अशोक के अधीन प्राचीन विश्व के सबसे बड़े साम्राज्यों में से एक बन गया, जो उपमहाद्वीप के अधिकांश हिस्से पर फैला था। खूनी कलिंग युद्ध के बाद अशोक के बौद्ध धर्म में धर्मांतरण ने धार्मिक सहिष्णुता और एशिया भर में बौद्ध दर्शन के प्रसार का एक युग लाया। बाद के <strong>गुप्त साम्राज्य</strong> (320–550 CE) को भारत का "स्वर्ण युग" माना जाता है — गणित, खगोल विज्ञान, साहित्य और कलाओं में असाधारण उपलब्धियों का काल।</span>
-          </p>
-
           <div class="timeline">
             <div class="timeline-item">
-              <div class="timeline-year">3300–1300 BCE</div>
-              <h4><span data-lang="en">Indus Valley Civilisation</span><span data-lang="bn">সিন্ধু সভ্যতা</span><span data-lang="hi">सिंधु घाटी सभ्यता</span></h4>
-              <p><span data-lang="en">One of the world's earliest urban societies. Cities of Harappa and Mohenjo-daro had advanced sewage, city planning, and trade networks reaching Mesopotamia.</span><span data-lang="bn">বিশ্বের অন্যতম প্রাচীন নগর সমাজ। হরপ্পা ও মোহেনজো-দারো শহরে উন্নত নর্দমা ব্যবস্থা, নগর পরিকল্পনা এবং মেসোপটেমিয়া পর্যন্ত বাণিজ্য নেটওয়ার্ক ছিল।</span><span data-lang="hi">दुनिया के सबसे शुरुआती शहरी समाजों में से एक। हड़प्पा और मोहनजो-दड़ो के शहरों में उन्नत सीवेज, नगर नियोजन और मेसोपोटामिया तक व्यापार नेटवर्क था।</span></p>
+              <div class="timeline-year">~3300 BCE</div>
+              <h4>Indus Valley Civilisation</h4>
+              <p><span data-lang="en">One of the world's earliest urban civilisations, with advanced drainage, standardised weights, and still-undeciphered script.</span><span data-lang="bn">উন্নত নিষ্কাশন ব্যবস্থা, মানসম্পন্ন ওজন এবং এখনও অপাঠ্য লিপি সহ বিশ্বের প্রাচীনতম নগর সভ্যতাগুলির মধ্যে একটি।</span><span data-lang="hi">उन्नत जल निकासी, मानकीकृत वज़न और अभी भी अपठित लिपि के साथ दुनिया की सबसे पुरानी शहरी सभ्यताओं में से एक।</span></p>
             </div>
             <div class="timeline-item">
               <div class="timeline-year">322–185 BCE</div>
-              <h4><span data-lang="en">Maurya Empire — Ashoka's Reign</span><span data-lang="bn">মৌর্য সাম্রাজ্য — অশোকের শাসন</span><span data-lang="hi">मौर्य साम्राज्य — अशोक का शासन</span></h4>
-              <p><span data-lang="en">Chandragupta Maurya founded the empire; Ashoka expanded it to nearly the entire subcontinent and promoted non-violence (ahimsa), tolerance, and Buddhism across Asia.</span><span data-lang="bn">চন্দ্রগুপ্ত মৌর্য সাম্রাজ্য প্রতিষ্ঠা করেন; অশোক এটিকে প্রায় সমগ্র উপমহাদেশ পর্যন্ত বিস্তৃত করেন এবং এশিয়া জুড়ে অহিংসা, সহিষ্ণুতা ও বৌদ্ধধর্মের প্রচার করেন।</span><span data-lang="hi">चंद्रगुप्त मौर्य ने साम्राज्य की स्थापना की; अशोक ने इसे लगभग पूरे उपमहाद्वीप तक विस्तारित किया और एशिया भर में अहिंसा, सहिष्णुता और बौद्ध धर्म का प्रसार किया।</span></p>
+              <h4>Maurya Empire — Chandragupta &amp; Ashoka</h4>
+              <p><span data-lang="en">India's first great empire united most of the subcontinent. Emperor Ashoka spread Buddhism across Asia after the Kalinga War.</span><span data-lang="bn">ভারতের প্রথম মহান সাম্রাজ্য উপমহাদেশের বেশিরভাগ অংশ একত্রিত করেছিল। কলিঙ্গ যুদ্ধের পর সম্রাট অশোক এশিয়া জুড়ে বৌদ্ধধর্ম প্রচার করেছিলেন।</span><span data-lang="hi">भारत का पहला महान साम्राज्य जिसने उपमहाद्वीप के अधिकांश भाग को एकजुट किया। कलिंग युद्ध के बाद सम्राट अशोक ने एशिया भर में बौद्ध धर्म का प्रसार किया।</span></p>
             </div>
             <div class="timeline-item">
               <div class="timeline-year">320–550 CE</div>
-              <h4><span data-lang="en">Gupta Empire — India's Golden Age</span><span data-lang="bn">গুপ্ত সাম্রাজ্য — ভারতের স্বর্ণযুগ</span><span data-lang="hi">गुप्त साम्राज्य — भारत का स्वर्ण युग</span></h4>
-              <p><span data-lang="en">Remarkable advances in science, mathematics (zero, decimal), literature, philosophy, and temple architecture. Kalidasa wrote Shakuntala; Aryabhata calculated the value of pi and posited Earth's rotation.</span><span data-lang="bn">বিজ্ঞান, গণিত (শূন্য, দশমিক), সাহিত্য, দর্শন এবং মন্দির স্থাপত্যে উল্লেখযোগ্য অগ্রগতি। কালিদাস শকুন্তলা রচনা করেন; আর্যভট্ট পাই-এর মান গণনা করেন এবং পৃথিবীর আবর্তনের প্রস্তাব করেন।</span><span data-lang="hi">विज्ञान, गणित (शून्य, दशमलव), साहित्य, दर्शन और मंदिर वास्तुकला में उल्लेखनीय प्रगति। कालिदास ने शकुंतला लिखी; आर्यभट्ट ने पाई का मान निकाला और पृथ्वी के घूर्णन का प्रस्ताव रखा।</span></p>
+              <h4>Gupta Golden Age</h4>
+              <p><span data-lang="en">A period of extraordinary advances in mathematics, astronomy, philosophy, and art. Aryabhata calculated the value of pi and proposed heliocentrism.</span><span data-lang="bn">গণিত, জ্যোতির্বিজ্ঞান, দর্শন এবং শিল্পে অসাধারণ অগ্রগতির যুগ। আর্যভট্ট পাই-এর মান গণনা করেছিলেন এবং সূর্যকেন্দ্রিকতা প্রস্তাব করেছিলেন।</span><span data-lang="hi">गणित, खगोल विज्ञान, दर्शन और कला में असाधारण प्रगति का युग। आर्यभट्ट ने पाई का मान गणना किया और सूर्यकेंद्रवाद का प्रस्ताव रखा।</span></p>
             </div>
             <div class="timeline-item">
               <div class="timeline-year">1526–1857 CE</div>
-              <h4><span data-lang="en">Mughal Empire</span><span data-lang="bn">মুঘল সাম্রাজ্য</span><span data-lang="hi">मुगल साम्राज्य</span></h4>
-              <p><span data-lang="en">Founded by Babur, the Mughal Empire reached its zenith under Akbar and Aurangzeb. It produced iconic monuments like the Taj Mahal and Red Fort, and blended Persian, Turkic, and Indian cultural traditions to create a unique Indo-Islamic civilisation.</span><span data-lang="bn">বাবর কর্তৃক প্রতিষ্ঠিত, মুঘল সাম্রাজ্য আকবর ও আওরঙ্গজেবের অধীনে তার শীর্ষে পৌঁছেছিল। এটি তাজমহল ও লালকেল্লার মতো আইকনিক স্মৃতিসৌধ নির্মাণ করে এবং ফারসি, তুর্কি ও ভারতীয় সাংস্কৃতিক ঐতিহ্যকে একত্রিত করে একটি অনন্য ইন্দো-ইসলামিক সভ্যতা তৈরি করে।</span><span data-lang="hi">बाबर द्वारा स्थापित, मुगल साम्राज्य अकबर और औरंगजेब के अधीन अपने चरम पर पहुँचा। इसने ताज महल और लाल किले जैसे प्रतिष्ठित स्मारकों का निर्माण किया और फारसी, तुर्किक और भारतीय सांस्कृतिक परंपराओं को मिलाकर एक अद्वितीय इंडो-इस्लामिक सभ्यता बनाई।</span></p>
+              <h4>Mughal Empire</h4>
+              <p><span data-lang="en">The Mughals built iconic monuments including the Taj Mahal, Red Fort, and Fatehpur Sikri, and created a syncretic Indo-Islamic culture that defined northern India.</span><span data-lang="bn">মুঘলরা তাজমহল, লাল কেল্লা এবং ফতেহপুর সিক্রি সহ প্রতীকী স্মৃতিস্তম্ভ নির্মাণ করেছিল।</span><span data-lang="hi">मुगलों ने ताज महल, लाल किला और फतेहपुर सीकरी सहित प्रतिष्ठित स्मारक बनाए।</span></p>
             </div>
             <div class="timeline-item">
-              <div class="timeline-year">1858–1947 CE</div>
-              <h4><span data-lang="en">British Raj &amp; Independence Movement</span><span data-lang="bn">ব্রিটিশ রাজ ও স্বাধীনতা আন্দোলন</span><span data-lang="hi">ब्रिटिश राज और स्वतंत्रता आंदोलन</span></h4>
-              <p><span data-lang="en">After the 1857 uprising, the British Crown directly governed India. The Indian National Congress (1885) and later the Muslim League became major political forces. Mahatma Gandhi's non-violent civil disobedience movement, Subhas Chandra Bose's Indian National Army, and millions of ordinary Indians ultimately forced Britain to grant independence on 15 August 1947.</span><span data-lang="bn">১৮৫৭ সালের বিদ্রোহের পর, ব্রিটিশ ক্রাউন সরাসরি ভারত শাসন করে। ভারতীয় জাতীয় কংগ্রেস (১৮৮৫) এবং পরে মুসলিম লীগ প্রধান রাজনৈতিক শক্তি হয়ে ওঠে। মহাত্মা গান্ধীর অহিংস আইন অমান্য আন্দোলন, সুভাষ চন্দ্র বসুর ভারতীয় জাতীয় সেনা, এবং লক্ষ লক্ষ সাধারণ ভারতীয় শেষ পর্যন্ত ব্রিটেনকে ১৫ আগস্ট ১৯৪৭ সালে স্বাধীনতা প্রদান করতে বাধ্য করে।</span><span data-lang="hi">1857 के विद्रोह के बाद ब्रिटिश क्राउन ने सीधे भारत पर शासन किया। भारतीय राष्ट्रीय कांग्रेस (1885) और बाद में मुस्लिम लीग प्रमुख राजनीतिक ताकतें बनीं। महात्मा गांधी का अहिंसक सविनय अवज्ञा आंदोलन, सुभाष चंद्र बोस की भारतीय राष्ट्रीय सेना, और लाखों आम भारतीयों ने अंततः ब्रिटेन को 15 अगस्त 1947 को स्वतंत्रता देने के लिए मजबूर किया।</span></p>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-year">26 Jan 1950</div>
-              <h4><span data-lang="en">Republic of India — Constitution Adopted</span><span data-lang="bn">ভারতের প্রজাতন্ত্র — সংবিধান গৃহীত</span><span data-lang="hi">भारत गणराज्य — संविधान अपनाया</span></h4>
-              <p><span data-lang="en">Dr. B.R. Ambedkar led the drafting of the world's longest national constitution, enshrining fundamental rights, secular democracy, universal suffrage, and federalism — transforming a colonial territory into a modern republic of extraordinary diversity.</span><span data-lang="bn">ড. বি.আর. আম্বেদকর বিশ্বের দীর্ঘতম জাতীয় সংবিধানের খসড়া প্রণয়নে নেতৃত্ব দেন, যা মৌলিক অধিকার, ধর্মনিরপেক্ষ গণতন্ত্র, সার্বজনীন ভোটাধিকার এবং যুক্তরাষ্ট্রীয়তাকে সমুন্নত করে — একটি ঔপনিবেশিক অঞ্চলকে অসাধারণ বৈচিত্র্যের একটি আধুনিক প্রজাতন্ত্রে রূপান্তরিত করে।</span><span data-lang="hi">डॉ. बी.आर. अंबेडकर ने दुनिया के सबसे लंबे राष्ट्रीय संविधान का मसौदा तैयार करने में नेतृत्व किया, जिसने मौलिक अधिकारों, धर्मनिरपेक्ष लोकतंत्र, सार्वभौमिक मताधिकार और संघवाद की स्थापना की।</span></p>
+              <div class="timeline-year">1857–1947 CE</div>
+              <h4>British Raj &amp; Independence Movement</h4>
+              <p><span data-lang="en">The 1857 Mutiny led to direct British Crown rule. Mahatma Gandhi's non-violent resistance movement eventually led to independence on <strong>15 August 1947</strong>.</span><span data-lang="bn">১৮৫৭ সালের বিদ্রোহ সরাসরি ব্রিটিশ মুকুট শাসনের দিকে নিয়ে গেছে। মহাত্মা গান্ধীর অহিংস প্রতিরোধ আন্দোলন অবশেষে <strong>১৫ আগস্ট ১৯৪৭</strong> সালে স্বাধীনতার দিকে নিয়ে গেছে।</span><span data-lang="hi">1857 के विद्रोह ने सीधे ब्रिटिश क्राउन शासन का नेतृत्व किया। महात्मा गांधी के अहिंसक प्रतिरोध आंदोलन ने <strong>15 अगस्त 1947</strong> को स्वतंत्रता दिलाई।</span></p>
             </div>
           </div>
         </section>
 
-        <!-- ░░░ GEOGRAPHY ░░░ -->
+        <!-- GEOGRAPHY -->
         <section id="geography">
-          <span class="section-tag">
-            <span data-lang="en">Landscape</span><span data-lang="bn">ভূদৃশ্য</span><span data-lang="hi">भूदृश्य</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Land</span><span data-lang="bn">ভূমি</span><span data-lang="hi">भूमि</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Geography &amp; Climate</i></span><span data-lang="bn"><i>ভূগোল ও জলবায়ু</i></span><span data-lang="hi"><i>भूगोल और जलवायु</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en">India occupies the greater part of the South Asian subcontinent and is the seventh-largest country in the world by area. Its terrain is extraordinarily varied: the towering <strong>Himalayas</strong> — including K2, Kangchenjunga, and Nanda Devi — form a natural northern and northeastern barrier; the fertile <strong>Indo-Gangetic Plain</strong> stretching from Punjab to West Bengal is one of the most densely populated and agriculturally productive regions on Earth; the <strong>Deccan Plateau</strong> occupies much of peninsular India and is flanked by the Eastern and Western Ghats mountain ranges; and the coastline stretches over 7,500 km along the Arabian Sea, Bay of Bengal, and Indian Ocean.</span>
-            <span data-lang="bn">ভারত দক্ষিণ এশীয় উপমহাদেশের বৃহত্তর অংশ দখল করে এবং আয়তনে বিশ্বের সপ্তম বৃহত্তম দেশ। এর ভূখণ্ড অসাধারণভাবে বৈচিত্র্যময়: সুউচ্চ <strong>হিমালয়</strong> — কে২, কাঞ্চনজঙ্ঘা এবং নন্দাদেবী সহ — একটি প্রাকৃতিক উত্তর ও উত্তর-পূর্ব বাধা গঠন করে; পাঞ্জাব থেকে পশ্চিমবঙ্গ পর্যন্ত বিস্তৃত উর্বর <strong>ইন্দো-গাঙ্গেয় সমভূমি</strong> পৃথিবীর সবচেয়ে ঘনবসতিপূর্ণ ও কৃষিগতভাবে উৎপাদনশীল অঞ্চলগুলির মধ্যে একটি; <strong>দাক্ষিণাত্য মালভূমি</strong> উপদ্বীপীয় ভারতের বেশিরভাগ অংশ দখল করে এবং পূর্ব ও পশ্চিম ঘাট পর্বতমালা দ্বারা পার্শ্ববর্তী।</span>
-            <span data-lang="hi">भारत दक्षिण एशियाई उपमहाद्वीप के बड़े हिस्से पर कब्जा करता है और क्षेत्रफल के हिसाब से दुनिया का सातवाँ सबसे बड़ा देश है। इसकी भूमि असाधारण रूप से विविध है: ऊँचे <strong>हिमालय</strong> — K2, कंचनजंगा और नंदा देवी सहित — एक प्राकृतिक उत्तरी और पूर्वोत्तर अवरोध बनाते हैं; पंजाब से पश्चिम बंगाल तक फैला उपजाऊ <strong>इंडो-गंगेटिक मैदान</strong> पृथ्वी के सबसे घनी आबादी और कृषि उत्पादक क्षेत्रों में से एक है।</span>
-          </p>
-
+          <p><span data-lang="en">India's terrain ranges from the world's highest mountains (the Himalayas reach 8,849 m at K2 adjacent peaks) to coastal plains, fertile river deltas, tropical forests, and one of the world's largest deserts. The country shares borders with Pakistan, China, Nepal, Bhutan, Bangladesh, and Myanmar, and has a coastline of 7,516 km along the Arabian Sea, Indian Ocean, and Bay of Bengal.</span><span data-lang="bn">ভারতের ভূখণ্ড বিশ্বের সর্বোচ্চ পর্বত থেকে উপকূলীয় সমভূমি, উর্বর নদী ব-দ্বীপ, গ্রীষ্মমণ্ডলীয় বন এবং বিশ্বের অন্যতম বৃহত্তম মরুভূমি পর্যন্ত বিস্তৃত।</span><span data-lang="hi">भारत का भूभाग दुनिया के सबसे ऊंचे पहाड़ों से लेकर तटीय मैदानों, उपजाऊ नदी डेल्टाओं, उष्णकटिबंधीय जंगलों और दुनिया के सबसे बड़े रेगिस्तानों में से एक तक फैला हुआ है।</span></p>
           <div class="info-grid">
-            <div class="info-card"><div class="ic-icon">🏔️</div><h4><span data-lang="en">Himalayas</span><span data-lang="bn">হিমালয়</span><span data-lang="hi">हिमालय</span></h4><p><span data-lang="en">Home to world's highest peaks, glaciers feeding the Ganges & Brahmaputra, and rich biodiversity including snow leopards.</span><span data-lang="bn">বিশ্বের সর্বোচ্চ শৃঙ্গ, গঙ্গা ও ব্রহ্মপুত্রকে পুষ্ট করা হিমবাহ এবং তুষারচিতা সহ সমৃদ্ধ জীববৈচিত্র্যের আবাসস্থল।</span><span data-lang="hi">विश्व की सबसे ऊँची चोटियाँ, गंगा और ब्रह्मपुत्र को पोषित करने वाले ग्लेशियर और हिम तेंदुए सहित समृद्ध जैव विविधता का घर।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🌾</div><h4><span data-lang="en">Indo-Gangetic Plain</span><span data-lang="bn">ইন্দো-গাঙ্গেয় সমভূমি</span><span data-lang="hi">इंडो-गंगेटिक मैदान</span></h4><p><span data-lang="en">One of Earth's most fertile regions, supporting over 40% of India's population and producing wheat, rice, and sugarcane.</span><span data-lang="bn">পৃথিবীর অন্যতম উর্বর অঞ্চল, ভারতের ৪০% এরও বেশি জনসংখ্যাকে সমর্থন করে এবং গম, ধান ও আখ উৎপাদন করে।</span><span data-lang="hi">पृथ्वी के सबसे उपजाऊ क्षेत्रों में से एक, भारत की 40% से अधिक आबादी का समर्थन करता है और गेहूँ, चावल, गन्ना का उत्पादन करता है।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🏜️</div><h4><span data-lang="en">Thar Desert</span><span data-lang="bn">থার মরুভূমি</span><span data-lang="hi">थार रेगिस्तान</span></h4><p><span data-lang="en">The world's 17th-largest desert, covering 200,000 km² in Rajasthan. Despite harsh conditions, it supports unique wildlife, nomadic cultures, and ancient trade routes.</span><span data-lang="bn">বিশ্বের ১৭তম বৃহত্তম মরুভূমি, রাজস্থানে ২,০০,০০০ কিমি² জুড়ে বিস্তৃত। কঠোর পরিস্থিতি সত্ত্বেও, এটি অনন্য বন্যপ্রাণী, যাযাবর সংস্কৃতি এবং প্রাচীন বাণিজ্য পথকে সমর্থন করে।</span><span data-lang="hi">दुनिया का 17वाँ सबसे बड़ा रेगिस्तान, राजस्थान में 2,00,000 वर्ग किमी में फैला हुआ। कठोर परिस्थितियों के बावजूद, यह अनोखे वन्यजीव, घुमंतू संस्कृतियों और प्राचीन व्यापार मार्गों का समर्थन करता है।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🌴</div><h4><span data-lang="en">Western Ghats</span><span data-lang="bn">পশ্চিম ঘাট</span><span data-lang="hi">पश्चिमी घाट</span></h4><p><span data-lang="en">A UNESCO World Heritage Site and one of the world's eight "hottest hotspots" of biodiversity, stretching 1,600 km along India's western coast.</span><span data-lang="bn">একটি ইউনেস্কো বিশ্ব ঐতিহ্যবাহী স্থান এবং জীববৈচিত্র্যের বিশ্বের আটটি "উষ্ণতম হটস্পট"-এর মধ্যে একটি, ভারতের পশ্চিম উপকূল বরাবর ১,৬০০ কিমি বিস্তৃত।</span><span data-lang="hi">एक UNESCO विश्व धरोहर स्थल और जैव विविधता के विश्व के आठ "सबसे गर्म हॉटस्पॉट" में से एक, भारत की पश्चिमी तट के साथ 1,600 किमी फैला हुआ।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🌊</div><h4><span data-lang="en">Coastline &amp; Islands</span><span data-lang="bn">উপকূলরেখা ও দ্বীপপুঞ্জ</span><span data-lang="hi">तटरेखा और द्वीप</span></h4><p><span data-lang="en">India has a 7,516 km coastline and 1,382 islands, including the Andaman & Nicobar Islands (Bay of Bengal) and Lakshadweep (Arabian Sea).</span><span data-lang="bn">ভারতের ৭,৫১৬ কিমি উপকূলরেখা এবং ১,৩৮২টি দ্বীপ রয়েছে, যার মধ্যে আন্দামান ও নিকোবর দ্বীপপুঞ্জ (বঙ্গোপসাগর) এবং লাক্ষাদ্বীপ (আরব সাগর) অন্তর্ভুক্ত।</span><span data-lang="hi">भारत में 7,516 किमी की तटरेखा और 1,382 द्वीप हैं, जिनमें अंडमान और निकोबार द्वीप समूह (बंगाल की खाड़ी) और लक्षद्वीप (अरब सागर) शामिल हैं।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🌧️</div><h4><span data-lang="en">Monsoon</span><span data-lang="bn">বর্ষা</span><span data-lang="hi">मानसून</span></h4><p><span data-lang="en">The southwest monsoon (June–September) brings 70–90% of India's annual rainfall. Cherrapunji in Meghalaya is one of the wettest places on Earth, receiving over 11,000 mm annually.</span><span data-lang="bn">দক্ষিণ-পশ্চিম বর্ষা (জুন–সেপ্টেম্বর) ভারতের বার্ষিক বৃষ্টিপাতের ৭০–৯০% নিয়ে আসে। মেঘালয়ের চেরাপুঞ্জি পৃথিবীর অন্যতম আর্দ্রতম স্থান, বার্ষিক ১১,০০০ মিমি-এর বেশি বৃষ্টিপাত পায়।</span><span data-lang="hi">दक्षिण-पश्चिम मानसून (जून–सितंबर) भारत की वार्षिक वर्षा का 70–90% लाता है। मेघालय में चेरापूंजी पृथ्वी के सबसे नम स्थानों में से एक है, जो प्रति वर्ष 11,000 मिमी से अधिक वर्षा प्राप्त करती है।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🏔️</div><h4><span data-lang="en">Himalayan Range</span><span data-lang="bn">হিমালয় পর্বতমালা</span><span data-lang="hi">हिमालय पर्वत श्रृंखला</span></h4><p><span data-lang="en">Contains 9 of the world's 14 peaks above 8,000 m. Source of the Ganges, Brahmaputra, and Indus rivers, feeding over 1 billion people.</span><span data-lang="bn">৮,০০০ মিটারের উপরে বিশ্বের ১৪টি চূড়ার মধ্যে ৯টি ধারণ করে।</span><span data-lang="hi">8,000 मीटर से ऊपर दुनिया की 14 चोटियों में से 9 यहाँ हैं।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🌊</div><h4><span data-lang="en">Coastline</span><span data-lang="bn">উপকূলরেখা</span><span data-lang="hi">समुद्र तट</span></h4><p><span data-lang="en">7,516 km of coastline bordering the Arabian Sea, Indian Ocean, and Bay of Bengal, with beaches, ports, and mangrove forests.</span><span data-lang="bn">আরব সাগর, ভারত মহাসাগর এবং বঙ্গোপসাগরের সাথে সীমানাকারী ৭,৫১৬ কিমি উপকূলরেখা।</span><span data-lang="hi">अरब सागर, हिंद महासागर और बंगाल की खाड़ी के साथ 7,516 किमी तटरेखा।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🌿</div><h4><span data-lang="en">Biodiversity</span><span data-lang="bn">জীববৈচিত্র্য</span><span data-lang="hi">जैव विविधता</span></h4><p><span data-lang="en">4 of the world's 36 biodiversity hotspots. Home to 7–8% of all recorded species on Earth including Bengal tigers, Indian elephants, and gharials.</span><span data-lang="bn">বিশ্বের ৩৬টি জীববৈচিত্র্য হটস্পটের মধ্যে ৪টি। পৃথিবীতে রেকর্ড করা সমস্ত প্রজাতির ৭–৮%।</span><span data-lang="hi">दुनिया के 36 जैव विविधता हॉटस्पॉट में से 4 यहाँ हैं।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🌧️</div><h4><span data-lang="en">Monsoon</span><span data-lang="bn">বর্ষাকাল</span><span data-lang="hi">मानसून</span></h4><p><span data-lang="en">The South-West Monsoon (June–September) delivers 80% of India's annual rainfall. Mawsynram, Meghalaya, is the wettest place on Earth (~11,871 mm/year).</span><span data-lang="bn">দক্ষিণ-পশ্চিম মৌসুমী বায়ু (জুন–সেপ্টেম্বর) ভারতের বার্ষিক বৃষ্টিপাতের ৮০% সরবরাহ করে।</span><span data-lang="hi">दक्षिण-पश्चिम मानसून (जून–सितंबर) भारत की वार्षिक वर्षा का 80% प्रदान करता है।</span></p></div>
           </div>
         </section>
 
-        <!-- ░░░ DEMOGRAPHICS ░░░ -->
+        <!-- DEMOGRAPHICS -->
         <section id="demographics">
-          <span class="section-tag">
-            <span data-lang="en">People</span><span data-lang="bn">জনগণ</span><span data-lang="hi">लोग</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">People</span><span data-lang="bn">মানুষ</span><span data-lang="hi">लोग</span></span>
           <div class="heading-row">
-            <h2><span data-lang="en"><i>Demographics</i></span><span data-lang="bn"><i>জনসংখ্যাতাত্ত্বিক</i></span><span data-lang="hi"><i>जनसांख्यिकी</i></span></h2>
+            <h2><span data-lang="en"><i>Demographics &amp; Society</i></span><span data-lang="bn"><i>জনসংখ্যা ও সমাজ</i></span><span data-lang="hi"><i>जनसांख्यिकी और समाज</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en">India is home to an extraordinary mosaic of peoples, languages, religions, and traditions. As of 2025, the population exceeds <strong>1.44 billion</strong>, having surpassed China to become the world's most populous nation. The median age is approximately 28 years, making India one of the world's youngest large economies — a demographic dividend that could drive growth for decades. The literacy rate stands at around <strong>77%</strong>, up from just 12% at independence in 1947, reflecting enormous investments in education over 75 years.</span>
-            <span data-lang="bn">ভারত মানুষ, ভাষা, ধর্ম এবং ঐতিহ্যের একটি অসাধারণ মোজাইকের আবাসস্থল। ২০২৫ সালে, জনসংখ্যা <strong>১.৪৪ বিলিয়ন</strong> ছাড়িয়েছে, চীনকে পেছনে ফেলে বিশ্বের সবচেয়ে জনবহুল দেশ হয়েছে। মধ্যক বয়স প্রায় ২৮ বছর, যা ভারতকে বিশ্বের অন্যতম তরুণ বৃহৎ অর্থনীতি করে তুলেছে। সাক্ষরতার হার প্রায় <strong>৭৭%</strong>, যা ১৯৪৭ সালে স্বাধীনতার সময় মাত্র ১২% থেকে বৃদ্ধি পেয়েছে।</span>
-            <span data-lang="hi">भारत लोगों, भाषाओं, धर्मों और परंपराओं की एक असाधारण मोज़ेक का घर है। 2025 तक, जनसंख्या <strong>1.44 अरब</strong> से अधिक हो गई है, चीन को पीछे छोड़कर दुनिया का सबसे अधिक जनसंख्या वाला देश बन गया है। औसत आयु लगभग 28 वर्ष है, जो भारत को दुनिया की सबसे युवा बड़ी अर्थव्यवस्थाओं में से एक बनाती है। साक्षरता दर लगभग <strong>77%</strong> है।</span>
-          </p>
-
-          <div class="two-col">
-            <div>
-              <h3 style="font-size:1rem;margin:0 0 0.8rem;"><span data-lang="en">Major Religions</span><span data-lang="bn">প্রধান ধর্মসমূহ</span><span data-lang="hi">प्रमुख धर्म</span></h3>
-              <div class="progress-list">
-                <div class="progress-item">
-                  <div class="progress-label"><span>Hinduism</span><span>79.8%</span></div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill orange" data-width="79.8"></div></div>
-                </div>
-                <div class="progress-item">
-                  <div class="progress-label"><span>Islam</span><span>14.2%</span></div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill" data-width="14.2"></div></div>
-                </div>
-                <div class="progress-item">
-                  <div class="progress-label"><span>Christianity</span><span>2.3%</span></div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill green" data-width="2.3"></div></div>
-                </div>
-                <div class="progress-item">
-                  <div class="progress-label"><span>Sikhism</span><span>1.7%</span></div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill" data-width="1.7"></div></div>
-                </div>
-                <div class="progress-item">
-                  <div class="progress-label"><span>Buddhism + Jainism</span><span>1.2%</span></div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill green" data-width="1.2"></div></div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3 style="font-size:1rem;margin:0 0 0.8rem;"><span data-lang="en">Top Languages by Speakers</span><span data-lang="bn">ভাষাভাষী দ্বারা শীর্ষ ভাষা</span><span data-lang="hi">बोलने वालों द्वारा शीर्ष भाषाएँ</span></h3>
-              <div class="pill-grid">
-                <span class="pill pill-orange">🗣️ Hindi — 43%</span>
-                <span class="pill pill-blue">Bengali — 8%</span>
-                <span class="pill pill-green">Telugu — 7.2%</span>
-                <span class="pill pill-teal">Marathi — 6.9%</span>
-                <span class="pill pill-purple">Tamil — 5.9%</span>
-                <span class="pill pill-amber">Gujarati — 4.5%</span>
-                <span class="pill pill-blue">Urdu — 4.2%</span>
-                <span class="pill pill-orange">Kannada — 3.6%</span>
-                <span class="pill pill-green">Odia — 3.1%</span>
-                <span class="pill pill-teal">Punjabi — 2.8%</span>
-              </div>
-            </div>
+          <p><span data-lang="en">India's 1.44 billion people represent extraordinary diversity across language, religion, ethnicity, and culture. With over <strong>22 official languages</strong> and 1,600+ dialects, India is one of the most linguistically diverse nations on Earth. More than 2,000 distinct ethnic groups call India home, with ancient traditions stretching back millennia.</span><span data-lang="bn">ভারতের ১.৪৪ বিলিয়ন মানুষ ভাষা, ধর্ম, জাতিগত এবং সাংস্কৃতিক দিক থেকে অসাধারণ বৈচিত্র্যের প্রতিনিধিত্ব করে।</span><span data-lang="hi">भारत के 1.44 अरब लोग भाषा, धर्म, जातीयता और संस्कृति में असाधारण विविधता का प्रतिनिधित्व करते हैं।</span></p>
+          <h3 style="font-size:1rem;margin:1rem 0 0.6rem;font-style:normal;"><span data-lang="en">Major Religions</span><span data-lang="bn">প্রধান ধর্ম</span><span data-lang="hi">प्रमुख धर्म</span></h3>
+          <div class="progress-list">
+            <div class="progress-item"><div class="progress-label"><span>Hinduism</span><span>79.8%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill orange" data-width="80"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>Islam</span><span>14.2%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" data-width="14"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>Christianity</span><span>2.3%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill green" data-width="2"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>Sikhism</span><span>1.7%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" data-width="2"></div></div></div>
           </div>
-
-          <div class="highlight-box" style="margin-top:1.2rem;">
-            <h4><span data-lang="en">📊 Key Population Facts</span><span data-lang="bn">📊 প্রধান জনসংখ্যা তথ্য</span><span data-lang="hi">📊 मुख्य जनसंख्या तथ्य</span></h4>
-            <ul>
-              <li><span data-lang="en"><strong>Urban population:</strong> ~500 million people live in cities; Mumbai, Delhi, Kolkata, Chennai, and Bangalore are the five largest metros.</span><span data-lang="bn"><strong>শহুরে জনসংখ্যা:</strong> প্রায় ৫০০ মিলিয়ন মানুষ শহরে বাস করে; মুম্বাই, দিল্লি, কলকাতা, চেন্নাই এবং বেঙ্গালুরু পাঁচটি বৃহত্তম মেট্রো।</span><span data-lang="hi"><strong>शहरी जनसंख्या:</strong> ~500 मिलियन लोग शहरों में रहते हैं; मुंबई, दिल्ली, कोलकाता, चेन्नई और बेंगलुरु पाँच सबसे बड़े महानगर हैं।</span></li>
-              <li><span data-lang="en"><strong>Youth bulge:</strong> Over 600 million people are under 25 — more than the entire population of the European Union.</span><span data-lang="bn"><strong>যুব উপচয়:</strong> ৬০০ মিলিয়নেরও বেশি মানুষের বয়স ২৫ বছরের কম — ইউরোপীয় ইউনিয়নের মোট জনসংখ্যার চেয়ে বেশি।</span><span data-lang="hi"><strong>युवा उभार:</strong> 600 मिलियन से अधिक लोग 25 वर्ष से कम आयु के हैं — यूरोपीय संघ की पूरी जनसंख्या से अधिक।</span></li>
-              <li><span data-lang="en"><strong>Diaspora:</strong> India has the world's largest diaspora — over 32 million Non-Resident Indians (NRIs) live abroad, remitting ~$110 billion annually.</span><span data-lang="bn"><strong>প্রবাসী:</strong> ভারতে বিশ্বের বৃহত্তম প্রবাসী রয়েছে — ৩২ মিলিয়নেরও বেশি অনাবাসী ভারতীয় (এনআরআই) বিদেশে বাস করে, বার্ষিক প্রায় ১১০ বিলিয়ন ডলার পাঠায়।</span><span data-lang="hi"><strong>प्रवासी:</strong> भारत में दुनिया का सबसे बड़ा प्रवासी है — 32 मिलियन से अधिक अनिवासी भारतीय (NRI) विदेश में रहते हैं, जो प्रतिवर्ष ~$110 बिलियन भेजते हैं।</span></li>
-            </ul>
+          <h3 style="font-size:1rem;margin:1rem 0 0.5rem;font-style:normal;"><span data-lang="en">Major Languages</span><span data-lang="bn">প্রধান ভাষা</span><span data-lang="hi">प्रमुख भाषाएँ</span></h3>
+          <div class="pill-grid">
+            <span class="pill pill-orange">Hindi (44%)</span>
+            <span class="pill pill-blue">Bengali (8%)</span>
+            <span class="pill pill-green">Telugu (7.2%)</span>
+            <span class="pill pill-purple">Marathi (7%)</span>
+            <span class="pill pill-teal">Tamil (5.9%)</span>
+            <span class="pill pill-amber">Urdu (5%)</span>
+            <span class="pill pill-orange">Gujarati (4.5%)</span>
+            <span class="pill pill-blue">Kannada (3.7%)</span>
           </div>
         </section>
 
-        <!-- ░░░ CULTURE ░░░ -->
+        <!-- CULTURE -->
         <section id="culture">
-          <span class="section-tag">
-            <span data-lang="en">Heritage</span><span data-lang="bn">ঐতিহ্য</span><span data-lang="hi">संस्कृति</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Heritage</span><span data-lang="bn">ঐতিহ্য</span><span data-lang="hi">विरासत</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Culture, Arts &amp; Traditions</i></span><span data-lang="bn"><i>সংস্কৃতি, শিল্প ও ঐতিহ্য</i></span><span data-lang="hi"><i>संस्कृति, कला और परंपराएँ</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en">India's culture is among the most ancient, layered, and vibrant on Earth. With over <strong>5,000 years of continuous civilisation</strong>, India has developed a cultural heritage of staggering richness — encompassing classical dance forms, architectural marvels, philosophical traditions, music, cuisine, textiles, and festivals that are unparalleled in their variety and depth. Indian culture is not a monolith but a living tapestry woven from hundreds of distinct regional traditions that co-exist and constantly influence each other.</span>
-            <span data-lang="bn">ভারতের সংস্কৃতি পৃথিবীর অন্যতম প্রাচীন, বহুস্তরীয় এবং প্রাণবন্ত। <strong>৫,০০০ বছরেরও বেশি সময়ের ধারাবাহিক সভ্যতার</strong> সাথে, ভারত বিস্ময়কর সমৃদ্ধির একটি সাংস্কৃতিক ঐতিহ্য গড়ে তুলেছে — শাস্ত্রীয় নৃত্য রূপ, স্থাপত্য বিস্ময়, দার্শনিক ঐতিহ্য, সংগীত, রন্ধনশৈলী, বস্ত্র এবং উৎসব সমন্বিত।</span>
-            <span data-lang="hi">भारत की संस्कृति पृथ्वी पर सबसे प्राचीन, स्तरीय और जीवंत संस्कृतियों में से एक है। <strong>5,000 से अधिक वर्षों की निरंतर सभ्यता</strong> के साथ, भारत ने अविश्वसनीय समृद्धि की सांस्कृतिक विरासत विकसित की है — शास्त्रीय नृत्य रूप, वास्तुशिल्प के चमत्कार, दार्शनिक परंपराएँ, संगीत, व्यंजन, वस्त्र और त्योहार सहित।</span>
-          </p>
-
+          <p><span data-lang="en">Indian culture is one of the world's oldest living traditions, encompassing classical dance forms like Bharatanatyam, Kathak, Odissi, and Manipuri; classical music traditions of Hindustani and Carnatic systems; ancient philosophical schools; and rich textile, craft, and culinary traditions that vary dramatically across regions.</span><span data-lang="bn">ভারতীয় সংস্কৃতি বিশ্বের প্রাচীনতম জীবন্ত ঐতিহ্যগুলির মধ্যে একটি, যা ভরতনাট্যম, কথক, ওডিসি এবং মণিপুরির মতো শাস্ত্রীয় নৃত্যরূপ অন্তর্ভুক্ত করে।</span><span data-lang="hi">भारतीय संस्कृति दुनिया की सबसे पुरानी जीवित परंपराओं में से एक है, जिसमें भरतनाट्यम, कथक, ओडिसी और मणिपुरी जैसे शास्त्रीय नृत्य रूप शामिल हैं।</span></p>
           <div class="info-grid">
-            <div class="info-card"><div class="ic-icon">💃</div><h4><span data-lang="en">Classical Dance</span><span data-lang="bn">শাস্ত্রীয় নৃত্য</span><span data-lang="hi">शास्त्रीय नृत्य</span></h4><p><span data-lang="en">India recognises 8 classical dance forms: Bharatanatyam (Tamil Nadu), Kathak (North India), Odissi (Odisha), Kathakali (Kerala), Manipuri, Kuchipudi, Mohiniyattam, and Sattriya.</span><span data-lang="bn">ভারত ৮টি শাস্ত্রীয় নৃত্যরূপকে স্বীকৃতি দেয়: ভরতনাট্যম, কথক, ওডিশি, কথাকলি, মণিপুরি, কুচিপুড়ি, মোহিনীঅট্টম এবং সত্রীয়া।</span><span data-lang="hi">भारत 8 शास्त्रीय नृत्य रूपों को मान्यता देता है: भरतनाट्यम, कथक, ओडिसी, कथकली, मणिपुरी, कुचिपुड़ी, मोहिनीअट्टम और सत्रिया।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🎵</div><h4><span data-lang="en">Music Traditions</span><span data-lang="bn">সংগীত ঐতিহ্য</span><span data-lang="hi">संगीत परंपराएँ</span></h4><p><span data-lang="en">Two major traditions: Hindustani (North, e.g., Ravi Shankar's sitar) and Carnatic (South). India also has rich folk music traditions in every region and invented musical instruments like the sitar, tabla, and veena.</span><span data-lang="bn">দুটি প্রধান ঐতিহ্য: হিন্দুস্তানি (উত্তর) এবং কর্নাটিক (দক্ষিণ)। ভারতে প্রতিটি অঞ্চলে সমৃদ্ধ লোক সংগীত ঐতিহ্যও রয়েছে এবং সেতার, তবলা ও বীণার মতো বাদ্যযন্ত্র উদ্ভাবন করেছে।</span><span data-lang="hi">दो प्रमुख परंपराएँ: हिंदुस्तानी (उत्तर) और कर्नाटक (दक्षिण)। भारत में हर क्षेत्र में समृद्ध लोक संगीत परंपराएँ भी हैं और सितार, तबला और वीणा जैसे वाद्ययंत्रों का आविष्कार किया।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🏺</div><h4><span data-lang="en">Visual Arts</span><span data-lang="bn">দৃশ্যকলা</span><span data-lang="hi">दृश्य कलाएँ</span></h4><p><span data-lang="en">From Madhubani paintings of Bihar, Warli art of Maharashtra, and miniature Mughal paintings to contemporary artists like M.F. Husain and Amrita Sher-Gil, India's visual arts tradition spans millennia.</span><span data-lang="bn">বিহারের মধুবনী চিত্র, মহারাষ্ট্রের ওয়ারলি শিল্প, মুঘল ক্ষুদ্রচিত্র থেকে এম.এফ. হুসেন এবং অমৃতা শের-গিলের মতো সমসাময়িক শিল্পী পর্যন্ত।</span><span data-lang="hi">बिहार के मधुबनी चित्र, महाराष्ट्र के वारली कला, मुगल लघु चित्रों से लेकर एम.एफ. हुसैन और अमृता शेर-गिल जैसे समकालीन कलाकारों तक।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🎭</div><h4><span data-lang="en">Theatre &amp; Literature</span><span data-lang="bn">নাটক ও সাহিত্য</span><span data-lang="hi">रंगमंच और साहित्य</span></h4><p><span data-lang="en">India has 24 languages listed in the 8th Schedule of the Constitution, each with a rich literary tradition. Rabindranath Tagore (1913 Nobel Prize) wrote Gitanjali; classical Sanskrit dramas date back to Kalidasa (4th–5th century CE).</span><span data-lang="bn">ভারতের সংবিধানের ৮ম তফসিলে ২৪টি ভাষা তালিকাভুক্ত রয়েছে, প্রতিটি সমৃদ্ধ সাহিত্যিক ঐতিহ্য সহ। রবীন্দ্রনাথ ঠাকুর (১৯১৩ নোবেল পুরস্কার) গীতাঞ্জলি লিখেছিলেন।</span><span data-lang="hi">भारत में संविधान की 8वीं अनुसूची में 24 भाषाएँ सूचीबद्ध हैं, प्रत्येक में एक समृद्ध साहित्यिक परंपरा है। रबींद्रनाथ टैगोर (1913 नोबेल पुरस्कार) ने गीतांजलि लिखी।</span></p></div>
-          </div>
-
-          <div class="highlight-box amber" style="margin-top:1.2rem;">
-            <h4><span data-lang="en">🎉 Major Indian Festivals</span><span data-lang="bn">🎉 প্রধান ভারতীয় উৎসব</span><span data-lang="hi">🎉 प्रमुख भारतीय त्योहार</span></h4>
-            <div class="tags">
-              <span class="tag">🪔 Diwali</span><span class="tag">🎨 Holi</span><span class="tag">🕌 Eid</span>
-              <span class="tag">🌟 Navratri</span><span class="tag">🏏 Pongal</span><span class="tag">🎋 Onam</span>
-              <span class="tag">🎆 Durga Puja</span><span class="tag">🔥 Baisakhi</span><span class="tag">🌙 Eid-ul-Adha</span>
-              <span class="tag">🎑 Ganesh Chaturthi</span><span class="tag">⭐ Christmas</span><span class="tag">🏮 Lohri</span>
-            </div>
+            <div class="info-card"><div class="ic-icon">🎭</div><h4><span data-lang="en">Classical Dance</span><span data-lang="bn">শাস্ত্রীয় নৃত্য</span><span data-lang="hi">शास्त्रीय नृत्य</span></h4><p><span data-lang="en">8 classical dance forms recognised by the Sangeet Natak Akademi, each representing a distinct regional tradition dating back centuries.</span><span data-lang="bn">সংগীত নাটক একাডেমী দ্বারা স্বীকৃত ৮টি শাস্ত্রীয় নৃত্যরূপ।</span><span data-lang="hi">संगीत नाटक अकादमी द्वारा मान्यता प्राप्त 8 शास्त्रीय नृत्य रूप।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🎵</div><h4><span data-lang="en">Classical Music</span><span data-lang="bn">শাস্ত্রীয় সঙ্গীত</span><span data-lang="hi">शास्त्रीय संगीत</span></h4><p><span data-lang="en">Two distinct systems: Hindustani (North India) and Carnatic (South India), each with hundreds of ragas developed over 3,000+ years.</span><span data-lang="bn">দুটি স্বতন্ত্র সিস্টেম: হিন্দুস্তানি (উত্তর ভারত) এবং কর্ণাটিক (দক্ষিণ ভারত)।</span><span data-lang="hi">दो अलग प्रणालियाँ: हिंदुस्तानी (उत्तर भारत) और कर्नाटिक (दक्षिण भारत)।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🧘</div><h4>Yoga &amp; Ayurveda</h4><p><span data-lang="en">Yoga originated in India 5,000+ years ago and is now practised by 300+ million people worldwide. Ayurveda is one of the world's oldest medical systems.</span><span data-lang="bn">যোগ ৫,০০০+ বছর আগে ভারতে উদ্ভূত হয়েছিল এবং এখন বিশ্বব্যাপী ৩০০+ মিলিয়ন মানুষ অনুশীলন করে।</span><span data-lang="hi">योग की उत्पत्ति भारत में 5,000+ साल पहले हुई और अब दुनिया भर में 300+ मिलियन लोगों द्वारा अभ्यास किया जाता है।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🎨</div><h4><span data-lang="en">Textiles &amp; Crafts</span><span data-lang="bn">বস্ত্র ও কারুশিল্প</span><span data-lang="hi">वस्त्र और शिल्प</span></h4><p><span data-lang="en">India is famous for Banarasi silk, Pashmina wool, Kanjeevaram sarees, Madhubani paintings, Warli art, and hundreds of other regional craft traditions.</span><span data-lang="bn">ভারত বেনারসি রেশম, পশমিনা উল, কাঞ্জিভরম শাড়ি এবং মধুবনী চিত্রকলার জন্য বিখ্যাত।</span><span data-lang="hi">भारत बनारसी रेशम, पश्मीना ऊन, कांजीवरम साड़ियों और मधुबनी चित्रों के लिए प्रसिद्ध है।</span></p></div>
           </div>
         </section>
 
-        <!-- ░░░ ECONOMY ░░░ -->
+        <!-- ECONOMY -->
         <section id="economy">
-          <span class="section-tag">
-            <span data-lang="en">Finance</span><span data-lang="bn">অর্থ</span><span data-lang="hi">वित्त</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Finance</span><span data-lang="bn">অর্থ</span><span data-lang="hi">वित्त</span></span>
           <div class="heading-row">
-            <h2><span data-lang="en"><i>Economy of India</i></span><span data-lang="bn"><i>ভারতের অর্থনীতি</i></span><span data-lang="hi"><i>भारत की अर्थव्यवस्था</i></span></h2>
+            <h2><span data-lang="en"><i>Economy &amp; Trade</i></span><span data-lang="bn"><i>অর্থনীতি ও বাণিজ্য</i></span><span data-lang="hi"><i>अर्थव्यवस्था और व्यापार</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en">India's economy is the <strong>fifth-largest in the world by nominal GDP (approximately $3.5 trillion as of 2024)</strong> and the third-largest by purchasing power parity (PPP). From a near-bankrupt state in 1991 that was forced to pledge its gold reserves to the IMF, India transformed itself through liberalisation, privatisation, and globalisation into one of the world's fastest-growing major economies. The <strong>IT and services sector</strong> is India's single greatest export engine, contributing nearly $250 billion annually and placing India on the global map as a tech superpower. Cities like Bangalore (Bengaluru), Hyderabad, and Pune have become globally recognised technology hubs.</span>
-            <span data-lang="bn">ভারতের অর্থনীতি <strong>নামমাত্র জিডিপিতে বিশ্বের পঞ্চম বৃহত্তম (২০২৪ সালে প্রায় ৩.৫ ট্রিলিয়ন ডলার)</strong> এবং ক্রয় ক্ষমতা সমতায় (পিপিপি) তৃতীয় বৃহত্তম। ১৯৯১ সালে আইএমএফকে তার স্বর্ণ মজুদ বন্ধক রাখতে বাধ্য হওয়া একটি প্রায়-দেউলিয়া রাষ্ট্র থেকে, ভারত উদারীকরণ, বেসরকারিকরণ এবং বৈশ্বিকীকরণের মাধ্যমে বিশ্বের দ্রুত প্রবৃদ্ধিপ্রাপ্ত প্রধান অর্থনীতিগুলির মধ্যে একটিতে নিজেকে রূপান্তরিত করেছে।</span>
-            <span data-lang="hi">भारत की अर्थव्यवस्था <strong>नाममात्र GDP के हिसाब से दुनिया की पाँचवीं सबसे बड़ी (2024 तक लगभग $3.5 ट्रिलियन)</strong> और क्रय शक्ति समता (PPP) के अनुसार तीसरी सबसे बड़ी है। 1991 में एक लगभग दिवालिया राज्य जो IMF को अपना सोना गिरवी रखने के लिए मजबूर था, उससे भारत ने उदारीकरण, निजीकरण और वैश्वीकरण के माध्यम से खुद को दुनिया की सबसे तेज़ी से बढ़ती प्रमुख अर्थव्यवस्थाओं में से एक में बदल लिया।</span>
-          </p>
-
+          <p><span data-lang="en">India is the world's <strong>fifth-largest economy</strong> (nominal GDP ~$3.5 trillion) and the fastest-growing major economy, projected to become the third-largest by 2030. The economy spans agriculture, manufacturing, and a vast services sector led by a world-class IT industry headquartered in "Silicon Valley of India" — Bengaluru.</span><span data-lang="bn">ভারত বিশ্বের <strong>পঞ্চম বৃহত্তম অর্থনীতি</strong> (নামমাত্র জিডিপি ~$৩.৫ ট্রিলিয়ন) এবং দ্রুততম বৃদ্ধি পাওয়া প্রধান অর্থনীতি।</span><span data-lang="hi">भारत दुनिया की <strong>पाँचवीं सबसे बड़ी अर्थव्यवस्था</strong> (नाममात्र GDP ~$3.5 ट्रिलियन) है और सबसे तेज़ी से बढ़ती प्रमुख अर्थव्यवस्था है।</span></p>
           <div class="stats-strip">
             <div class="stat-card"><div class="stat-icon">📈</div><span class="stat-num">6.5%</span><span class="stat-lbl">GDP Growth Rate</span></div>
             <div class="stat-card"><div class="stat-icon">💻</div><span class="stat-num">$250B</span><span class="stat-lbl">IT Exports</span></div>
             <div class="stat-card"><div class="stat-icon">🌾</div><span class="stat-num">18%</span><span class="stat-lbl">GDP from Agriculture</span></div>
             <div class="stat-card"><div class="stat-icon">🏭</div><span class="stat-num">28%</span><span class="stat-lbl">GDP from Industry</span></div>
           </div>
-
-          <h3 style="font-size:1rem;margin:1.2rem 0 0.6rem;font-style:normal;"><span data-lang="en">Economic Sectors — Contribution to GDP</span><span data-lang="bn">অর্থনৈতিক খাত — জিডিপিতে অবদান</span><span data-lang="hi">आर्थिक क्षेत्र — GDP में योगदान</span></h3>
+          <h3 style="font-size:1rem;margin:1.2rem 0 0.6rem;font-style:normal;"><span data-lang="en">Economic Sectors — Contribution to GDP</span><span data-lang="bn">অর্থনৈতিক খাত</span><span data-lang="hi">आर्थिक क्षेत्र</span></h3>
           <div class="progress-list">
-            <div class="progress-item">
-              <div class="progress-label"><span><span data-lang="en">Services (IT, Finance, Trade)</span><span data-lang="bn">সেবা (আইটি, অর্থ, বাণিজ্য)</span><span data-lang="hi">सेवाएँ (IT, वित्त, व्यापार)</span></span><span>54%</span></div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill" data-width="54"></div></div>
-            </div>
-            <div class="progress-item">
-              <div class="progress-label"><span><span data-lang="en">Industry (Manufacturing, Construction)</span><span data-lang="bn">শিল্প (উৎপাদন, নির্মাণ)</span><span data-lang="hi">उद्योग (विनिर्माण, निर्माण)</span></span><span>28%</span></div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill orange" data-width="28"></div></div>
-            </div>
-            <div class="progress-item">
-              <div class="progress-label"><span><span data-lang="en">Agriculture &amp; Forestry</span><span data-lang="bn">কৃষি ও বনায়ন</span><span data-lang="hi">कृषि और वानिकी</span></span><span>18%</span></div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill green" data-width="18"></div></div>
-            </div>
+            <div class="progress-item"><div class="progress-label"><span>Services (IT, Finance, Trade)</span><span>54%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" data-width="54"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>Industry (Manufacturing, Construction)</span><span>28%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill orange" data-width="28"></div></div></div>
+            <div class="progress-item"><div class="progress-label"><span>Agriculture &amp; Forestry</span><span>18%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill green" data-width="18"></div></div></div>
           </div>
-
           <div class="highlight-box green" style="margin-top:1rem;">
-            <h4><span data-lang="en">🚀 India's Economic Milestones</span><span data-lang="bn">🚀 ভারতের অর্থনৈতিক মাইলফলক</span><span data-lang="hi">🚀 भारत के आर्थिक मील के पत्थर</span></h4>
+            <h4>🚀 <span data-lang="en">India's Economic Milestones</span><span data-lang="bn">ভারতের অর্থনৈতিক মাইলফলক</span><span data-lang="hi">भारत के आर्थिक मील के पत्थर</span></h4>
             <ul>
-              <li><span data-lang="en"><strong>UPI (Unified Payments Interface)</strong> processes over 13 billion transactions monthly, making India the world's largest real-time digital payments market.</span><span data-lang="bn"><strong>ইউপিআই (ইউনিফাইড পেমেন্টস ইন্টারফেস)</strong> মাসে ১৩ বিলিয়নেরও বেশি লেনদেন প্রক্রিয়া করে, ভারতকে বিশ্বের বৃহত্তম রিয়েল-টাইম ডিজিটাল পেমেন্ট বাজার করে তুলেছে।</span><span data-lang="hi"><strong>UPI (एकीकृत भुगतान इंटरफेस)</strong> मासिक 13 अरब से अधिक लेनदेन संसाधित करता है, जिससे भारत दुनिया का सबसे बड़ा रियल-टाइम डिजिटल भुगतान बाजार बन गया है।</span></li>
-              <li><span data-lang="en">India has the <strong>world's third-largest startup ecosystem</strong> with over 100 unicorns and a total valuation exceeding $350 billion.</span><span data-lang="bn">ভারতে <strong>বিশ্বের তৃতীয় বৃহত্তম স্টার্টআপ ইকোসিস্টেম</strong> রয়েছে যেখানে ১০০টিরও বেশি ইউনিকর্ন এবং মোট মূল্যায়ন ৩৫০ বিলিয়ন ডলারেরও বেশি।</span><span data-lang="hi">भारत में <strong>दुनिया का तीसरा सबसे बड़ा स्टार्टअप पारिस्थितिकी तंत्र</strong> है, जिसमें 100 से अधिक यूनिकॉर्न और कुल मूल्यांकन $350 बिलियन से अधिक है।</span></li>
-              <li><span data-lang="en">India is the world's <strong>largest producer of milk, pulses, and spices</strong> and the second-largest producer of wheat, rice, and sugarcane.</span><span data-lang="bn">ভারত বিশ্বের <strong>দুধ, ডাল এবং মশলার সবচেয়ে বড় উৎপাদক</strong> এবং গম, চাল ও আখের দ্বিতীয় বৃহত্তম উৎপাদক।</span><span data-lang="hi">भारत दुनिया का <strong>दूध, दालों और मसालों का सबसे बड़ा उत्पादक</strong> और गेहूँ, चावल और गन्ने का दूसरा सबसे बड़ा उत्पादक है।</span></li>
+              <li><span data-lang="en"><strong>UPI</strong> processes over 13 billion transactions monthly — world's largest real-time digital payments market.</span><span data-lang="bn"><strong>ইউপিআই</strong> মাসে ১৩ বিলিয়নেরও বেশি লেনদেন প্রক্রিয়া করে।</span><span data-lang="hi"><strong>UPI</strong> मासिक 13 अरब से अधिक लेनदेन संसाधित करता है।</span></li>
+              <li><span data-lang="en">India has the <strong>world's third-largest startup ecosystem</strong> — 100+ unicorns, $350B+ total valuation.</span><span data-lang="bn">ভারতে <strong>বিশ্বের তৃতীয় বৃহত্তম স্টার্টআপ ইকোসিস্টেম</strong> — ১০০+ ইউনিকর্ন।</span><span data-lang="hi">भारत में <strong>दुनिया का तीसरा सबसे बड़ा स्टार्टअप पारिस्थितिकी तंत्र</strong> है — 100+ यूनिकॉर्न।</span></li>
+              <li><span data-lang="en">World's largest producer of <strong>milk, pulses, and spices</strong>; second-largest producer of wheat, rice, and sugarcane.</span><span data-lang="bn">বিশ্বের বৃহত্তম <strong>দুধ, ডাল এবং মশলা</strong> উৎপাদক।</span><span data-lang="hi">दुनिया का सबसे बड़ा <strong>दूध, दालों और मसालों</strong> का उत्पादक।</span></li>
             </ul>
           </div>
         </section>
 
-        <!-- ░░░ GOVERNMENT ░░░ -->
+        <!-- GOVERNMENT -->
         <section id="government">
-          <span class="section-tag">
-            <span data-lang="en">Politics</span><span data-lang="bn">রাজনীতি</span><span data-lang="hi">राजनीति</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Politics</span><span data-lang="bn">রাজনীতি</span><span data-lang="hi">राजनीति</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Government &amp; Politics</i></span><span data-lang="bn"><i>সরকার ও রাজনীতি</i></span><span data-lang="hi"><i>सरकार और राजनीति</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en">India is a <strong>sovereign, socialist, secular, democratic republic</strong> with a federal structure. The Constitution of India, which came into force on 26 January 1950, is the world's longest written national constitution with 448 articles, 12 schedules, and 5 appendices. It guarantees fundamental rights to all citizens, including freedom of speech, religion, equality before law, and the right to education. India's democracy is remarkable for its scale — the 2024 General Election saw over <strong>640 million votes cast</strong>, the largest democratic exercise in human history.</span>
-            <span data-lang="bn">ভারত একটি <strong>সার্বভৌম, সমাজতান্ত্রিক, ধর্মনিরপেক্ষ, গণতান্ত্রিক প্রজাতন্ত্র</strong> যার একটি যুক্তরাষ্ট্রীয় কাঠামো রয়েছে। ভারতের সংবিধান, যা ২৬ জানুয়ারি ১৯৫০ সালে কার্যকর হয়েছিল, ৪৪৮টি অনুচ্ছেদ, ১২টি তফসিল এবং ৫টি পরিশিষ্ট সহ বিশ্বের দীর্ঘতম লিখিত জাতীয় সংবিধান। ২০২৪ সালের সাধারণ নির্বাচনে <strong>৬৪০ মিলিয়নেরও বেশি ভোট</strong> পড়েছিল, যা মানব ইতিহাসের বৃহত্তম গণতান্ত্রিক অনুশীলন।</span>
-            <span data-lang="hi">भारत एक <strong>संप्रभु, समाजवादी, धर्मनिरपेक्ष, लोकतांत्रिक गणराज्य</strong> है जिसमें एक संघीय ढाँचा है। भारत का संविधान, जो 26 जनवरी 1950 को लागू हुआ, 448 अनुच्छेदों, 12 अनुसूचियों और 5 परिशिष्टों के साथ दुनिया का सबसे लंबा लिखित राष्ट्रीय संविधान है। 2024 के आम चुनाव में <strong>64 करोड़ से अधिक वोट</strong> पड़े।</span>
-          </p>
+          <p><span data-lang="en">India is a <strong>sovereign, socialist, secular, democratic republic</strong>. The Constitution of India (26 January 1950) — the world's longest written national constitution with 448 articles — guarantees fundamental rights to all citizens. The 2024 General Election saw over <strong>640 million votes cast</strong>, the largest democratic exercise in human history.</span><span data-lang="bn">ভারত একটি <strong>সার্বভৌম, সমাজতান্ত্রিক, ধর্মনিরপেক্ষ, গণতান্ত্রিক প্রজাতন্ত্র</strong>।</span><span data-lang="hi">भारत एक <strong>संप्रभु, समाजवादी, धर्मनिरपेक्ष, लोकतांत्रिक गणराज्य</strong> है।</span></p>
           <div class="info-grid">
-            <div class="info-card"><div class="ic-icon">🏛️</div><h4>Lok Sabha</h4><p><span data-lang="en">The lower house of Parliament (House of the People) — 543 elected members representing constituencies across India. Holds primary legislative power.</span><span data-lang="bn">সংসদের নিম্নকক্ষ (জনগণের সংসদ) — ভারত জুড়ে নির্বাচনকেন্দ্রের প্রতিনিধিত্বকারী ৫৪৩ জন নির্বাচিত সদস্য।</span><span data-lang="hi">संसद का निचला सदन (लोक सभा) — भारत भर के निर्वाचन क्षेत्रों का प्रतिनिधित्व करने वाले 543 निर्वाचित सदस्य।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🏛️</div><h4>Rajya Sabha</h4><p><span data-lang="en">The upper house (Council of States) — 245 members representing India's states and union territories. Reviews legislation passed by the Lok Sabha.</span><span data-lang="bn">উচ্চকক্ষ (রাজ্যসভা) — ভারতের রাজ্য ও কেন্দ্রশাসিত অঞ্চলগুলির প্রতিনিধিত্বকারী ২৪৫ জন সদস্য।</span><span data-lang="hi">ऊपरी सदन (राज्य सभा) — भारत के राज्यों और केंद्र शासित प्रदेशों का प्रतिनिधित्व करने वाले 245 सदस्य।</span></p></div>
-            <div class="info-card"><div class="ic-icon">⚖️</div><h4><span data-lang="en">Supreme Court</span><span data-lang="bn">সুপ্রিম কোর্ট</span><span data-lang="hi">सुप्रीम कोर्ट</span></h4><p><span data-lang="en">India's apex court, guardian of the Constitution. Has 34 judges including the Chief Justice. Hears over 60,000 cases per year and is one of the most powerful judiciaries in the world.</span><span data-lang="bn">ভারতের সর্বোচ্চ আদালত, সংবিধানের রক্ষক। প্রধান বিচারপতি সহ ৩৪ জন বিচারক। বার্ষিক ৬০,০০০ এরও বেশি মামলার শুনানি করে।</span><span data-lang="hi">भारत का सर्वोच्च न्यायालय, संविधान का संरक्षक। मुख्य न्यायाधीश सहित 34 न्यायाधीश। प्रति वर्ष 60,000 से अधिक मामले सुनता है।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🗺️</div><h4><span data-lang="en">Federal Structure</span><span data-lang="bn">যুক্তরাষ্ট্রীয় কাঠামো</span><span data-lang="hi">संघीय ढाँचा</span></h4><p><span data-lang="en">28 States and 8 Union Territories, each with their own elected governments. The constitution divides powers between the Union List, State List, and Concurrent List.</span><span data-lang="bn">২৮টি রাজ্য এবং ৮টি কেন্দ্রশাসিত অঞ্চল, প্রতিটি তাদের নিজস্ব নির্বাচিত সরকার সহ। সংবিধান ইউনিয়ন তালিকা, রাজ্য তালিকা এবং সমবর্তী তালিকার মধ্যে ক্ষমতা বিভাজন করে।</span><span data-lang="hi">28 राज्य और 8 केंद्र शासित प्रदेश, प्रत्येक में अपनी निर्वाचित सरकारें हैं। संविधान केंद्रीय सूची, राज्य सूची और समवर्ती सूची के बीच शक्तियों को विभाजित करता है।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🏛️</div><h4>Lok Sabha</h4><p><span data-lang="en">Lower house of Parliament — 543 elected members. Holds primary legislative power.</span><span data-lang="bn">সংসদের নিম্নকক্ষ — ৫৪৩ জন নির্বাচিত সদস্য।</span><span data-lang="hi">संसद का निचला सदन — 543 निर्वाचित सदस्य।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🏛️</div><h4>Rajya Sabha</h4><p><span data-lang="en">Upper house — 245 members representing India's states and union territories.</span><span data-lang="bn">উচ্চকক্ষ — ভারতের রাজ্যগুলির প্রতিনিধিত্বকারী ২৪৫ জন সদস্য।</span><span data-lang="hi">ऊपरी सदन — 245 सदस्य।</span></p></div>
+            <div class="info-card"><div class="ic-icon">⚖️</div><h4><span data-lang="en">Supreme Court</span><span data-lang="bn">সুপ্রিম কোর্ট</span><span data-lang="hi">सुप्रीम कोर्ट</span></h4><p><span data-lang="en">India's apex court with 34 judges. Hears 60,000+ cases per year and is one of the most powerful judiciaries in the world.</span><span data-lang="bn">ভারতের সর্বোচ্চ আদালত, ৩৪ জন বিচারক সহ।</span><span data-lang="hi">34 न्यायाधीशों के साथ भारत का सर्वोच्च न्यायालय।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🗺️</div><h4><span data-lang="en">Federal Structure</span><span data-lang="bn">যুক্তরাষ্ট্রীয় কাঠামো</span><span data-lang="hi">संघीय ढाँचा</span></h4><p><span data-lang="en">28 States and 8 Union Territories, each with elected governments. Powers divided between Union, State, and Concurrent lists.</span><span data-lang="bn">২৮টি রাজ্য এবং ৮টি কেন্দ্রশাসিত অঞ্চল।</span><span data-lang="hi">28 राज्य और 8 केंद्र शासित प्रदेश।</span></p></div>
           </div>
         </section>
 
-        <!-- ░░░ SCIENCE & TECH ░░░ -->
+        <!-- SCIENCE & TECH -->
         <section id="science">
-          <span class="section-tag">
-            <span data-lang="en">Innovation</span><span data-lang="bn">উদ্ভাবন</span><span data-lang="hi">नवाचार</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Innovation</span><span data-lang="bn">উদ্ভাবন</span><span data-lang="hi">नवाचार</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Science, Technology &amp; Education</i></span><span data-lang="bn"><i>বিজ্ঞান, প্রযুক্তি ও শিক্ষা</i></span><span data-lang="hi"><i>विज्ञान, प्रौद्योगिकी और शिक्षा</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en">India's scientific and technological achievements are remarkable for a developing nation. The <strong>Indian Space Research Organisation (ISRO)</strong> has become a global leader in cost-effective space exploration, launching satellites for over 30 countries at a fraction of Western costs. The <strong>Chandrayaan-3 mission (2023)</strong> made India only the fourth country — and the first to land near the Moon's south pole — marking a historic achievement. In 2014, the <strong>Mars Orbiter Mission (Mangalyaan)</strong> made India the first Asian nation to reach Martian orbit and the first nation in the world to do so on its very first attempt.</span>
-            <span data-lang="bn">ভারতের বৈজ্ঞানিক ও প্রযুক্তিগত অর্জন একটি উন্নয়নশীল দেশের জন্য উল্লেখযোগ্য। <strong>ভারতীয় মহাকাশ গবেষণা সংস্থা (ইসরো)</strong> সাশ্রয়ী মহাকাশ অন্বেষণে বৈশ্বিক নেতা হয়েছে, পশ্চিমা খরচের একটি অংশে ৩০টিরও বেশি দেশের জন্য স্যাটেলাইট উৎক্ষেপণ করেছে। <strong>চন্দ্রযান-৩ মিশন (২০২৩)</strong> ভারতকে শুধুমাত্র চতুর্থ দেশ করেছে — এবং চাঁদের দক্ষিণ মেরুর কাছে অবতরণ করা প্রথম — একটি ঐতিহাসিক কৃতিত্ব চিহ্নিত করেছে।</span>
-            <span data-lang="hi">भारत की वैज्ञानिक और तकनीकी उपलब्धियाँ एक विकासशील राष्ट्र के लिए उल्लेखनीय हैं। <strong>भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO)</strong> किफायती अंतरिक्ष अन्वेषण में वैश्विक नेता बन गया है। <strong>चंद्रयान-3 मिशन (2023)</strong> ने भारत को केवल चौथा देश बनाया — और चंद्रमा के दक्षिणी ध्रुव के पास उतरने वाला पहला।</span>
-          </p>
-
+          <p><span data-lang="en">India's scientific achievements are remarkable. <strong>ISRO's Chandrayaan-3 (2023)</strong> made India the first country to land near the Moon's south pole. The <strong>Mangalyaan Mars mission (2014)</strong> made India the first Asian nation to reach Martian orbit — on its very first attempt. India is the second-fastest growing AI market globally.</span><span data-lang="bn">ভারতের বৈজ্ঞানিক অর্জন উল্লেখযোগ্য। <strong>ইসরোর চন্দ্রযান-৩ (২০২৩)</strong> ভারতকে চাঁদের দক্ষিণ মেরুর কাছে অবতরণ করা প্রথম দেশ করেছে।</span><span data-lang="hi">भारत की वैज्ञानिक उपलब्धियाँ उल्लेखनीय हैं। <strong>ISRO के चंद्रयान-3 (2023)</strong> ने भारत को चंद्रमा के दक्षिणी ध्रुव के पास उतरने वाला पहला देश बनाया।</span></p>
           <div class="info-grid">
-            <div class="info-card"><div class="ic-icon">🚀</div><h4>ISRO</h4><p><span data-lang="en">India's space agency founded in 1969. Notable missions: Chandrayaan-1 (discovered water on Moon), Chandrayaan-3 (south pole landing), Mangalyaan (Mars), PSLV (100+ missions).</span><span data-lang="bn">১৯৬৯ সালে প্রতিষ্ঠিত ভারতের মহাকাশ সংস্থা। উল্লেখযোগ্য মিশন: চন্দ্রযান-১ (চাঁদে জল আবিষ্কার), চন্দ্রযান-৩, মঙ্গলযান, পিএসএলভি।</span><span data-lang="hi">1969 में स्थापित भारत की अंतरिक्ष एजेंसी। उल्लेखनीय मिशन: चंद्रयान-1 (चंद्रमा पर पानी की खोज), चंद्रयान-3, मंगलयान, PSLV।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🎓</div><h4>IITs &amp; IIMs</h4><p><span data-lang="en">23 Indian Institutes of Technology (IITs) produce world-class engineers; 20 Indian Institutes of Management (IIMs) are globally ranked. IIT alumni have founded companies worth trillions of dollars.</span><span data-lang="bn">২৩টি ইন্ডিয়ান ইনস্টিটিউট অফ টেকনোলজি (আইআইটি) বিশ্বমানের প্রকৌশলী তৈরি করে; ২০টি ইন্ডিয়ান ইনস্টিটিউট অফ ম্যানেজমেন্ট (আইআইএম) বৈশ্বিকভাবে র‍্যাঙ্কড।</span><span data-lang="hi">23 भारतीय प्रौद्योगिकी संस्थान (IIT) विश्व स्तरीय इंजीनियर पैदा करते हैं; 20 भारतीय प्रबंधन संस्थान (IIM) वैश्विक स्तर पर रैंक किए गए हैं।</span></p></div>
-            <div class="info-card"><div class="ic-icon">💊</div><h4><span data-lang="en">Pharmaceuticals</span><span data-lang="bn">ফার্মাসিউটিক্যাল</span><span data-lang="hi">फार्मास्यूटिकल्स</span></h4><p><span data-lang="en">India is the "pharmacy of the world" — supplying 50% of global vaccine demand, 40% of US generic drugs, and 25% of all UK medicines. The industry is worth $50 billion annually.</span><span data-lang="bn">ভারত "বিশ্বের ফার্মেসি" — বৈশ্বিক ভ্যাকসিনের চাহিদার ৫০%, মার্কিন জেনেরিক ওষুধের ৪০% এবং সমস্ত ইউকে ওষুধের ২৫% সরবরাহ করে।</span><span data-lang="hi">भारत "दुनिया की फार्मेसी" है — वैश्विक वैक्सीन मांग का 50%, अमेरिकी जेनेरिक दवाओं का 40% और यूके की सभी दवाओं का 25% आपूर्ति करता है।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🤖</div><h4>AI &amp; Deep Tech</h4><p><span data-lang="en">India is the second-fastest growing AI market globally. Indian engineers lead AI research at Google, Microsoft, OpenAI, and other tech giants. Bengaluru alone has over 1,000 AI startups.</span><span data-lang="bn">ভারত বিশ্বব্যাপী দ্বিতীয় দ্রুত প্রবৃদ্ধিপ্রাপ্ত এআই বাজার। ভারতীয় প্রকৌশলীরা গুগল, মাইক্রোসফট, ওপেনএআই এবং অন্যান্য টেক জায়ান্টে এআই গবেষণার নেতৃত্ব দেন।</span><span data-lang="hi">भारत वैश्विक स्तर पर दूसरा सबसे तेज़ी से बढ़ता AI बाजार है। भारतीय इंजीनियर Google, Microsoft, OpenAI और अन्य टेक दिग्गजों में AI अनुसंधान का नेतृत्व करते हैं।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🚀</div><h4>ISRO</h4><p><span data-lang="en">Founded 1969. Chandrayaan-1 (discovered water on Moon), Chandrayaan-3 (south pole landing), Mangalyaan (Mars orbit), PSLV (100+ successful launches).</span><span data-lang="bn">১৯৬৯ সালে প্রতিষ্ঠিত। চন্দ্রযান-১, চন্দ্রযান-৩, মঙ্গলযান, পিএসএলভি।</span><span data-lang="hi">1969 में स्थापित। चंद्रयान-1, चंद्रयान-3, मंगलयान, PSLV।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🎓</div><h4>IITs &amp; IIMs</h4><p><span data-lang="en">23 IITs producing world-class engineers; 20 globally-ranked IIMs. IIT alumni have co-founded companies worth trillions.</span><span data-lang="bn">২৩টি আইআইটি বিশ্বমানের প্রকৌশলী তৈরি করে; বৈশ্বিকভাবে র‍্যাঙ্কড ২০টি আইআইএম।</span><span data-lang="hi">23 IIT विश्व स्तरीय इंजीनियर; 20 वैश्विक स्तर पर रैंक IIM।</span></p></div>
+            <div class="info-card"><div class="ic-icon">💊</div><h4><span data-lang="en">Pharmaceuticals</span><span data-lang="bn">ফার্মাসিউটিক্যাল</span><span data-lang="hi">फार्मास्यूटिकल्स</span></h4><p><span data-lang="en">"Pharmacy of the world" — 50% of global vaccine demand, 40% of US generic drugs, 25% of all UK medicines. Industry worth $50B annually.</span><span data-lang="bn">"বিশ্বের ফার্মেসি" — বৈশ্বিক ভ্যাকসিনের চাহিদার ৫০%।</span><span data-lang="hi">"दुनिया की फार्मेसी" — वैश्विक वैक्सीन मांग का 50%।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🤖</div><h4>AI &amp; Deep Tech</h4><p><span data-lang="en">India is the 2nd-fastest growing AI market. Indian engineers lead AI research at Google, Microsoft, OpenAI. Bengaluru has 1,000+ AI startups.</span><span data-lang="bn">ভারত দ্বিতীয় দ্রুত প্রবৃদ্ধিপ্রাপ্ত এআই বাজার। ভারতীয় প্রকৌশলীরা গুগল, মাইক্রোসফটে নেতৃত্ব দেন।</span><span data-lang="hi">भारत दूसरा सबसे तेज़ AI बाजार। भारतीय इंजीनियर Google, Microsoft में नेतृत्व करते हैं।</span></p></div>
           </div>
         </section>
 
-        <!-- ░░░ TOURISM ░░░ -->
+        <!-- TOURISM -->
         <section id="tourism">
-          <span class="section-tag">
-            <span data-lang="en">Travel</span><span data-lang="bn">ভ্রমণ</span><span data-lang="hi">यात्रा</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Travel</span><span data-lang="bn">ভ্রমণ</span><span data-lang="hi">यात्रा</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Tourism &amp; Famous Landmarks</i></span><span data-lang="bn"><i>পর্যটন ও বিখ্যাত স্থান</i></span><span data-lang="hi"><i>पर्यटन और प्रसिद्ध स्थल</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en">India is one of the world's most extraordinary travel destinations, offering an unparalleled range of experiences from the snow-capped Himalayas and golden Rajasthan deserts to tropical backwaters and ancient temple towns. India received over <strong>9 million international tourists</strong> in 2023 and is a top destination for cultural, spiritual, adventure, and wildlife tourism. The country has <strong>42 UNESCO World Heritage Sites</strong> — the sixth most in the world — spanning ancient temples, Mughal monuments, natural reserves, and the ruins of the Indus Valley Civilisation.</span>
-            <span data-lang="bn">ভারত বিশ্বের অন্যতম অসাধারণ ভ্রমণ গন্তব্য, তুষারাবৃত হিমালয় ও সোনালি রাজস্থান মরুভূমি থেকে গ্রীষ্মমণ্ডলীয় ব্যাকওয়াটার এবং প্রাচীন মন্দির শহর পর্যন্ত অতুলনীয় বিভিন্ন অভিজ্ঞতা প্রদান করে। ভারতে ২০২৩ সালে <strong>৯ মিলিয়নেরও বেশি আন্তর্জাতিক পর্যটক</strong> এসেছিল এবং এটি সাংস্কৃতিক, আধ্যাত্মিক, অ্যাডভেঞ্চার এবং বন্যপ্রাণী পর্যটনের শীর্ষ গন্তব্য। দেশে <strong>৪২টি ইউনেস্কো বিশ্ব ঐতিহ্যবাহী স্থান</strong> রয়েছে — বিশ্বে ষষ্ঠ সর্বাধিক।</span>
-            <span data-lang="hi">भारत दुनिया के सबसे असाधारण यात्रा गंतव्यों में से एक है, बर्फ से ढके हिमालय और सुनहरे राजस्थान के रेगिस्तान से लेकर उष्णकटिबंधीय बैकवाटर और प्राचीन मंदिर शहरों तक अद्वितीय अनुभवों की एक श्रृंखला प्रदान करता है। भारत में <strong>42 UNESCO विश्व धरोहर स्थल</strong> हैं — दुनिया में छठा सबसे अधिक।</span>
-          </p>
-
-          <div class="landmarks-grid">
+          <p><span data-lang="en">India received over <strong>9 million international tourists</strong> in 2023 and has <strong>42 UNESCO World Heritage Sites</strong> — the sixth most in the world. From the Taj Mahal to the backwaters of Kerala, India offers unmatched cultural, spiritual, adventure, and wildlife tourism.</span><span data-lang="bn">ভারত ২০২৩ সালে <strong>৯ মিলিয়নেরও বেশি আন্তর্জাতিক পর্যটক</strong> পেয়েছে এবং <strong>৪২টি ইউনেস্কো বিশ্ব ঐতিহ্যবাহী স্থান</strong> রয়েছে।</span><span data-lang="hi">भारत में 2023 में <strong>9 मिलियन से अधिक अंतर्राष्ट्रीय पर्यटक</strong> आए और <strong>42 UNESCO विश्व धरोहर स्थल</strong> हैं।</span></p>
+          <div id="landmarks" class="landmarks-grid">
             <div class="landmark-card">
-              <img src="https://images.unsplash.com/photo-1587135941948-670b381f08ce?w=400&q=80" alt="Taj Mahal">
-              <div class="landmark-card-body">
-                <h4>Taj Mahal 🏛️</h4>
-                <p><span data-lang="en">Agra, UP. Built 1632–53 by Shah Jahan for Mumtaz Mahal. One of the 7 Wonders of the World. Visited by 7–8 million people annually.</span><span data-lang="bn">আগ্রা, উত্তর প্রদেশ। ১৬৩২–৫৩ সালে শাহজাহান মমতাজ মহলের জন্য নির্মাণ করেছিলেন। বিশ্বের ৭ আশ্চর্যের মধ্যে একটি।</span><span data-lang="hi">आगरा, यूपी। 1632–53 में शाहजहाँ द्वारा मुमताज महल के लिए बनाया गया। विश्व के 7 आश्चर्यों में से एक।</span></p>
-              </div>
+              <img src="https://images.unsplash.com/photo-1587135941948-670b381f08ce?w=400&q=80" alt="Taj Mahal" loading="lazy">
+              <div class="landmark-card-body"><h4>Taj Mahal 🏛️</h4><p><span data-lang="en">Agra. Built 1632–53 by Shah Jahan. One of the 7 Wonders of the World. Visited by 7–8 million annually.</span><span data-lang="bn">আগ্রা। ১৬৩২–৫৩ সালে শাহজাহান নির্মিত। বিশ্বের ৭ আশ্চর্যের মধ্যে একটি।</span><span data-lang="hi">आगरा। 1632–53 में शाहजहाँ द्वारा निर्मित। विश्व के 7 आश्चर्यों में से एक।</span></p></div>
             </div>
             <div class="landmark-card">
-              <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80" alt="India Gate">
-              <div class="landmark-card-body">
-                <h4>India Gate 🇮🇳</h4>
-                <p><span data-lang="en">New Delhi. A war memorial honouring 80,000 soldiers of the British Indian Army who died in WWI. Stands at the ceremonial heart of the capital.</span><span data-lang="bn">নয়াদিল্লি। প্রথম বিশ্বযুদ্ধে নিহত ব্রিটিশ ভারতীয় সেনাবাহিনীর ৮০,০০০ সৈনিকের স্মরণে একটি যুদ্ধ স্মারক।</span><span data-lang="hi">नई दिल्ली। प्रथम विश्व युद्ध में मारे गए 80,000 ब्रिटिश भारतीय सेना के सैनिकों को श्रद्धांजलि देने वाला एक युद्ध स्मारक।</span></p>
-              </div>
+              <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80" alt="India Gate" loading="lazy">
+              <div class="landmark-card-body"><h4>India Gate 🇮🇳</h4><p><span data-lang="en">New Delhi. War memorial honouring 80,000 soldiers. Stands at the ceremonial heart of the capital.</span><span data-lang="bn">নয়াদিল্লি। ৮০,০০০ সৈনিকের স্মরণে যুদ্ধ স্মারক।</span><span data-lang="hi">नई दिल्ली। 80,000 सैनिकों को श्रद्धांजलि देने वाला युद्ध स्मारक।</span></p></div>
             </div>
             <div class="landmark-card">
-              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80" alt="Golden Temple">
-              <div class="landmark-card-body">
-                <h4>Golden Temple ✨</h4>
-                <p><span data="en">Amritsar, Punjab. Sri Harmandir Sahib — holiest shrine of Sikhism. Feeds 100,000 people daily in the world's largest free community kitchen (Langar).</span><span data-lang="bn">অমৃতসর, পাঞ্জাব। শ্রী হরমন্দির সাহিব — শিখধর্মের পবিত্রতম মন্দির। বিশ্বের সবচেয়ে বড় বিনামূল্যে সম্প্রদায় রান্নাঘরে (লঙ্গর) দৈনিক ১,০০,০০০ মানুষকে খাওয়ায়।</span><span data-lang="hi">अमृतसर, पंजाब। श्री हरमंदिर साहिब — सिख धर्म का सबसे पवित्र तीर्थस्थल। दुनिया की सबसे बड़ी मुफ्त सामुदायिक रसोई (लंगर) में रोज़ 1,00,000 लोगों को खाना खिलाता है।</span></p>
-              </div>
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80" alt="Golden Temple" loading="lazy">
+              <div class="landmark-card-body"><h4>Golden Temple ✨</h4><p><span data-lang="en">Amritsar. Holiest shrine of Sikhism. Feeds 100,000 people daily in the world's largest free community kitchen.</span><span data-lang="bn">অমৃতসর। শিখধর্মের পবিত্রতম মন্দির। দৈনিক ১,০০,০০০ মানুষকে বিনামূল্যে খাওয়ায়।</span><span data-lang="hi">अमृतसर। सिख धर्म का सबसे पवित्र तीर्थ। रोज़ 1 लाख लोगों को मुफ्त खाना।</span></p></div>
             </div>
             <div class="landmark-card">
-              <img src="https://images.unsplash.com/photo-1600100397608-8aab6c7ab6d8?w=400&q=80" alt="Varanasi Ghats">
-              <div class="landmark-card-body">
-                <h4>Varanasi Ghats 🕉️</h4>
-                <p><span data-lang="en">One of the world's oldest continuously inhabited cities (~3,000 years). The 88 ghats along the Ganges are central to Hindu pilgrimage, where thousands perform ritual baths daily.</span><span data-lang="bn">বিশ্বের অন্যতম প্রাচীন ক্রমাগত বসবাসকারী শহরগুলির মধ্যে একটি (~৩,০০০ বছর)। গঙ্গা বরাবর ৮৮টি ঘাট হিন্দু তীর্থযাত্রার কেন্দ্র।</span><span data-lang="hi">दुनिया के सबसे पुराने लगातार बसे शहरों में से एक (~3,000 वर्ष)। गंगा के किनारे 88 घाट हिंदू तीर्थयात्रा के केंद्र हैं।</span></p>
-              </div>
+              <img src="https://images.unsplash.com/photo-1600100397608-8aab6c7ab6d8?w=400&q=80" alt="Varanasi" loading="lazy">
+              <div class="landmark-card-body"><h4>Varanasi Ghats 🕉️</h4><p><span data-lang="en">One of the world's oldest cities (~3,000 years). 88 ghats along the Ganges central to Hindu pilgrimage.</span><span data-lang="bn">বিশ্বের প্রাচীনতম শহরগুলির মধ্যে একটি (~৩,০০০ বছর)।</span><span data-lang="hi">दुनिया के सबसे पुराने शहरों में से एक (~3,000 वर्ष)।</span></p></div>
             </div>
             <div class="landmark-card">
-              <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=400&q=80" alt="Jaipur">
-              <div class="landmark-card-body">
-                <h4>Jaipur — Pink City 🏰</h4>
-                <p><span data-lang="en">Rajasthan's capital, famed for the Amber Fort, Hawa Mahal, and City Palace. Its old city is a UNESCO World Heritage Site and one of India's most visited tourist destinations.</span><span data-lang="bn">রাজস্থানের রাজধানী, আম্বার ফোর্ট, হাওয়া মহল এবং সিটি প্যালেসের জন্য বিখ্যাত। এর পুরনো শহর একটি ইউনেস্কো বিশ্ব ঐতিহ্যবাহী স্থান।</span><span data-lang="hi">राजस्थान की राजधानी, आमेर किला, हवा महल और सिटी पैलेस के लिए प्रसिद्ध। इसका पुराना शहर UNESCO विश्व धरोहर स्थल है।</span></p>
-              </div>
+              <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=400&q=80" alt="Jaipur" loading="lazy">
+              <div class="landmark-card-body"><h4>Jaipur — Pink City 🏰</h4><p><span data-lang="en">Rajasthan's capital, famed for Amber Fort, Hawa Mahal, and City Palace. UNESCO World Heritage Site.</span><span data-lang="bn">রাজস্থানের রাজধানী, আম্বার ফোর্ট, হাওয়া মহলের জন্য বিখ্যাত।</span><span data-lang="hi">राजस्थान की राजधानी, आमेर किला और हवा महल के लिए प्रसिद्ध।</span></p></div>
             </div>
             <div class="landmark-card">
-              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Kerala Backwaters">
-              <div class="landmark-card-body">
-                <h4>Kerala Backwaters 🌴</h4>
-                <p><span data-lang="en">A 900 km network of lagoons, lakes, canals, and rivers along Kerala's coast. Famous for houseboat cruises, Ayurvedic resorts, and lush tropical scenery.</span><span data-lang="bn">কেরালার উপকূল বরাবর লেগুন, হ্রদ, খাল এবং নদীর ৯০০ কিমি নেটওয়ার্ক। হাউসবোট ক্রুজ এবং আয়ুর্বেদিক রিসোর্টের জন্য বিখ্যাত।</span><span data-lang="hi">केरल के तट के साथ लैगून, झीलों, नहरों और नदियों का 900 किमी नेटवर्क। हाउसबोट क्रूज और आयुर्वेदिक रिसॉर्ट के लिए प्रसिद्ध।</span></p>
-              </div>
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Kerala" loading="lazy">
+              <div class="landmark-card-body"><h4>Kerala Backwaters 🌴</h4><p><span data-lang="en">900 km of lagoons, lakes, canals and rivers. Famous for houseboat cruises and Ayurvedic resorts.</span><span data-lang="bn">৯০০ কিমি লেগুন, হ্রদ ও নদীর নেটওয়ার্ক।</span><span data-lang="hi">900 किमी लैगून, झीलों, नहरों का नेटवर्क।</span></p></div>
             </div>
           </div>
         </section>
 
-        <!-- ░░░ SPORTS ░░░ -->
+        <!-- SPORTS -->
         <section id="sports">
-          <span class="section-tag">
-            <span data-lang="en">Athletics</span><span data-lang="bn">ক্রীড়া</span><span data-lang="hi">खेल</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Athletics</span><span data-lang="bn">ক্রীড়া</span><span data-lang="hi">खेल</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Sports &amp; Athletics</i></span><span data-lang="bn"><i>খেলাধুলা ও ক্রীড়া</i></span><span data-lang="hi"><i>खेल और एथलेटिक्स</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en"><strong>Cricket</strong> is India's de facto national obsession — a sport that commands the attention of over a billion fans, generates billions in revenue, and has produced legends like Sachin Tendulkar (regarded as one of the greatest batsmen in history), Virat Kohli, MS Dhoni, and Kapil Dev. India has won the ICC Cricket World Cup in 1983 and 2011, and the T20 World Cup in 2007 and 2024. The <strong>Indian Premier League (IPL)</strong> is the world's second-most-attended sports league and generates over $10 billion in annual economic activity. However, India's sporting culture is far broader than cricket alone.</span>
-            <span data-lang="bn"><strong>ক্রিকেট</strong> ভারতের কার্যত জাতীয় আবেশ — একটি খেলা যা এক বিলিয়নেরও বেশি ভক্তের মনোযোগ কমান্ড করে, বিলিয়নে রাজস্ব উৎপন্ন করে এবং সচিন তেন্ডুলকার (ইতিহাসের অন্যতম সেরা ব্যাটসম্যান হিসেবে বিবেচিত), বিরাট কোহলি, এমএস ধোনি এবং কপিল দেবের মতো কিংবদন্তি তৈরি করেছে। ভারত ১৯৮৩ ও ২০১১ সালে আইসিসি ক্রিকেট বিশ্বকাপ এবং ২০০৭ ও ২০২৪ সালে টি২০ বিশ্বকাপ জিতেছে।</span>
-            <span data-lang="hi"><strong>क्रिकेट</strong> भारत का वास्तविक राष्ट्रीय जुनून है — एक ऐसा खेल जो एक अरब से अधिक प्रशंसकों का ध्यान आकर्षित करता है। भारत ने 1983 और 2011 में ICC क्रिकेट विश्व कप और 2007 और 2024 में T20 विश्व कप जीता। <strong>इंडियन प्रीमियर लीग (IPL)</strong> दुनिया की दूसरी सबसे ज़्यादा देखी जाने वाली खेल लीग है।</span>
-          </p>
-
+          <p><span data-lang="en"><strong>Cricket</strong> commands the attention of over a billion fans. India won the ICC Cricket World Cup in 1983 and 2011, and the T20 World Cup in 2007 and 2024. The <strong>Indian Premier League (IPL)</strong> is the world's second-most-attended sports league, generating over $10 billion in annual economic activity.</span><span data-lang="bn"><strong>ক্রিকেট</strong> এক বিলিয়নেরও বেশি ভক্তের মনোযোগ কমান্ড করে। ভারত ১৯৮৩ ও ২০১১ সালে আইসিসি ক্রিকেট বিশ্বকাপ এবং ২০০৭ ও ২০২৪ সালে টি২০ বিশ্বকাপ জিতেছে।</span><span data-lang="hi"><strong>क्रिकेट</strong> एक अरब से अधिक प्रशंसकों का ध्यान आकर्षित करता है। भारत ने 1983 और 2011 में ICC विश्व कप जीता।</span></p>
           <div class="info-grid">
-            <div class="info-card"><div class="ic-icon">🏏</div><h4>Cricket</h4><p><span data-lang="en">National sport de facto. India ranks 1st in ICC Test rankings. IPL teams like Mumbai Indians, CSK are among the world's most valuable sports franchises.</span><span data-lang="bn">কার্যত জাতীয় খেলা। ভারত আইসিসি টেস্ট র‍্যাঙ্কিংয়ে ১ম। মুম্বাই ইন্ডিয়ানস, সিএসকে বিশ্বের সবচেয়ে মূল্যবান ক্রীড়া ফ্র্যাঞ্চাইজিগুলির মধ্যে।</span><span data-lang="hi">वास्तविक राष्ट्रीय खेल। भारत ICC टेस्ट रैंकिंग में 1st। मुंबई इंडियंस, CSK दुनिया की सबसे मूल्यवान खेल फ्रेंचाइजी में।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🤼</div><h4>Wrestling &amp; Combat</h4><p><span data-lang="en">India has a 5,000-year tradition of Kushti wrestling. Bajrang Punia, Vinesh Phogat, and Sushil Kumar have brought Olympic medals to India. Kabaddi and Kho-Kho are indigenous sports now played internationally.</span><span data-lang="bn">ভারতে কুস্তি ৫,০০০ বছরের ঐতিহ্য রয়েছে। বজরং পুনিয়া, বিনেশ ফোগাট এবং সুশীল কুমার ভারতে অলিম্পিক পদক এনেছেন। কাবাডি ও খো-খো এখন আন্তর্জাতিকভাবে খেলা হয়।</span><span data-lang="hi">भारत में कुश्ती की 5,000 वर्षीय परंपरा है। बजरंग पुनिया, विनेश फोगाट और सुशील कुमार ने ओलंपिक पदक जीते। कबड्डी और खो-खो अब अंतरराष्ट्रीय स्तर पर खेले जाते हैं।</span></p></div>
-            <div class="info-card"><div class="ic-icon">🏸</div><h4>Badminton</h4><p><span data-lang="en">PV Sindhu became the first Indian to win two Olympic medals in badminton (2016 Silver, 2020 Bronze). Saina Nehwal won Bronze in 2012. Indian badminton has risen to world-class level.</span><span data-lang="bn">পিভি সিন্ধু ব্যাডমিন্টনে দুটি অলিম্পিক পদক জেতা প্রথম ভারতীয় হয়েছেন (২০১৬ রুপা, ২০২০ ব্রোঞ্জ)।</span><span data-lang="hi">PV सिंधु बैडमिंटन में दो ओलंपिक पदक जीतने वाली पहली भारतीय बनीं (2016 रजत, 2020 कांस्य)।</span></p></div>
-            <div class="info-card"><div class="ic-icon">♟️</div><h4>Chess</h4><p><span data-lang="en">India invented chess (Chaturanga, ~600 CE). Today India has 80+ grandmasters. Viswanathan Anand was World Chess Champion five times (2000–2013). India won the 2024 Chess Olympiad gold.</span><span data-lang="bn">ভারত দাবা উদ্ভাবন করেছিল (চতুরঙ্গ, ~৬০০ খ্রিস্টাব্দ)। বিশ্বনাথ আনন্দ পাঁচবার বিশ্ব দাবা চ্যাম্পিয়ন ছিলেন। ভারত ২০২৪ দাবা অলিম্পিয়াডে সোনা জিতেছে।</span><span data-lang="hi">भारत ने शतरंज का आविष्कार किया (चतुरंग, ~600 CE)। विश्वनाथन आनंद पाँच बार विश्व शतरंज चैंपियन थे। भारत ने 2024 शतरंज ओलंपियाड स्वर्ण जीता।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🏏</div><h4>Cricket</h4><p><span data-lang="en">National sport de facto. India ranks 1st in ICC Test rankings. IPL franchises among world's most valuable sports properties.</span><span data-lang="bn">কার্যত জাতীয় খেলা। আইসিসি টেস্ট র‍্যাঙ্কিংয়ে ১ম।</span><span data-lang="hi">वास्तविक राष्ट्रीय खेल। ICC टेस्ट रैंकिंग में 1st।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🤼</div><h4><span data-lang="en">Wrestling &amp; Combat</span><span data-lang="bn">কুস্তি ও যুদ্ধ</span><span data-lang="hi">कुश्ती और मुकाबला</span></h4><p><span data-lang="en">5,000-year Kushti tradition. Bajrang Punia, Vinesh Phogat, Sushil Kumar — Olympic medal winners. Kabaddi &amp; Kho-Kho played internationally.</span><span data-lang="bn">৫,০০০ বছরের কুস্তি ঐতিহ্য। বজরং পুনিয়া, বিনেশ ফোগাট — অলিম্পিক পদক বিজয়ী।</span><span data-lang="hi">5,000 वर्षीय कुश्ती परंपरा। बजरंग पुनिया, विनेश फोगाट — ओलंपिक पदक विजेता।</span></p></div>
+            <div class="info-card"><div class="ic-icon">🏸</div><h4>Badminton</h4><p><span data-lang="en">PV Sindhu — first Indian to win two Olympic medals in badminton (2016 Silver, 2020 Bronze). Indian badminton now world-class.</span><span data-lang="bn">পিভি সিন্ধু — ব্যাডমিন্টনে দুটি অলিম্পিক পদক জেতা প্রথম ভারতীয়।</span><span data-lang="hi">PV सिंधु — बैडमिंटन में दो ओलंपिक पदक जीतने वाली पहली भारतीय।</span></p></div>
+            <div class="info-card"><div class="ic-icon">♟️</div><h4>Chess</h4><p><span data-lang="en">India invented chess (~600 CE). 80+ grandmasters. Viswanathan Anand — 5-time World Champion. India won 2024 Chess Olympiad gold.</span><span data-lang="bn">ভারত দাবা উদ্ভাবন করেছিল। ৮০+ গ্র্যান্ডমাস্টার। বিশ্বনাথ আনন্দ — ৫ বার বিশ্ব চ্যাম্পিয়ন।</span><span data-lang="hi">भारत ने शतरंज का आविष्कार किया। 80+ ग्रैंडमास्टर। विश्वनाथन आनंद — 5 बार विश्व चैंपियन।</span></p></div>
           </div>
         </section>
 
-        <!-- ░░░ CINEMA ░░░ -->
+        <!-- CINEMA -->
         <section id="cinema">
-          <span class="section-tag">
-            <span data-lang="en">Entertainment</span><span data-lang="bn">বিনোদন</span><span data-lang="hi">मनोरंजन</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Entertainment</span><span data-lang="bn">বিনোদন</span><span data-lang="hi">मनोरंजन</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Indian Cinema &amp; Entertainment</i></span><span data-lang="bn"><i>ভারতীয় সিনেমা ও বিনোদন</i></span><span data-lang="hi"><i>भारतीय सिनेमा और मनोरंजन</i></span></h2>
           </div>
           <div class="divider"></div>
-          <p>
-            <span data-lang="en">India has the <strong>world's largest film industry by number of films produced</strong> — releasing over 1,800 films annually across multiple languages. "Bollywood" refers to the Hindi-language film industry centred in Mumbai, but Indian cinema also encompasses the enormously popular Tamil film industry ("Kollywood"), Telugu cinema ("Tollywood"), Malayalam cinema, Kannada, Bengali, and dozens of other regional industries. Indian cinema has produced globally acclaimed films like <em>Lagaan</em>, <em>Dil Chahta Hai</em>, <em>Mughal-E-Azam</em>, and the South Indian epics <em>Baahubali</em> and <em>RRR</em>, which grossed hundreds of millions worldwide.</span>
-            <span data-lang="bn">ভারতে <strong>নির্মিত চলচ্চিত্রের সংখ্যায় বিশ্বের বৃহত্তম চলচ্চিত্র শিল্প</strong> রয়েছে — একাধিক ভাষায় বার্ষিক ১,৮০০টিরও বেশি চলচ্চিত্র মুক্তি পাচ্ছে। "বলিউড" মুম্বাই কেন্দ্রিক হিন্দি-ভাষা চলচ্চিত্র শিল্পকে বোঝায়, কিন্তু ভারতীয় সিনেমায় তামিল ("কলিউড"), তেলেগু ("টলিউড"), মালায়ালাম, কন্নড়, বাংলা এবং অন্যান্য আঞ্চলিক শিল্পও অন্তর্ভুক্ত।</span>
-            <span data-lang="hi">भारत में <strong>निर्मित फिल्मों की संख्या के हिसाब से दुनिया का सबसे बड़ा फिल्म उद्योग</strong> है — कई भाषाओं में सालाना 1,800 से अधिक फिल्में जारी होती हैं। "बॉलीवुड" मुंबई स्थित हिंदी-भाषा फिल्म उद्योग को संदर्भित करता है, लेकिन भारतीय सिनेमा में तमिल, तेलुगु, मलयालम, कन्नड़, बंगाली और अन्य क्षेत्रीय उद्योग भी शामिल हैं।</span>
-          </p>
+          <p><span data-lang="en">India has the <strong>world's largest film industry by number of films produced</strong> — over 1,800 films annually across multiple languages. "Bollywood" (Hindi), "Kollywood" (Tamil), "Tollywood" (Telugu), and dozens of other regional industries produce globally acclaimed films like <em>Baahubali</em> and <em>RRR</em>, which won India's first Oscar for Best Original Song in 2023.</span><span data-lang="bn">ভারতে <strong>নির্মিত চলচ্চিত্রের সংখ্যায় বিশ্বের বৃহত্তম চলচ্চিত্র শিল্প</strong> রয়েছে — একাধিক ভাষায় বার্ষিক ১,৮০০টিরও বেশি।</span><span data-lang="hi">भारत में <strong>फिल्मों की संख्या के हिसाब से दुनिया का सबसे बड़ा फिल्म उद्योग</strong> है।</span></p>
           <div class="highlight-box">
-            <h4><span data-lang="en">🎬 Cinema Fast Facts</span><span data-lang="bn">🎬 সিনেমার দ্রুত তথ্য</span><span data-lang="hi">🎬 सिनेमा की त्वरित जानकारी</span></h4>
+            <h4>🎬 <span data-lang="en">Cinema Fast Facts</span><span data-lang="bn">সিনেমার দ্রুত তথ্য</span><span data-lang="hi">सिनेमा की त्वरित जानकारी</span></h4>
             <div class="tags">
               <span class="tag">🎥 1,800+ films/year</span>
               <span class="tag">💰 $2.5B box office</span>
@@ -1186,284 +1248,423 @@
               <span class="tag">🌟 Shah Rukh Khan</span>
               <span class="tag">🎭 Deepika Padukone</span>
               <span class="tag">🏆 RRR — Oscar 2023</span>
-              <span class="tag">🎵 AR Rahman</span>
+              <span class="tag">🎵 AR Rahman — 2 Oscars</span>
             </div>
           </div>
         </section>
 
-        <!-- ░░░ FAMOUS PEOPLE ░░░ -->
+        <!-- ═══════════════════════════════════════════
+             FAMOUS PEOPLE — FULLY REDESIGNED
+        ═══════════════════════════════════════════ -->
         <section id="famous">
-          <span class="section-tag">
-            <span data-lang="en">Icons</span><span data-lang="bn">আইকন</span><span data-lang="hi">प्रतीक</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Icons</span><span data-lang="bn">আইকন</span><span data-lang="hi">प्रतीक</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Famous Indians Who Changed the World</i></span><span data-lang="bn"><i>বিখ্যাত ভারতীয় যারা বিশ্ব বদলে দিয়েছেন</i></span><span data-lang="hi"><i>प्रसिद्ध भारतीय जिन्होंने दुनिया बदल दी</i></span></h2>
           </div>
           <div class="divider"></div>
-          <div class="people-grid">
-          <div class="person-card">
-    <img class="avatar" src="https://cdn.britannica.com/37/171337-050-66AFF0DC/Subhas-Chandra-Bose-Indian-National-Army.jpg" alt="Subhas Chandra Bose">
-    <h4>Subhas Chandra Bose</h4>
-    <p>
-        <span data-lang="en">Leader of Indian freedom struggle, founder of INA</span>
-        <span data-lang="bn">ভারতের স্বাধীনতা সংগ্রামের নেতা, আজাদের হিন্দ ফৌজের প্রতিষ্ঠাতা</span>
-        <span data-lang="hi">भारतीय स्वतंत्रता संग्राम के नेता, आज़ाद हिंद फ़ौज के संस्थापक</span>
-    </p>
-</div>
 
-          
- 
-</div>
-<div class="person-card">
-    <img class="avatar" src="https://www.nobelprize.org/images/tagore-12892-content-portrait-mobile-tiny.jpg" alt="Rabindranath Tagore">
-    <h4>Rabindranath Tagore</h4>
-    <p>
-        <span data-lang="en">Nobel Prize 1913. Poet, philosopher, wrote national anthems of India & Bangladesh</span>
-        <span data-lang="bn">নোবেল ১৯১৩ কবি, দার্শনিক, ভারত ও বাংলাদেশের জাতীয় সংগীত রচয়িতা</span>
-        <span data-lang="hi">नोबेल पुरस्कार 1913, कवि और दार्शनिक</span>
-    </p>
-</div>
+          <!-- Search -->
+          <div class="people-search-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="people-search" placeholder="Search by name or field…" autocomplete="off">
+          </div>
 
-            <div class="person-card">
-    <img class="avatar" src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-13394,resizemode-75,msid-122932278/news/india/inspiring-visionary-pm-modi-pays-homage-to-former-president-apj-abdul-kalam-on-10th-death-anniversary.jpg" alt="A.P.J. Abdul Kalam">
-    <h4>A.P.J. Abdul Kalam</h4>
-    <p>
-        <span data-lang="en">"Missile Man of India", 11th President, pioneered India's space & missile programs</span>
-        <span data-lang=https://cdn.britannica.com/11/271611-050-6CAD4D54/Indian-Cricketer-Sachin-Tendulkar-Raises-Bat-On-Scoring-Century-During-Group-B-ICC-World-Cup-Cricket-Match-Between-India-And-South-Africa-Nagpur-March-12-2011.jpg" alt="Sachin Tendulkar">
-    <h4>Sachin Tendulkar</h4>
-    <p>
-        <span data-lang="en">God of Cricket — 100 international centuries, highest run-scorer in cricket history</span>
-        <span data-lang="bn">"ক্রিকেটের ঈশ্বর" — ১০০টি আন্তর্জাতিক শতরান, ক্রিকেট ইতিহাসের সর্বাধিক রান সংগ্রাহক</span>
-        <span data-lang="hi">"क्रिकेट के भगवान" — 100 अंतरराष्ट्रीय शतक</span>
-    </p>
-</div>
-<div class="person-card">
-    <img class="avatar" src="https://images.wsj.net/im-758635?width=1280&size=1" alt="Sundar Pichai">
-    <h4>Sundar Pichai</h4>
-    <p>
-        <span data-lang="en">CEO of Google & Alphabet. Born in Chennai, became one of the world’s top tech leaders</span>
-        <span data-lang="bn">গুগল ও অ্যালফাবেটের সিইও। চেন্নাইয়ে জন্ম, বিশ্বের শীর্ষ প্রযুক্তি নেতাদের একজন</span>
-        <span data-lang="hi">गूगल और अल्फाबेट के सीईओ। चेन्नई में जन्मे, विश्व के शीर्ष तकनीकी नेताओं में से एक</span>
-    </p>
-</div>
-<div class="person-card">
-    <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ412dlJle1P7UsyEhjmjO0DElbCySXExYoA&s" alt="A.R. Rahman">
-    <h4>A.R. Rahman</h4>
-    <p>
-        <span data-lang="en">"Mozart of Madras" — 2 Oscars, 2 Grammys. Revolutionized Indian film music</span>
-        <span data-lang="bn">"মাদ্রাজের মোৎসার্ট" — ২টি অস্কার, ২টি গ্র্যামি। ভারতীয় চলচ্চিত্র সঙ্গীতে বিপ্লব এনেছেন</span>
-        <span data-lang="hi">"मद्रास के मोत्सार्ट" — 2 ऑस्कर, 2 ग्रैमी। भारतीय फिल्म संगीत में क्रांति लाई</span>
-    </p>
-</div>
+          <!-- Filter Buttons -->
+          <div class="people-filter-bar">
+            <span class="people-filter-label">Filter:</span>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="leader">🏛️ Leaders</button>
+            <button class="filter-btn" data-filter="scientist">🔬 Scientists</button>
+            <button class="filter-btn" data-filter="tech">💻 Tech</button>
+            <button class="filter-btn" data-filter="arts">🎵 Arts</button>
+            <button class="filter-btn" data-filter="sports">🏏 Sports</button>
+            <button class="filter-btn" data-filter="business">💼 Business</button>
+          </div>
 
-          <div class="person-card">
-    <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjqVeezueagkWy5J2g30fxjp_1EVmTwIcE3g&s" alt="B.R. Ambedkar">
-    <h4>B.R. Ambedkar</h4>
-    <p>
-        <span data-lang="en">Architect of India’s Constitution. Social reformer who fought for equality</span>
-        <span data-lang="bn">ভারতের সংবিধানের প্রধান স্থপতি। সমতার জন্য সংগ্রামকারী সমাজ সংস্কারক</span>
-        <span data-lang="hi">भारत के संविधान के निर्माता। समानता के लिए संघर्ष करने वाले समाज सुधारक</span>
-    </p>
-</div>
+          <!-- People Grid -->
+          <div class="people-grid" id="people-grid">
 
-            <div class="person-card">
-    <img class="avatar" src="https://miro.medium.com/0*-MPLTgImMekZZQ0R.jpg" alt="Srinivasa Ramanujan">
-    <h4>Srinivasa Ramanujan</h4>
-    <p>
-        <span data-lang="en">Self‑taught mathematical genius who transformed number theory</span>
-        <span data-lang="bn">স্বশিক্ষিত গণিত প্রতিভা যিনি সংখ্যাতত্ত্বে বিপ্লব এনেছিলেন</span>
-        <span data-lang="hi">स्वशिक्षित गणितीय प्रतिभा जिन्होंने संख्या सिद्धांत में क्रांति लाई</span>
-    </p>
-</div>
+            <!-- Mahatma Gandhi -->
+            <div class="person-card" data-category="leader" data-name="Mahatma Gandhi" data-wiki="https://en.wikipedia.org/wiki/Mahatma_Gandhi" data-desc="Father of the Nation and pioneer of non-violent civil disobedience. Gandhi's philosophy of Satyagraha inspired civil rights movements worldwide, from Martin Luther King Jr. in the USA to Nelson Mandela in South Africa. He led India to independence from British rule in 1947.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-leader">Leader</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/400px-Mahatma-Gandhi%2C_studio%2C_1931.jpg" alt="Mahatma Gandhi" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Mahatma Gandhi</div>
+                <div class="person-role">Father of the Nation · Independence Leader</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">Time Person of Century</span>
+                  <span class="ach-chip">Non-Violence</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
 
-        
+            <!-- Subhas Chandra Bose -->
+            <div class="person-card" data-category="leader" data-name="Subhas Chandra Bose" data-wiki="https://en.wikipedia.org/wiki/Subhas_Chandra_Bose" data-desc="Known as Netaji, Subhas Chandra Bose was a charismatic nationalist leader who founded the Indian National Army (INA) to fight for India's independence. He famously said 'Give me blood, and I shall give you freedom.' His courage and sacrifice remain an inspiration to millions.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-leader">Leader</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Subhas_Chandra_Bose_NRB.jpg/400px-Subhas_Chandra_Bose_NRB.jpg" alt="Subhas Chandra Bose" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Subhas Chandra Bose</div>
+                <div class="person-role">Nationalist Leader · Founder of INA</div>
+                <div class="person-achievement">
+                  <span class="ach-chip">Netaji</span>
+                  <span class="ach-chip">Freedom Fighter</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Dr. B.R. Ambedkar -->
+            <div class="person-card" data-category="leader" data-name="B.R. Ambedkar" data-wiki="https://en.wikipedia.org/wiki/B._R._Ambedkar" data-desc="Dr. Bhimrao Ramji Ambedkar was the chief architect of the Constitution of India and a pioneering social reformer who fought tirelessly for the rights of Dalits and the oppressed. The first Law Minister of independent India, he earned a doctorate from Columbia University and the London School of Economics.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-leader">Leader</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Dr._Bhimrao_Ambedkar.jpg/400px-Dr._Bhimrao_Ambedkar.jpg" alt="B.R. Ambedkar" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">B.R. Ambedkar</div>
+                <div class="person-role">Architect of India's Constitution · Social Reformer</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">Bharat Ratna</span>
+                  <span class="ach-chip">Constitution Maker</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Rabindranath Tagore -->
+            <div class="person-card" data-category="arts" data-name="Rabindranath Tagore" data-wiki="https://en.wikipedia.org/wiki/Rabindranath_Tagore" data-desc="Rabindranath Tagore was a poet, philosopher, playwright, novelist, and composer who reshaped Bengali literature and Indian art in the late 19th and early 20th centuries. He won the Nobel Prize in Literature in 1913 — the first non-European to do so. He wrote the national anthems of both India (Jana Gana Mana) and Bangladesh (Amar Shonar Bangla).">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-arts">Arts</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Rabindranath_Tagore_in_1909.jpg/400px-Rabindranath_Tagore_in_1909.jpg" alt="Rabindranath Tagore" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Rabindranath Tagore</div>
+                <div class="person-role">Poet · Philosopher · Nobel Laureate</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">Nobel Prize 1913</span>
+                  <span class="ach-chip">Wrote 2 National Anthems</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- A.P.J. Abdul Kalam -->
+            <div class="person-card" data-category="scientist" data-name="A.P.J. Abdul Kalam" data-wiki="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam" data-desc="Known as the 'Missile Man of India,' Dr. Kalam was the chief architect of India's Integrated Guided Missile Development Programme (IGMDP) which developed Agni and Prithvi missiles. He served as the 11th President of India (2002–2007) and was beloved by students and citizens for his inspirational vision of India as a developed nation by 2020.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-scientist">Scientist</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/A._P._J._Abdul_Kalam.jpg/400px-A._P._J._Abdul_Kalam.jpg" alt="APJ Abdul Kalam" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">A.P.J. Abdul Kalam</div>
+                <div class="person-role">"Missile Man of India" · 11th President</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">Bharat Ratna</span>
+                  <span class="ach-chip">IGMDP Architect</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Srinivasa Ramanujan -->
+            <div class="person-card" data-category="scientist" data-name="Srinivasa Ramanujan" data-wiki="https://en.wikipedia.org/wiki/Srinivasa_Ramanujan" data-desc="A self-taught mathematical genius from Tamil Nadu who made extraordinary contributions to mathematical analysis, number theory, infinite series, and continued fractions. Despite no formal university training, Ramanujan's notebooks contain thousands of formulas that mathematicians are still studying today. He was elected a Fellow of the Royal Society at age 30.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-scientist">Scientist</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Srinivasa_Ramanujan_-_OPC_-_1.jpg/400px-Srinivasa_Ramanujan_-_OPC_-_1.jpg" alt="Srinivasa Ramanujan" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Srinivasa Ramanujan</div>
+                <div class="person-role">Self-Taught Mathematical Genius</div>
+                <div class="person-achievement">
+                  <span class="ach-chip">Fellow of Royal Society</span>
+                  <span class="ach-chip">Number Theory</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- C.V. Raman -->
+            <div class="person-card" data-category="scientist" data-name="C.V. Raman" data-wiki="https://en.wikipedia.org/wiki/C._V._Raman" data-desc="Sir Chandrasekhara Venkata Raman was an Indian physicist who discovered that when light passes through a transparent material, some of the deflected light changes in wavelength — a phenomenon now called the Raman Effect. For this discovery, he was awarded the Nobel Prize in Physics in 1930, becoming the first Asian to win a Nobel Prize in science.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-scientist">Scientist</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Sir_CV_Raman.jpg/400px-Sir_CV_Raman.jpg" alt="C.V. Raman" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">C.V. Raman</div>
+                <div class="person-role">Physicist · Discoverer of the Raman Effect</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">Nobel Prize Physics 1930</span>
+                  <span class="ach-chip">Bharat Ratna</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Sundar Pichai -->
+            <div class="person-card" data-category="tech" data-name="Sundar Pichai" data-wiki="https://en.wikipedia.org/wiki/Sundar_Pichai" data-desc="Pichai Sundararajan, known as Sundar Pichai, is the CEO of Google and its parent company Alphabet. Born in Chennai, Tamil Nadu, he graduated from IIT Kharagpur before attending Stanford and Wharton. He led the development of Google Chrome, Chrome OS, and Google Drive before becoming CEO of Google in 2015. He is one of the most powerful technology executives in the world.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-tech">Tech</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Sundar_pichai.png/400px-Sundar_pichai.png" alt="Sundar Pichai" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Sundar Pichai</div>
+                <div class="person-role">CEO of Google &amp; Alphabet · Born Chennai</div>
+                <div class="person-achievement">
+                  <span class="ach-chip">Google CEO</span>
+                  <span class="ach-chip">IIT Kharagpur</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Satya Nadella -->
+            <div class="person-card" data-category="tech" data-name="Satya Nadella" data-wiki="https://en.wikipedia.org/wiki/Satya_Nadella" data-desc="Satya Narayana Nadella is the CEO of Microsoft, a position he has held since 2014. Born in Hyderabad, he transformed Microsoft from a struggling legacy company into a $3 trillion tech giant by betting boldly on cloud computing (Azure) and artificial intelligence, including a pivotal partnership with OpenAI. He is widely regarded as one of the greatest CEOs of his generation.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-tech">Tech</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/MS-Exec-Nadella-Satya-2017-08-31-22_%28cropped%29.jpg/400px-MS-Exec-Nadella-Satya-2017-08-31-22_%28cropped%29.jpg" alt="Satya Nadella" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Satya Nadella</div>
+                <div class="person-role">CEO of Microsoft · Born Hyderabad</div>
+                <div class="person-achievement">
+                  <span class="ach-chip">Microsoft CEO</span>
+                  <span class="ach-chip">Cloud AI Pioneer</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- A.R. Rahman -->
+            <div class="person-card" data-category="arts" data-name="A.R. Rahman" data-wiki="https://en.wikipedia.org/wiki/A._R._Rahman" data-desc="Allah Rakha Rahman, known as the 'Mozart of Madras,' is a composer, singer, and music producer who has revolutionized Indian film music. He won two Academy Awards (Best Original Score and Best Original Song for Slumdog Millionaire) and two Grammy Awards in 2009 — the first Indian to win these. His work includes the music for Lagaan, Roja, Dil Se, and Rockstar.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-arts">Arts</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/A._R._Rahman_clicked_by_Joella_D%27souza_for_Sony_Music.jpg/400px-A._R._Rahman_clicked_by_Joella_D%27souza_for_Sony_Music.jpg" alt="A.R. Rahman" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">A.R. Rahman</div>
+                <div class="person-role">"Mozart of Madras" · Composer</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">2 Oscars</span>
+                  <span class="ach-chip gold">2 Grammys</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Sachin Tendulkar -->
+            <div class="person-card" data-category="sports" data-name="Sachin Tendulkar" data-wiki="https://en.wikipedia.org/wiki/Sachin_Tendulkar" data-desc="Widely regarded as the greatest cricketer of all time, Sachin Tendulkar holds the record for the most runs and most centuries in both Test and One-Day International cricket. He scored 100 international centuries and 34,357 runs across formats. He retired in 2013 and was inducted into the ICC Cricket Hall of Fame. In 2014 he received the Bharat Ratna, India's highest civilian honour.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-sports">Sports</span>
+                <img src="https://m.media-amazon.com/images/I/51khBE8S+TL._UF894,1000_QL80_.jpg" alt="Sachin Tendulkar" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Sachin Tendulkar</div>
+                <div class="person-role">"God of Cricket" · Greatest Batsman Ever</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">100 Centuries</span>
+                  <span class="ach-chip gold">Bharat Ratna</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Ratan Tata -->
+            <div class="person-card" data-category="business" data-name="Ratan Tata" data-wiki="https://en.wikipedia.org/wiki/Ratan_Tata" data-desc="Ratan Naval Tata was the Chairman of Tata Sons and the Tata Group, one of India's largest and most respected conglomerates. Under his leadership, Tata went global — acquiring iconic brands like Jaguar Land Rover and Tetley Tea. He was known not just as a brilliant industrialist but as a deeply philanthropic and humble person. He received the Padma Bhushan and Padma Vibhushan.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-business">Business</span>
+                <img src="https://m.media-amazon.com/images/I/61qiz-PkUJL._UF894,1000_QL80_.jpg" alt="Ratan Tata" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Ratan Tata</div>
+                <div class="person-role">Chairman, Tata Group · Philanthropist</div>
+                <div class="person-achievement">
+                  <span class="ach-chip">Jaguar JLR Acquisition</span>
+                  <span class="ach-chip gold">Padma Vibhushan</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Indira Gandhi -->
+            <div class="person-card" data-category="leader" data-name="Indira Gandhi" data-wiki="https://en.wikipedia.org/wiki/Indira_Gandhi" data-desc="Indira Priyadarshini Gandhi was the first and only female Prime Minister of India, serving from 1966–1977 and again 1980–1984. Daughter of Jawaharlal Nehru, she led India to victory in the 1971 war that created Bangladesh and oversaw the Pokhran nuclear test in 1974. She was named 'Woman of the Millennium' in a BBC poll.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-leader">Leader</span>
+                <img src="https://m.media-amazon.com/images/I/61O3CUi3a1L._AC_UF1000,1000_QL80_.jpg" alt="Indira Gandhi" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Indira Gandhi</div>
+                <div class="person-role">First Female Prime Minister of India</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">Bharat Ratna</span>
+                  <span class="ach-chip">1971 War Victory</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- Viswanathan Anand -->
+            <div class="person-card" data-category="sports" data-name="Viswanathan Anand" data-wiki="https://en.wikipedia.org/wiki/Viswanathan_Anand" data-desc="Viswanathan Anand is a chess grandmaster and five-time World Chess Champion (2000, 2007, 2008, 2010, 2012), making him one of the greatest chess players of all time. Born in Chennai, he was the first grandmaster from India and was awarded the Padma Vibhushan. He inspired an entire generation of Indian chess players who now dominate the world rankings.">
+              <div class="person-photo-wrap">
+                <span class="person-cat-chip cat-sports">Sports</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Viswanathan_Anand_-_Zurich_2016_01.jpg/400px-Viswanathan_Anand_-_Zurich_2016_01.jpg" alt="Viswanathan Anand" loading="lazy">
+              </div>
+              <div class="person-body">
+                <div class="person-name">Viswanathan Anand</div>
+                <div class="person-role">5-Time World Chess Champion</div>
+                <div class="person-achievement">
+                  <span class="ach-chip gold">5× World Champion</span>
+                  <span class="ach-chip gold">Padma Vibhushan</span>
+                </div>
+                <button class="person-learn-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+              </div>
+            </div>
+
+            <!-- No results -->
+            <div class="no-people-msg" id="no-people-msg">No results found. Try a different search or filter.</div>
+
+          </div><!-- end .people-grid -->
         </section>
 
-        <!-- ░░░ QUICK EXPLORE ░░░ -->
+        <!-- QUICK EXPLORE -->
         <section id="extras">
-          <span class="section-tag">
-            <span data-lang="en">Explore</span><span data-lang="bn">অন্বেষণ</span><span data-lang="hi">खोज</span>
-          </span>
+          <span class="section-tag"><span data-lang="en">Explore</span><span data-lang="bn">অন্বেষণ</span><span data-lang="hi">खोज</span></span>
           <div class="heading-row">
             <h2><span data-lang="en"><i>Quick Explore</i></span><span data-lang="bn"><i>দ্রুত অন্বেষণ</i></span><span data-lang="hi"><i>त्वरित खोज</i></span></h2>
           </div>
           <div class="divider"></div>
           <div class="feature-grid">
-            <div class="feature-card">
-              <div class="fc-icon">🎉</div>
-              <h3><span data-lang="en">Festival Pulse</span><span data-lang="bn">উৎসবের স্পন্দন</span><span data-lang="hi">उत्सव की धड़कन</span></h3>
-              <p><span data-lang="en">Diwali, Holi, Navratri and hundreds more — discover the biggest celebrations across India's 28 states.</span><span data-lang="bn">দিওয়ালি, হোলি, নবরাত্রি এবং আরও অনেক — ভারতের ২৮টি রাজ্যে সবচেয়ে বড় উদযাপনগুলি আবিষ্কার করুন।</span><span data-lang="hi">दिवाली, होली, नवरात्रि और सैकड़ों और — भारत के 28 राज्यों में सबसे बड़े उत्सव खोजें।</span></p>
-              <a href="festival.html"><button><span data-lang="en">See Festivals</span><span data-lang="bn">উৎসব দেখুন</span><span data-lang="hi">उत्सव देखें</span></button></a>
-            </div>
-            <div class="feature-card">
-              <div class="fc-icon">🏛️</div>
-              <h3><span data-lang="en">Heritage Route</span><span data-lang="bn">ঐতিহ্য পথ</span><span data-lang="hi">विरासत मार्ग</span></h3>
-              <p><span data-lang="en">Explore 42 UNESCO sites, ancient temples, Mughal forts, and legendary places that define 5,000 years of Indian heritage.</span><span data-lang="bn">৪২টি ইউনেস্কো স্থান, প্রাচীন মন্দির, মুঘল দুর্গ এবং ঐতিহাসিক স্থান অন্বেষণ করুন যা ৫,০০০ বছরের ভারতীয় ঐতিহ্যকে সংজ্ঞায়িত করে।</span><span data-lang="hi">42 UNESCO साइट, प्राचीन मंदिर, मुगल किले और ऐतिहासिक स्थानों को खोजें जो 5,000 साल की भारतीय विरासत को परिभाषित करते हैं।</span></p>
-              <a href="#tourism"><button><span data-lang="en">View Landmarks</span><span data-lang="bn">স্থান দেখুন</span><span data-lang="hi">स्थल देखें</span></button></a>
-            </div>
-            <div class="feature-card">
-              <div class="fc-icon">💡</div>
-              <h3><span data-lang="en">Innovation Hub</span><span data-lang="bn">উদ্ভাবন কেন্দ্র</span><span data-lang="hi">नवाचार केंद्र</span></h3>
-              <p><span data-lang="en">ISRO moon landings, 100+ unicorns, the world's largest digital payments system — explore India's breathtaking tech revolution.</span><span data-lang="bn">ইসরো চন্দ্র অবতরণ, ১০০+ ইউনিকর্ন, বিশ্বের বৃহত্তম ডিজিটাল পেমেন্ট সিস্টেম — ভারতের প্রযুক্তি বিপ্লব অন্বেষণ করুন।</span><span data-lang="hi">ISRO चंद्र लैंडिंग, 100+ यूनिकॉर्न, दुनिया का सबसे बड़ा डिजिटल भुगतान प्रणाली — भारत की तकनीकी क्रांति को खोजें।</span></p>
-              <a href="innovation.html"><button><span data-lang="en">Explore Tech</span><span data-lang="bn">প্রযুক্তি অন্বেষণ</span><span data-lang="hi">तकनीक देखें</span></button></a>
-            </div>
-            <div class="feature-card">
-              <div class="fc-icon">🍛</div>
-              <h3><span data-lang="en">Flavours of India</span><span data-lang="bn">ভারতের স্বাদ</span><span data-lang="hi">भारत के स्वाद</span></h3>
-              <p><span data-lang="en">From butter chicken to dosa, biryani to dhokla — each of India's 28 states has a unique cuisine. Discover the spices and stories behind India's food.</span><span data-lang="bn">বাটার চিকেন থেকে ডোসা, বিরিয়ানি থেকে ঢোকলা — ভারতের ২৮টি রাজ্যের প্রতিটির একটি অনন্য রন্ধনশৈলী রয়েছে।</span><span data-lang="hi">बटर चिकन से डोसा, बिरयानी से ढोकला तक — भारत के 28 राज्यों में से प्रत्येक का एक अनोखा व्यंजन है।</span></p>
-              <a href="food.html"><button><span data-lang="en">Taste India</span><span data-lang="bn">ভারতের স্বাদ নিন</span><span data-lang="hi">भारत का स्वाद लें</span></button></a>
-            </div>
-            <div class="feature-card">
-              <div class="fc-icon">🐅</div>
-              <h3><span data-lang="en">Wild India</span><span data-lang="bn">বন্য ভারত</span><span data-lang="hi">जंगली भारत</span></h3>
-              <p><span data-lang="en">Home to Bengal tigers, Asian elephants, one-horned rhinos, and snow leopards — India has 106 national parks and one of the world's most diverse wildlife ecosystems.</span><span data-lang="bn">বেঙ্গল টাইগার, এশিয়ান হাতি, একশৃঙ্গী গণ্ডার এবং তুষারচিতার আবাসস্থল — ভারতে ১০৬টি জাতীয় উদ্যান রয়েছে।</span><span data-lang="hi">बंगाल टाइगर, एशियाई हाथियों, एक सींग वाले गैंडों और हिम तेंदुओं का घर — भारत में 106 राष्ट्रीय उद्यान हैं।</span></p>
-              <a href="wildlife.html"><button><span data-lang="en">Explore Wildlife</span><span data-lang="bn">বন্যপ্রাণী অন্বেষণ</span><span data-lang="hi">वन्यजीव देखें</span></button></a>
-            </div>
-            <div class="feature-card">
-              <div class="fc-icon">⭐</div>
-              <h3><span data-lang="en">Icons of India</span><span data-lang="bn">ভারতের আইকন</span><span data-lang="hi">भारत के प्रतीक</span></h3>
-              <p><span data-lang="en">Gandhi, Tendulkar, Ramanujan, AR Rahman — meet the scientists, artists, leaders, and athletes who put India on the world stage.</span><span data-lang="bn">গান্ধী, তেন্ডুলকার, রামানুজন, এআর রহমান — বিজ্ঞানী, শিল্পী, নেতা এবং ক্রীড়াবিদদের সাথে পরিচিত হন।</span><span data-lang="hi">गांधी, तेंदुलकर, रामानुजन, AR रहमान — उन वैज्ञानिकों, कलाकारों, नेताओं और खिलाड़ियों से मिलें।</span></p>
-              <a href="famous.html"><button><span data-lang="en">Meet Them</span><span data-lang="bn">তাদের সাথে পরিচিত হন</span><span data-lang="hi">उनसे मिलें</span></button></a>
-            </div>
+            <div class="feature-card"><div class="fc-icon">🎉</div><h3><span data-lang="en">Festival Pulse</span><span data-lang="bn">উৎসবের স্পন্দন</span><span data-lang="hi">उत्सव की धड़कन</span></h3><p><span data-lang="en">Diwali, Holi, Navratri and hundreds more — discover the biggest celebrations.</span><span data-lang="bn">দিওয়ালি, হোলি, নবরাত্রি — সবচেয়ে বড় উদযাপনগুলি আবিষ্কার করুন।</span><span data-lang="hi">दिवाली, होली, नवरात्रि और सैकड़ों उत्सव।</span></p><a href="festival.html"><button><span data-lang="en">See Festivals</span><span data-lang="bn">উৎসব দেখুন</span><span data-lang="hi">उत्सव देखें</span></button></a></div>
+            <div class="feature-card"><div class="fc-icon">🏛️</div><h3><span data-lang="en">Heritage Route</span><span data-lang="bn">ঐতিহ্য পথ</span><span data-lang="hi">विरासत मार्ग</span></h3><p><span data-lang="en">42 UNESCO sites, ancient temples, Mughal forts — 5,000 years of Indian heritage.</span><span data-lang="bn">৪২টি ইউনেস্কো স্থান, প্রাচীন মন্দির — ৫,০০০ বছরের ঐতিহ্য।</span><span data-lang="hi">42 UNESCO साइट, प्राचीन मंदिर — 5,000 साल की विरासत।</span></p><a href="#tourism"><button><span data-lang="en">View Landmarks</span><span data-lang="bn">স্থান দেখুন</span><span data-lang="hi">स्थल देखें</span></button></a></div>
+            <div class="feature-card"><div class="fc-icon">💡</div><h3><span data-lang="en">Innovation Hub</span><span data-lang="bn">উদ্ভাবন কেন্দ্র</span><span data-lang="hi">नवाचार केंद्र</span></h3><p><span data-lang="en">From ISRO missions to AI unicorns — how India is redefining global technology.</span><span data-lang="bn">ইসরো থেকে এআই ইউনিকর্ন পর্যন্ত।</span><span data-lang="hi">ISRO मिशन से AI यूनिकॉर्न तक।</span></p><a href="innovation.html"><button><span data-lang="en">Explore Tech</span><span data-lang="bn">প্রযুক্তি অন্বেষণ</span><span data-lang="hi">तकनीक देखें</span></button></a></div>
+            <div class="feature-card"><div class="fc-icon">🍛</div><h3><span data-lang="en">Flavours of India</span><span data-lang="bn">ভারতের স্বাদ</span><span data-lang="hi">भारत के स्वाद</span></h3><p><span data-lang="en">Butter chicken, dosa, biryani — each state has a unique cuisine.</span><span data-lang="bn">বাটার চিকেন থেকে ডোসা — প্রতিটি রাজ্যের অনন্য রান্নাশৈলী।</span><span data-lang="hi">बटर चिकन से डोसा — हर राज्य का अनोखा व्यंजन।</span></p><a href="food.html"><button><span data-lang="en">Taste India</span><span data-lang="bn">ভারতের স্বাদ নিন</span><span data-lang="hi">भारत का स्वाद लें</span></button></a></div>
+            <div class="feature-card"><div class="fc-icon">🐅</div><h3><span data-lang="en">Wild India</span><span data-lang="bn">বন্য ভারত</span><span data-lang="hi">जंगली भारत</span></h3><p><span data="en">Bengal tigers, Asian elephants, one-horned rhinos — India has 106 national parks.</span><span data-lang="bn">বেঙ্গল টাইগার, এশিয়ান হাতি — ভারতে ১০৬টি জাতীয় উদ্যান।</span><span data-lang="hi">बंगाल टाइगर, एशियाई हाथी — भारत में 106 राष्ट्रीय उद्यान।</span></p><a href="wildlife.html"><button><span data-lang="en">Explore Wildlife</span><span data-lang="bn">বন্যপ্রাণী অন্বেষণ</span><span data-lang="hi">वन्यजीव देखें</span></button></a></div>
+            <div class="feature-card"><div class="fc-icon">⭐</div><h3><span data-lang="en">Icons of India</span><span data-lang="bn">ভারতের আইকন</span><span data-lang="hi">भारत के प्रतीक</span></h3><p><span data-lang="en">Gandhi, Tendulkar, Ramanujan, AR Rahman — meet the icons who put India on the world stage.</span><span data-lang="bn">গান্ধী, তেন্ডুলকার, রামানুজন, এআর রহমান।</span><span data-lang="hi">गांधी, तेंदुलकर, रामानुजन, AR रहमान।</span></p><a href="famous.html"><button><span data-lang="en">Meet Them</span><span data-lang="bn">তাদের সাথে পরিচিত হন</span><span data-lang="hi">उनसे मिलें</span></button></a></div>
           </div>
         </section>
 
-        <!-- ░░░ EXPLORE MORE ░░░ -->
+        <!-- EXPLORE MORE -->
         <section>
           <div class="heading-row">
             <h2><span data-lang="en">Explore More of India</span><span data-lang="bn">ভারতের আরও অন্বেষণ করুন</span><span data-lang="hi">भारत को और जानें</span></h2>
           </div>
           <div class="divider"></div>
           <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.8rem;">
-            <a href="wildlife.html"><button class="explore-btn green"><span data-lang="en">🐅 Wildlife</span><span data-lang="bn">🐅 বন্যপ্রাণী</span><span data-lang="hi">🐅 वन्यजीव</span></button></a>
-            <a href="famous.html"><button class="explore-btn orange"><span data-lang="en">🌟 Famous People</span><span data-lang="bn">🌟 বিখ্যাত মানুষ</span><span data-lang="hi">🌟 प्रसिद्ध लोग</span></button></a>
-            <a href="innovation.html"><button class="explore-btn blue"><span data-lang="en">💡 Innovation</span><span data-lang="bn">💡 উদ্ভাবন</span><span data-lang="hi">💡 नवाचार</span></button></a>
-            <a href="festival.html"><button class="explore-btn purple"><span data-lang="en">🎉 Festivals</span><span data-lang="bn">🎉 উৎসব</span><span data-lang="hi">🎉 त्योहार</span></button></a>
-            <a href="food.html"><button class="explore-btn red"><span data-lang="en">🍛 Food</span><span data-lang="bn">🍛 খাবার</span><span data-lang="hi">🍛 भोजन</span></button></a>
-            <a href="#sports"><button class="explore-btn teal"><span data-lang="en">🏏 Sports</span><span data-lang="bn">🏏 খেলা</span><span data-lang="hi">🏏 खेल</span></button></a>
-            <a href="#cinema"><button class="explore-btn orange"><span data-lang="en">🎬 Cinema</span><span data-lang="bn">🎬 সিনেমা</span><span data-lang="hi">🎬 सिनेमा</span></button></a>
-            <a href="#landmarks"><button class="explore-btn purple"><span data-lang="en">🏛️ Landmarks</span><span data-lang="bn">🏛️ ঐতিহাসিক স্থান</span><span data-lang="hi">🏛️ स्थल</span></button></a>
+            <a href="wildlife.html"><button class="explore-btn green">🐅 Wildlife</button></a>
+            <a href="famous.html"><button class="explore-btn orange">🌟 Famous People</button></a>
+            <a href="innovation.html"><button class="explore-btn blue">💡 Innovation</button></a>
+            <a href="festival.html"><button class="explore-btn purple">🎉 Festivals</button></a>
+            <a href="food.html"><button class="explore-btn red">🍛 Food</button></a>
+            <a href="#sports"><button class="explore-btn teal">🏏 Sports</button></a>
+            <a href="#cinema"><button class="explore-btn orange">🎬 Cinema</button></a>
+            <a href="#landmarks"><button class="explore-btn purple">🏛️ Landmarks</button></a>
           </div>
         </section>
 
       </main>
 
-      <!-- ─── RIGHT: ASIDE ─── -->
+      <!-- ASIDE -->
       <aside>
         <div class="aside-sticky">
-
-          <!-- TABLE OF CONTENTS -->
           <div class="toc" aria-label="Table of contents">
-            <strong>
-              <span data-lang="en">📋 Contents</span>
-              <span data-lang="bn">📋 বিষয়বস্তু</span>
-              <span data-lang="hi">📋 सामग्री</span>
-            </strong>
+            <strong>📋 Contents</strong>
             <ol>
-              <li><a href="#overview"><span data-lang="en">Overview</span><span data-lang="bn">ওভারভিউ</span><span data-lang="hi">ओवरव्यू</span></a></li>
-              <li><a href="#history"><span data-lang="en">History</span><span data-lang="bn">ইতিহাস</span><span data-lang="hi">इतिहास</span></a></li>
-              <li><a href="#geography"><span data-lang="en">Geography</span><span data-lang="bn">ভূগোল</span><span data-lang="hi">भूगोल</span></a></li>
-              <li><a href="#demographics"><span data-lang="en">Demographics</span><span data-lang="bn">জনসংখ্যা</span><span data-lang="hi">जनसांख्यिकी</span></a></li>
-              <li><a href="#culture"><span data-lang="en">Culture &amp; Arts</span><span data-lang="bn">সংস্কৃতি ও শিল্প</span><span data-lang="hi">संस्कृति और कला</span></a></li>
-              <li><a href="#economy"><span data-lang="en">Economy</span><span data-lang="bn">অর্থনীতি</span><span data-lang="hi">अर्थव्यवस्था</span></a></li>
-              <li><a href="#government"><span data-lang="en">Government</span><span data-lang="bn">সরকার</span><span data-lang="hi">सरकार</span></a></li>
-              <li><a href="#science"><span data-lang="en">Science &amp; Tech</span><span data-lang="bn">বিজ্ঞান ও প্রযুক্তি</span><span data-lang="hi">विज्ञान और तकनीक</span></a></li>
-              <li><a href="#tourism"><span data-lang="en">Tourism</span><span data-lang="bn">পর্যটন</span><span data-lang="hi">पर्यटन</span></a></li>
-              <li><a href="#sports"><span data-lang="en">Sports</span><span data-lang="bn">খেলাধুলা</span><span data-lang="hi">खेल</span></a></li>
-              <li><a href="#cinema"><span data-lang="en">Cinema</span><span data-lang="bn">সিনেমা</span><span data-lang="hi">सिनेमा</span></a></li>
-              <li><a href="#famous"><span data-lang="en">Famous People</span><span data-lang="bn">বিখ্যাত মানুষ</span><span data-lang="hi">प्रसिद्ध लोग</span></a></li>
+              <li><a href="#overview">Overview</a></li>
+              <li><a href="#history">History</a></li>
+              <li><a href="#geography">Geography</a></li>
+              <li><a href="#demographics">Demographics</a></li>
+              <li><a href="#culture">Culture &amp; Arts</a></li>
+              <li><a href="#economy">Economy</a></li>
+              <li><a href="#government">Government</a></li>
+              <li><a href="#science">Science &amp; Tech</a></li>
+              <li><a href="#tourism">Tourism</a></li>
+              <li><a href="#sports">Sports</a></li>
+              <li><a href="#cinema">Cinema</a></li>
+              <li><a href="#famous">Famous People</a></li>
             </ol>
           </div>
-
-          <!-- QUICK FACTS -->
           <div class="quick-facts-box" aria-label="Quick facts">
-            <strong>
-              <span data-lang="en">🇮🇳 Quick Facts</span>
-              <span data-lang="bn">🇮🇳 দ্রুত তথ্য</span>
-              <span data-lang="hi">🇮🇳 त्वरित तथ्य</span>
-            </strong>
+            <strong>🇮🇳 Quick Facts</strong>
             <ul>
-              <li><i class="fas fa-map-marker-alt"></i><span data-lang="en">Capital: New Delhi</span><span data-lang="bn">রাজধানী: নয়াদিল্লি</span><span data-lang="hi">राजधानी: नई दिल्ली</span></li>
-              <li><i class="fas fa-city"></i><span data-lang="en">Largest city: Mumbai</span><span data-lang="bn">বৃহত্তম শহর: মুম্বাই</span><span data-lang="hi">सबसे बड़ा शहर: मुंबई</span></li>
-              <li><i class="fas fa-language"></i><span data-lang="en">Languages: Hindi + English</span><span data-lang="bn">ভাষা: হিন্দি + ইংরেজি</span><span data-lang="hi">भाषाएँ: हिंदी + अंग्रेज़ी</span></li>
-              <li><i class="fas fa-coins"></i><span data-lang="en">Currency: ₹ Indian Rupee</span><span data-lang="bn">মুদ্রা: ₹ ভারতীয় রুপি</span><span data-lang="hi">मुद्रा: ₹ भारतीय रुपया</span></li>
+              <li><i class="fas fa-map-marker-alt"></i><span>Capital: New Delhi</span></li>
+              <li><i class="fas fa-city"></i><span>Largest city: Mumbai</span></li>
+              <li><i class="fas fa-language"></i><span>Languages: Hindi + English</span></li>
+              <li><i class="fas fa-coins"></i><span>Currency: ₹ Indian Rupee</span></li>
               <li><i class="fas fa-clock"></i><span>IST (UTC+5:30)</span></li>
               <li><i class="fas fa-globe"></i><span>TLD: .in</span></li>
               <li><i class="fas fa-phone"></i><span>Calling code: +91</span></li>
-              <li><i class="fas fa-flag"></i><span data-lang="en">Indep: 15 Aug 1947</span><span data-lang="bn">স্বাধীনতা: ১৫ আগস্ট ১৯৪৭</span><span data-lang="hi">स्वतंत्रता: 15 अगस्त 1947</span></li>
-              <li><i class="fas fa-landmark"></i><span data-lang="en">Republic: 26 Jan 1950</span><span data-lang="bn">প্রজাতন্ত্র: ২৬ জানুয়ারি ১৯৫০</span><span data-lang="hi">गणराज्य: 26 जनवरी 1950</span></li>
+              <li><i class="fas fa-flag"></i><span>Independence: 15 Aug 1947</span></li>
+              <li><i class="fas fa-landmark"></i><span>Republic: 26 Jan 1950</span></li>
             </ul>
           </div>
-
-          <!-- DID YOU KNOW -->
           <div class="aside-widget">
-            <strong>
-              <span data-lang="en">💡 Did You Know?</span>
-              <span data-lang="bn">💡 জানতেন কি?</span>
-              <span data-lang="hi">💡 क्या आप जानते हैं?</span>
-            </strong>
-            <div class="aw-item"><span class="aw-icon">0️⃣</span><span data-lang="en">India invented the number zero and the decimal system.</span><span data-lang="bn">ভারত শূন্য সংখ্যা ও দশমিক পদ্ধতি আবিষ্কার করেছে।</span><span data-lang="hi">भारत ने शून्य और दशमलव प्रणाली का आविष्कार किया।</span></div>
-            <div class="aw-item"><span class="aw-icon">♟️</span><span data-lang="en">Chess was invented in India (~600 CE) as Chaturanga.</span><span data-lang="bn">দাবা ভারতে (~৬০০ খ্রিস্টাব্দ) চতুরঙ্গ হিসেবে উদ্ভাবিত হয়েছিল।</span><span data-lang="hi">शतरंज का आविष्कार भारत में (~600 CE) चतुरंग के रूप में हुआ।</span></div>
-            <div class="aw-item"><span class="aw-icon">🧘</span><span data-lang="en">Yoga originated in India over 5,000 years ago.</span><span data-lang="bn">যোগ ৫,০০০ বছরেরও বেশি আগে ভারতে উৎপত্তি হয়েছে।</span><span data-lang="hi">योग की उत्पत्ति भारत में 5,000 से अधिक वर्ष पहले हुई।</span></div>
-            <div class="aw-item"><span class="aw-icon">💊</span><span data-lang="en">India supplies 50% of the world's vaccines.</span><span data-lang="bn">ভারত বিশ্বের ৫০% ভ্যাকসিন সরবরাহ করে।</span><span data-lang="hi">भारत दुनिया के 50% टीकों की आपूर्ति करता है।</span></div>
-            <div class="aw-item"><span class="aw-icon">🌊</span><span data-lang="en">India has the world's largest river island — Majuli in Assam.</span><span data-lang="bn">ভারতে বিশ্বের বৃহত্তম নদী দ্বীপ রয়েছে — আসামের মাজুলি।</span><span data-lang="hi">भारत में दुनिया का सबसे बड़ा नदी द्वीप है — असम का माजुली।</span></div>
+            <strong>💡 Did You Know?</strong>
+            <div class="aw-item"><span class="aw-icon">0️⃣</span><span>India invented the number zero and the decimal system.</span></div>
+            <div class="aw-item"><span class="aw-icon">♟️</span><span>Chess was invented in India (~600 CE) as Chaturanga.</span></div>
+            <div class="aw-item"><span class="aw-icon">🧘</span><span>Yoga originated in India over 5,000 years ago.</span></div>
+            <div class="aw-item"><span class="aw-icon">💊</span><span>India supplies 50% of the world's vaccines.</span></div>
+            <div class="aw-item"><span class="aw-icon">🌊</span><span>World's largest river island — Majuli, Assam.</span></div>
           </div>
-
-          <!-- NATIONAL SYMBOLS -->
           <div class="aside-widget">
-            <strong>
-              <span data-lang="en">🏅 National Symbols</span>
-              <span data-lang="bn">🏅 জাতীয় প্রতীক</span>
-              <span data-lang="hi">🏅 राष्ट्रीय प्रतीक</span>
-            </strong>
-            <div class="aw-item"><span class="aw-icon">🐅</span><span data-lang="en">Animal: Bengal Tiger</span><span data-lang="bn">প্রাণী: বাংলা বাঘ</span><span data-lang="hi">पशु: बंगाल टाइगर</span></div>
-            <div class="aw-item"><span class="aw-icon">🦚</span><span data-lang="en">Bird: Indian Peacock</span><span data-lang="bn">পাখি: ভারতীয় ময়ূর</span><span data-lang="hi">पक्षी: भारतीय मोर</span></div>
-            <div class="aw-item"><span class="aw-icon">🌸</span><span data-lang="en">Flower: Lotus</span><span data-lang="bn">ফুল: পদ্মফুল</span><span data-lang="hi">फूल: कमल</span></div>
-            <div class="aw-item"><span class="aw-icon">🌳</span><span data-lang="en">Tree: Banyan</span><span data-lang="bn">গাছ: বটগাছ</span><span data-lang="hi">पेड़: बरगद</span></div>
-            <div class="aw-item"><span class="aw-icon">🐬</span><span data-lang="en">Aquatic: River Dolphin</span><span data-lang="bn">জলজ: গাঙ্গেয় ডলফিন</span><span data-lang="hi">जलीय: गंगेटिक डॉल्फिन</span></div>
-            <div class="aw-item"><span class="aw-icon">🏏</span><span data-lang="en">Sport: Field Hockey</span><span data-lang="bn">ক্রীড়া: ফিল্ড হকি</span><span data-lang="hi">खेल: फील्ड हॉकी</span></div>
+            <strong>🏅 National Symbols</strong>
+            <div class="aw-item"><span class="aw-icon">🐅</span><span>Animal: Bengal Tiger</span></div>
+            <div class="aw-item"><span class="aw-icon">🦚</span><span>Bird: Indian Peacock</span></div>
+            <div class="aw-item"><span class="aw-icon">🌸</span><span>Flower: Lotus</span></div>
+            <div class="aw-item"><span class="aw-icon">🌳</span><span>Tree: Banyan</span></div>
+            <div class="aw-item"><span class="aw-icon">🏏</span><span>Sport: Field Hockey</span></div>
           </div>
-
         </div>
       </aside>
 
-    </div><!-- end content-grid -->
-  </div><!-- end page-wrapper -->
+    </div>
+  </div>
 
-  <!-- ══════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-links">
-      <a href="food.html"><span data-lang="en">Food</span><span data-lang="bn">খাবার</span><span data-lang="hi">भोजन</span></a>
-      <a href="wildlife.html"><span data-lang="en">Wildlife</span><span data-lang="bn">বন্যপ্রাণী</span><span data-lang="hi">वन्यजीव</span></a>
-      <a href="famous.html"><span data-lang="en">Famous People</span><span data-lang="bn">বিখ্যাত মানুষ</span><span data-lang="hi">प्रसिद्ध लोग</span></a>
-      <a href="festival.html"><span data-lang="en">Festivals</span><span data-lang="bn">উৎসব</span><span data-lang="hi">त्योहार</span></a>
-      <a href="innovation.html"><span data-lang="en">Innovation</span><span data-lang="bn">উদ্ভাবন</span><span data-lang="hi">नवाचार</span></a>
+      <a href="food.html">Food</a>
+      <a href="wildlife.html">Wildlife</a>
+      <a href="famous.html">Famous People</a>
+      <a href="festival.html">Festivals</a>
+      <a href="innovation.html">Innovation</a>
     </div>
     <p>
       <span data-lang="en">Created Oct 10, 2025 by Hitez Verma — A comprehensive overview of India.</span>
-      <span data-lang="bn">তৈরি ১০ অক্টোবর, ২০২৫ হিতেজ বর্মা দ্বারা — ভারতের একটি ব্যাপক ওভারভিউ।</span>
-      <span data-lang="hi">निर्मित 10 अक्टूबर, 2025 हितेज वर्मा द्वारा — भारत का एक व्यापक अवलोकन।</span>
+      <span data-lang="bn">তৈরি ১০ অক্টোবর, ২০২৫ হিতেজ বর্মা দ্বারা।</span>
+      <span data-lang="hi">निर्मित 10 अक्टूबर, 2025 हितेज वर्मा द्वारा।</span>
     </p>
-    <p style="margin-top:0.5rem;font-size:0.8rem;opacity:0.6;">
-      <span data-lang="en">© 2025 All rights reserved</span>
-      <span data-lang="bn">© ২০২৫ সর্বস্বত্ব সংরক্ষিত</span>
-      <span data-lang="hi">© 2025 सर्वाधिकार सुरक्षित</span>
-    </p>
+    <p style="margin-top:0.5rem;font-size:0.8rem;opacity:0.6;">© 2025 All rights reserved</p>
   </footer>
 
   <button id="scrollToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- ══════════════════════════════════════════
-       SCRIPTS
-  ══════════════════════════════════════════ -->
+  <!-- ─── PERSON DETAIL MODAL ─── -->
+  <div class="modal-overlay" id="person-modal" role="dialog" aria-modal="true" aria-label="Person detail">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-photo-band">
+        <img src="" alt="" id="modal-img">
+      </div>
+      <div class="modal-body">
+        <span class="modal-cat" id="modal-cat"></span>
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-role" id="modal-role"></div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-chips" id="modal-chips"></div>
+        <a href="#" id="modal-wiki-btn" class="modal-wiki-btn" target="_blank" rel="noopener">
+          <i class="fab fa-wikipedia-w"></i> Read on Wikipedia
+        </a>
+      </div>
+    </div>
+  </div>
+
   <script>
     /* ── LANGUAGE SYSTEM ── */
     window.currentLang = 'en';
-
     function setLanguage(lang) {
       window.currentLang = lang || 'en';
       document.querySelectorAll('[data-lang]').forEach(el => {
@@ -1475,12 +1676,9 @@
       document.documentElement.lang = window.currentLang;
       try { sessionStorage.setItem('preferredLang', window.currentLang); } catch(e) {}
     }
-
     (function() {
-      try {
-        const pref = sessionStorage.getItem('preferredLang');
-        setLanguage(pref || 'en');
-      } catch(e) { setLanguage('en'); }
+      try { setLanguage(sessionStorage.getItem('preferredLang') || 'en'); }
+      catch(e) { setLanguage('en'); }
     })();
 
     /* ── SCROLL PROGRESS ── */
@@ -1499,31 +1697,28 @@
           sectionObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
-
+    }, { threshold: 0.08 });
     document.querySelectorAll('main section').forEach(s => sectionObserver.observe(s));
 
     /* ── ANIMATED STAT COUNTERS ── */
-    function animateCounter(el, target, suffix) {
+    function animateCounter(el, target) {
       let current = 0;
       const step = Math.max(1, Math.floor(target / 60));
       const timer = setInterval(() => {
         current = Math.min(current + step, target);
-        el.textContent = current + (suffix || '');
+        el.textContent = current.toLocaleString();
         if (current >= target) clearInterval(timer);
       }, 20);
     }
-
     const counterObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         entry.target.querySelectorAll('[data-target]').forEach(el => {
-          animateCounter(el, parseInt(el.getAttribute('data-target')), el.getAttribute('data-suffix') || '');
+          animateCounter(el, parseInt(el.getAttribute('data-target')));
         });
         counterObserver.unobserve(entry.target);
       });
     }, { threshold: 0.3 });
-
     document.querySelectorAll('.stats-strip').forEach(s => counterObserver.observe(s));
 
     /* ── PROGRESS BARS ── */
@@ -1532,13 +1727,116 @@
         if (!entry.isIntersecting) return;
         entry.target.querySelectorAll('.progress-bar-fill').forEach(bar => {
           const w = bar.getAttribute('data-width');
-          setTimeout(() => { bar.style.width = w + '%'; }, 100);
+          setTimeout(() => { bar.style.width = w + '%'; }, 150);
         });
         barObserver.unobserve(entry.target);
       });
     }, { threshold: 0.2 });
-
     document.querySelectorAll('section').forEach(s => barObserver.observe(s));
+
+    /* ── FAMOUS PEOPLE FILTER + SEARCH ── */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('people-search');
+    const cards = document.querySelectorAll('#people-grid .person-card');
+    const noMsg = document.getElementById('no-people-msg');
+
+    let activeFilter = 'all';
+    let searchTerm = '';
+
+    function applyFilters() {
+      let visible = 0;
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const name = card.getAttribute('data-name').toLowerCase();
+        const matchFilter = activeFilter === 'all' || cat === activeFilter;
+        const matchSearch = !searchTerm || name.includes(searchTerm);
+        const show = matchFilter && matchSearch;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      noMsg.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.getAttribute('data-filter');
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      searchTerm = searchInput.value.toLowerCase().trim();
+      applyFilters();
+    });
+
+    /* ── PERSON MODAL ── */
+    const modal = document.getElementById('person-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCat = document.getElementById('modal-cat');
+    const modalName = document.getElementById('modal-name');
+    const modalRole = document.getElementById('modal-role');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalChips = document.getElementById('modal-chips');
+    const modalWiki = document.getElementById('modal-wiki-btn');
+
+    const catStyles = {
+      leader:    { bg: 'rgba(229,57,53,0.1)',  color: '#b71c1c', label: 'Leader' },
+      scientist: { bg: 'rgba(0,150,136,0.1)',  color: '#00695c', label: 'Scientist' },
+      tech:      { bg: 'rgba(11,92,255,0.1)',  color: '#0d47a1', label: 'Tech' },
+      arts:      { bg: 'rgba(124,77,255,0.1)', color: '#4a148c', label: 'Arts' },
+      sports:    { bg: 'rgba(255,107,43,0.1)', color: '#bf360c', label: 'Sports' },
+      business:  { bg: 'rgba(0,150,0,0.1)',    color: '#1b5e20', label: 'Business' }
+    };
+
+    function openModal(card) {
+      const cat = card.getAttribute('data-category');
+      const style = catStyles[cat] || { bg: '#eee', color: '#333', label: cat };
+      const img = card.querySelector('img');
+      modalImg.src = img ? img.src : '';
+      modalImg.alt = card.getAttribute('data-name');
+      modalCat.textContent = style.label;
+      modalCat.style.background = style.bg;
+      modalCat.style.color = style.color;
+      modalCat.style.padding = '0.2rem 0.7rem';
+      modalCat.style.borderRadius = '999px';
+      modalCat.style.fontWeight = '700';
+      modalCat.style.fontSize = '0.75rem';
+      modalCat.style.letterSpacing = '0.08em';
+      modalCat.style.textTransform = 'uppercase';
+      modalName.textContent = card.getAttribute('data-name');
+      modalRole.textContent = card.querySelector('.person-role').textContent;
+      modalDesc.textContent = card.getAttribute('data-desc');
+      modalWiki.href = card.getAttribute('data-wiki');
+      // chips
+      modalChips.innerHTML = '';
+      card.querySelectorAll('.ach-chip').forEach(chip => {
+        const c = document.createElement('span');
+        c.className = chip.className;
+        c.textContent = chip.textContent;
+        modalChips.appendChild(c);
+      });
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    cards.forEach(card => {
+      card.querySelector('.person-learn-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal(card);
+      });
+      card.addEventListener('click', () => openModal(card));
+    });
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
     /* ── PARTICLES CANVAS ── */
     (function() {
@@ -1546,7 +1844,6 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       let particles = [];
-      let animId;
 
       function resize() {
         canvas.width = canvas.offsetWidth;
@@ -1590,7 +1887,7 @@
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
             const dy = particles[i].y - particles[j].y;
-            if (Math.sqrt(dx*dx+dy*dy) < 90) {
+            if (Math.sqrt(dx*dx + dy*dy) < 90) {
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
@@ -1605,7 +1902,7 @@
         drawConnections();
         particles.forEach(p => { p.update(); p.draw(); });
         ctx.globalAlpha = 1;
-        animId = requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
       }
       animate();
     })();
@@ -1623,10 +1920,11 @@
     document.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('mousemove', e => {
         const r = btn.getBoundingClientRect();
-        btn.style.setProperty('--x', `${e.clientX-r.left}px`);
-        btn.style.setProperty('--y', `${e.clientY-r.top}px`);
+        btn.style.setProperty('--x', `${e.clientX - r.left}px`);
+        btn.style.setProperty('--y', `${e.clientY - r.top}px`);
       });
     });
   </script>
 </body>
 </html>
+
